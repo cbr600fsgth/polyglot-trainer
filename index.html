@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ポルトガル語トレーナー</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f4e79">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Português">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 初回セットアップ -->
+<section id="screen-setup" class="screen hidden">
+  <div class="setup-box">
+    <h1 class="setup-title">出発日を入れてください</h1>
+    <p class="sub">出発日から逆算して学習計画を組みます。この日付はこの端末の中だけに保存され、
+      どこにも送信されません。設定画面から後で変更できます。</p>
+    <input type="date" id="input-departure" class="date-input" aria-label="出発日">
+    <p id="setup-error" class="warning hidden"></p>
+    <button id="btn-setup-save" class="primary">はじめる</button>
+  </div>
+</section>
+
+<!-- ホーム -->
+<section id="screen-home" class="screen hidden">
+  <button id="btn-settings" class="corner" aria-label="設定">設定</button>
+
+  <div class="home-top">
+    <p class="label">出発まで</p>
+    <p class="countdown"><span id="days-left">--</span><span class="unit">日</span></p>
+    <p id="departure-note" class="sub"></p>
+  </div>
+
+  <div class="home-stats">
+    <div class="stat">
+      <span id="streak" class="stat-num">0</span>
+      <span class="stat-label">連続日数</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num"><span id="retained">0</span><span class="of">/<span id="total">0</span></span></span>
+      <span class="stat-label">定着</span>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div id="progress" class="progress"></div>
+  </div>
+
+  <button id="btn-start" class="primary">今日の10分をはじめる</button>
+
+  <p id="home-today" class="sub center"></p>
+  <p id="audio-warning" class="warning hidden"></p>
+</section>
+
+<!-- セッション -->
+<section id="screen-session" class="screen hidden">
+  <div class="session-bar">
+    <button id="btn-quit" class="corner-left" aria-label="中断">閉じる</button>
+    <div class="session-progress"><div id="session-progress" class="session-progress-fill"></div></div>
+    <span id="session-stage" class="stage-label"></span>
+  </div>
+
+  <div id="card" class="card">
+    <p id="card-scene" class="card-scene"></p>
+
+    <p id="card-jp" class="card-jp"></p>
+
+    <div id="card-back" class="card-back hidden">
+      <p id="card-pt" class="card-pt"></p>
+      <p id="card-kana" class="card-kana"></p>
+      <button id="btn-replay" class="ghost">もう一度聞く</button>
+      <button id="btn-slow" class="ghost">ゆっくり</button>
+      <dl class="card-meta">
+        <dt>イタリア語</dt><dd id="card-it"></dd>
+        <dt>メモ</dt><dd id="card-note"></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="btn-reveal" class="primary">答えを見る</button>
+    <div id="grade-row" class="grade-row hidden">
+      <button class="grade again" data-grade="again">だめ</button>
+      <button class="grade vague" data-grade="vague">あいまい</button>
+      <button class="grade good" data-grade="good">できた</button>
+    </div>
+    <button id="btn-next" class="primary hidden">次へ</button>
+  </div>
+</section>
+
+<!-- 完了 -->
+<section id="screen-done" class="screen hidden">
+  <div class="done-box">
+    <p class="done-mark">完了</p>
+    <p class="done-streak"><span id="done-streak">0</span> 日連続</p>
+    <p id="done-summary" class="sub center"></p>
+    <p id="done-carry" class="sub center hidden"></p>
+    <p id="done-overflow" class="sub center hidden"></p>
+  </div>
+  <button id="btn-copy" class="secondary">デイリーノート用の1行をコピー</button>
+  <button id="btn-home" class="primary">ホームへ</button>
+</section>
+
+<!-- 設定 -->
+<section id="screen-settings" class="screen hidden">
+  <div class="session-bar">
+    <button id="btn-settings-close" class="corner-left" aria-label="戻る">戻る</button>
+    <h1 class="settings-title">設定</h1>
+  </div>
+
+  <div class="settings-body">
+    <h2>出発日</h2>
+    <input type="date" id="input-departure-edit" class="date-input" aria-label="出発日">
+    <button id="btn-departure-save" class="secondary">出発日を保存</button>
+    <p class="sub">この端末のみに保存され、どこにも送信されない。
+      最終スイープは出発日の10日前に自動で始まる。</p>
+
+    <h2>音声</h2>
+    <p id="voice-status" class="mono"></p>
+    <p id="voice-list" class="mono"></p>
+
+    <h2>進捗</h2>
+    <p id="progress-detail" class="mono"></p>
+    <button id="btn-export" class="secondary">JSONを書き出す</button>
+    <label class="file-label">
+      JSONを読み込む
+      <input type="file" id="input-import" accept="application/json,.json">
+    </label>
+    <button id="btn-reset" class="danger">進捗をすべて消す</button>
+
+    <h2>基準日</h2>
+    <p class="mono">現在の基準日: <span id="today-value"></span>（<span id="mode-value"></span>モード）</p>
+    <p class="sub">URLに <code>?today=YYYY-MM-DD</code> を付けると基準日を差し替えて動作確認できる。</p>
+
+    <h2>ビルド</h2>
+    <p id="app-version" class="mono"></p>
+    <p class="sub">画面がおかしいときはここを確認する。古い番号ならキャッシュが残っているので
+      スーパーリロード（Cmd+Shift+R）する。</p>
+  </div>
+</section>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
