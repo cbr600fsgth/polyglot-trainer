@@ -1,7 +1,7 @@
 {
-  "name": "ポルトガル語トレーナー",
-  "short_name": "Português",
-  "description": "ヨーロッパポルトガル語の旅行会話トレーナー",
+  "name": "旅行会話トレーナー",
+  "short_name": "Trainer",
+  "description": "ポルトガル語 / スペイン語 / イタリア語の旅行会話トレーナー",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

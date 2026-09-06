@@ -2,7 +2,7 @@
 .claude/
 
 # Phase 3 で生成する音声。バイナリなのでリポジトリには入れない
-audio/*.mp3
+audio/**/*.mp3
 data/audio-manifest.json
 
 .DS_Store

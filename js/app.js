@@ -3,7 +3,7 @@ import * as store from './store.js';
 import * as audio from './audio.js';
 
 // 画面の不具合がキャッシュ由来かを切り分けるための版番号。コードを変えたら上げる
-const APP_VERSION = 'phase1-r6';
+const APP_VERSION = 'phase2-lang-r0';
 
 const SCENE_LABELS = {
   greet: 'あいさつ',

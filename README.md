@@ -1,7 +1,11 @@
-# ポルトガル語トレーナー
+# 旅行会話トレーナー
 
-ポルトガル旅行に向けた旅行会話トレーナー。ヨーロッパポルトガル語（pt-PT）専用。
+ポルトガル語（pt-PT）・スペイン語（es-ES）・イタリア語（it-IT）の旅行会話トレーナー。
+旅行前に1言語をマスターしつつ、同じ意味の他言語（英語を含む）を同画面で比較できる。
 フレームワークなし、単一ページ、バニラJS。`package.json` は持たない。
+
+多言語化の設計は [docs/SPEC-multilingual.md](docs/SPEC-multilingual.md) にある。
+以下の記述はポルトガル語専用だった時点のもので、実装フェーズごとに更新する。
 
 フレーズ150文。出発日を入れると、そこから逆算して45日程度の学習計画を自動で組む。
 
@@ -11,7 +15,7 @@
 ## 起動
 
 ```bash
-cd ~/dev/ai_sandbox/portuguese-trainer && python3 tools/serve.py
+cd ~/dev/ai_sandbox/polyglot-trainer && python3 tools/serve.py
 ```
 
 ブラウザで http://localhost:8765 を開く。`file://` では ES モジュールと `fetch` が動かないため
