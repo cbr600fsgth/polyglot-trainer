@@ -467,17 +467,17 @@
           "note": "鼻母音。「シー」ではなく「シン」"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Sí.",
+          "kana": "シ",
+          "note": "ptのSimと違い鼻母音ではない。素直に「シ」"
         },
         "it": {
           "text": "Sì.",
-          "kana": "",
-          "note": ""
+          "kana": "スィ",
+          "note": "ptのSimと同源だが鼻母音化しない"
         },
         "en": {
-          "text": ""
+          "text": "Yes."
         }
       }
     },
@@ -497,17 +497,17 @@
           "note": "ãoは鼻音で「アォン」。ポルトガル語最重要の音"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "No.",
+          "kana": "ノ",
+          "note": "ptのNãoのような鼻音化はない"
         },
         "it": {
           "text": "No.",
-          "kana": "",
-          "note": ""
+          "kana": "ノ",
+          "note": "ptのNãoと同源。鼻母音はイタリア語には無い"
         },
         "en": {
-          "text": ""
+          "text": "No."
         }
       }
     },
@@ -527,17 +527,17 @@
           "note": "クーベルや客引きを断る基本形"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "No, gracias.",
+          "kana": "ノ、グラシアス",
+          "note": "断りの定型。ptと語順は同じ"
         },
         "it": {
           "text": "No, grazie.",
-          "kana": "",
-          "note": ""
+          "kana": "ノ、グラーツィエ",
+          "note": "ptと語順は同じ。感謝の語だけが違う"
         },
         "en": {
-          "text": ""
+          "text": "No, thank you."
         }
       }
     },
@@ -557,17 +557,17 @@
           "note": "Estáの語頭eは消えて「シュタ」。会話の相槌に多用"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Está bien.",
+          "kana": "エスタ ビエン",
+          "note": "ptとほぼ同綴り。ptは語頭eが消えるがesは残して「エスタ」"
         },
         "it": {
           "text": "Va bene.",
-          "kana": "",
-          "note": ""
+          "kana": "ヴァ ベーネ",
+          "note": "動詞がandare。ptのEstá bemとは発想が別"
         },
         "en": {
-          "text": ""
+          "text": "That's fine."
         }
       }
     },
@@ -587,17 +587,17 @@
           "note": "pt-PTではentendoよりcompreendoが一般的"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "No entiendo.",
+          "kana": "ノ エンティエンド",
+          "note": "esはentenderが普通。eがieに割れる"
         },
         "it": {
           "text": "Non capisco.",
-          "kana": "",
-          "note": ""
+          "kana": "ノン カピスコ",
+          "note": "capireはptのcompreenderとは別語。形から推測できない"
         },
         "en": {
-          "text": ""
+          "text": "I don't understand."
         }
       }
     },
@@ -617,17 +617,17 @@
           "note": "「少しだけ」はFalo um pouco（ファル ウン ポーク）"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "No hablo español.",
+          "kana": "ノ アブロ エスパニョール",
+          "note": "現地の言語名を入れる。hは無音。動詞はhablar"
         },
         "it": {
-          "text": "Non parlo portoghese.",
-          "kana": "",
-          "note": ""
+          "text": "Non parlo italiano.",
+          "kana": "ノン パルロ イタリアーノ",
+          "note": "現地の言語名を入れる。移行時はportogheseだったが現地で使う形に直した"
         },
         "en": {
-          "text": ""
+          "text": "I don't speak Portuguese."
         }
       }
     },
@@ -647,17 +647,17 @@
           "note": "まずBom diaとFaz favorを言ってからこれを聞くと通りがよい"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Habla inglés?",
+          "kana": "アブラ イングレス",
+          "note": "hは無音。ptのfalarと違い動詞はhablar"
         },
         "it": {
           "text": "Parla inglese?",
-          "kana": "",
-          "note": ""
+          "kana": "パルラ イングレーゼ",
+          "note": "parlareはptのfalarとは別語源"
         },
         "en": {
-          "text": ""
+          "text": "Do you speak English?"
         }
       }
     },
@@ -677,17 +677,17 @@
           "note": "語頭のrは喉のh音。「レ」ではなく「ヘ」"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Puede repetir, por favor?",
+          "kana": "プエデ レペティール、ポル ファボール",
+          "note": "ptのPodeと同源。rは震え音で「ヘ」にならない"
         },
         "it": {
           "text": "Può ripetere, per favore?",
-          "kana": "",
-          "note": ""
+          "kana": "プオ リペーテレ、ペル ファヴォーレ",
+          "note": "ptのPodeと同源。語末の母音を落とさず読む"
         },
         "en": {
-          "text": ""
+          "text": "Could you say that again?"
         }
       }
     },
@@ -708,17 +708,17 @@
           "note": "語末sは「シュ」。dois=ドイシュ。ここが最重要の発音差"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "uno, dos, tres",
+          "kana": "ウノ、ドス、トレス",
+          "note": "語末sは「ス」。ptの「シュ」との差が最大の違い"
         },
         "it": {
           "text": "uno, due, tre",
-          "kana": "",
-          "note": ""
+          "kana": "ウノ、ドゥーエ、トレ",
+          "note": "ptのdois/trêsと違い語末sが無い"
         },
         "en": {
-          "text": ""
+          "text": "one, two, three"
         }
       }
     },
@@ -739,17 +739,17 @@
           "note": "quatroの語末roは「トル」に近い"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "cuatro, cinco, seis",
+          "kana": "クアトロ、シンコ、セイス",
+          "note": "cincoはptと同綴りだが語末oを「オ」と読む"
         },
         "it": {
           "text": "quattro, cinque, sei",
-          "kana": "",
-          "note": ""
+          "kana": "クアットロ、チンクエ、セイ",
+          "note": "ciは「チ」。esのcincoは「シンコ」で読みが分かれる"
         },
         "en": {
-          "text": ""
+          "text": "four, five, six"
         }
       }
     },
@@ -770,17 +770,17 @@
           "note": "dez=デシュ。10ユーロはdez euros（デシュ エウルシュ）"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "siete, ocho, nueve, diez",
+          "kana": "シエテ、オチョ、ヌエベ、ディエス",
+          "note": "eがieに割れる。ptのsete/noveと形で見分けられる"
         },
         "it": {
           "text": "sette, otto, nove, dieci",
-          "kana": "",
-          "note": ""
+          "kana": "セッテ、オット、ノーヴェ、ディエチ",
+          "note": "ptのsete/oito/noveに近い。10だけ形が離れる"
         },
         "en": {
-          "text": ""
+          "text": "seven, eight, nine, ten"
         }
       }
     },
@@ -800,17 +800,17 @@
           "note": "語末eは消えて子音で終わる感覚"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "once, doce, trece",
+          "kana": "オンセ、ドセ、トレセ",
+          "note": "ptのonze/doze/trezeとほぼ同形。zは「ス」"
         },
         "it": {
           "text": "undici, dodici, tredici",
-          "kana": "",
-          "note": ""
+          "kana": "ウンディチ、ドディチ、トレディチ",
+          "note": "-diciが付く。ptやesとは形が離れる"
         },
         "en": {
-          "text": ""
+          "text": "eleven, twelve, thirteen"
         }
       }
     },
@@ -831,17 +831,17 @@
           "note": "pt-PT形。ブラジルはquatorze / dezesseis で綴りが違う"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "catorce, quince, dieciséis",
+          "kana": "カトルセ、キンセ、ディエシセイス",
+          "note": "16からdieci+数の形。ptのdezasseisと発想は同じ"
         },
         "it": {
           "text": "quattordici, quindici, sedici",
-          "kana": "",
-          "note": ""
+          "kana": "クアットルディチ、クインディチ、セーディチ",
+          "note": "16はsediciで規則から外れる"
         },
         "en": {
-          "text": ""
+          "text": "fourteen, fifteen, sixteen"
         }
       }
     },
@@ -862,17 +862,17 @@
           "note": "pt-PT形。ブラジルはdezessete / dezenove"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "diecisiete, dieciocho, diecinueve, veinte",
+          "kana": "ディエシシエテ、ディエシオチョ、ディエシヌエベ、ベインテ",
+          "note": "10+nの形。ptのdezasseteと同じ発想"
         },
         "it": {
           "text": "diciassette, diciotto, diciannove, venti",
-          "kana": "",
-          "note": ""
+          "kana": "ディチャッセッテ、ディチョット、ディチャンノーヴェ、ヴェンティ",
+          "note": "3言語とも10+nの発想は共通"
         },
         "en": {
-          "text": ""
+          "text": "seventeen, eighteen, nineteen, twenty"
         }
       }
     },
@@ -892,17 +892,17 @@
           "note": "meia de leiteのmeiaはこのmeioの女性形"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "cero / medio",
+          "kana": "セロ / メディオ",
+          "note": "ptはzeroだがesはceroと綴る"
         },
         "it": {
           "text": "zero / mezzo",
-          "kana": "",
-          "note": ""
+          "kana": "ゼロ / メッツォ",
+          "note": "mezzoはptのmeioと同源。zzは「ツ」"
         },
         "en": {
-          "text": ""
+          "text": "zero / half"
         }
       }
     },
@@ -923,17 +923,17 @@
           "note": "注文の万能型。指差しと併用で何でも頼める。Eu queroより丁寧"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Quería esto, por favor.",
+          "kana": "ケリア エスト、ポル ファボール",
+          "note": "ptのQueriaと同形。丁寧な依頼の定型"
         },
         "it": {
           "text": "Vorrei questo, per favore.",
-          "kana": "",
-          "note": ""
+          "kana": "ヴォッレイ クエスト、ペル ファヴォーレ",
+          "note": "volereの条件法。ptのquererとは別動詞"
         },
         "en": {
-          "text": ""
+          "text": "I'd like this, please."
         }
       }
     },
@@ -954,17 +954,17 @@
           "note": "Queria + 数 + por favor。夫婦2人旅の基本形"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Quería dos, por favor.",
+          "kana": "ケリア ドス、ポル ファボール",
+          "note": "dosは性変化しない。ptのdois/duasだけが性で変わる"
         },
         "it": {
           "text": "Vorrei due, per favore.",
-          "kana": "",
-          "note": ""
+          "kana": "ヴォッレイ ドゥーエ、ペル ファヴォーレ",
+          "note": "dueも性変化しない。ptのdois/duasだけが性で変わる"
         },
         "en": {
-          "text": ""
+          "text": "Two, please."
         }
       }
     },
@@ -984,17 +984,17 @@
           "note": "イタリア語とほぼ同一。合計額はQuanto é?（クアントゥ エ）"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Cuánto cuesta?",
+          "kana": "クアント クエスタ",
+          "note": "ptのQuanto custaとほぼ同一。oがueに割れる"
         },
         "it": {
           "text": "Quanto costa?",
-          "kana": "",
-          "note": ""
+          "kana": "クアント コスタ",
+          "note": "3言語でいちばん形が近い。ほぼそのまま通じる"
         },
         "en": {
-          "text": ""
+          "text": "How much is it?"
         }
       }
     },
@@ -1015,17 +1015,17 @@
           "note": "駅・トイレ・店名を後ろに付けるだけ。Onde é a estação?"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Dónde está...?",
+          "kana": "ドンデ エスタ",
+          "note": "位置はestarを使う。ptのOnde éとは動詞が違う"
         },
         "it": {
           "text": "Dov'è...?",
-          "kana": "",
-          "note": ""
+          "kana": "ドヴェ",
+          "note": "dove è の縮約。ptのOnde éと同じ構造"
         },
         "en": {
-          "text": ""
+          "text": "Where is...?"
         }
       }
     },
@@ -1046,17 +1046,17 @@
           "note": "Tem mesa? Tem Wi-Fi? と何にでも使える最短の質問"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Hay...?",
+          "kana": "アイ",
+          "note": "存在のhay。ptのTemに当たる万能形"
         },
         "it": {
           "text": "C'è...?",
-          "kana": "",
+          "kana": "チェ",
           "note": "Ha...? は「持っているか」、C'è...? は「存在するか」。Tem mesa? Tem Wi-Fi? の用法にはC'èが寄り添う"
         },
         "en": {
-          "text": ""
+          "text": "Is there...?"
         }
       }
     },
@@ -1076,17 +1076,17 @@
           "note": "pt-PTは代名詞を動詞の後ろに付ける。ブラジルはPode me ajudar?"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Puede ayudarme?",
+          "kana": "プエデ アユダールメ",
+          "note": "esも代名詞を不定詞の後ろに付ける。ptと同じ語順"
         },
         "it": {
           "text": "Può aiutarmi?",
-          "kana": "",
-          "note": ""
+          "kana": "プオ アイウタルミ",
+          "note": "代名詞を不定詞に付ける点はptと同じ"
         },
         "en": {
-          "text": ""
+          "text": "Could you help me?"
         }
       }
     },
@@ -1105,17 +1105,17 @@
           "note": "財布を出す間、写真を撮る間などに"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Solo un momento.",
+          "kana": "ソロ ウン モメント",
+          "note": "itと綴りまで同一。ptのSóだけが短い"
         },
         "it": {
           "text": "Solo un momento.",
-          "kana": "",
-          "note": ""
+          "kana": "ソロ ウン モメント",
+          "note": "esと綴りまで同一。ptのSóだけが短い"
         },
         "en": {
-          "text": ""
+          "text": "Just a moment."
         }
       }
     },
@@ -1135,17 +1135,17 @@
           "note": "店に入って人数を聞かれたときの答え。指2本と併用"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Somos dos.",
+          "kana": "ソモス ドス",
+          "note": "ptのSomos doisと同形。語末sは「ス」で濁らない"
         },
         "it": {
           "text": "Siamo in due.",
-          "kana": "",
-          "note": ""
+          "kana": "スィアーモ イン ドゥーエ",
+          "note": "inが入るのがイタリア語の癖。ptのSomos doisには無い"
         },
         "en": {
-          "text": ""
+          "text": "Two of us."
         }
       }
     },
@@ -2210,17 +2210,17 @@
           "note": "21以降は「20と1」と足していく。vinte e um"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "veintiuno, treinta, cuarenta",
+          "kana": "ベインティウノ、トレインタ、クアレンタ",
+          "note": "21は1語に詰める。ptのvinte e umと違い接続詞を書かない"
         },
         "it": {
           "text": "ventuno, trenta, quaranta",
-          "kana": "",
-          "note": ""
+          "kana": "ヴェントゥーノ、トレンタ、クアランタ",
+          "note": "esと同じく21は1語。ptだけが e でつなぐ"
         },
         "en": {
-          "text": ""
+          "text": "twenty-one, thirty, forty"
         }
       }
     },
@@ -2240,17 +2240,17 @@
           "note": "値段を聞き取るのに必須"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "cincuenta, sesenta, setenta",
+          "kana": "シンクエンタ、セセンタ、セテンタ",
+          "note": "ptとほぼ同形で聞き取りやすい"
         },
         "it": {
           "text": "cinquanta, sessanta, settanta",
-          "kana": "",
-          "note": ""
+          "kana": "チンクアンタ、セッサンタ、セッタンタ",
+          "note": "語尾が-antaで揃う。ptの-entaと1音違い"
         },
         "en": {
-          "text": ""
+          "text": "fifty, sixty, seventy"
         }
       }
     },
@@ -2270,17 +2270,17 @@
           "note": "ちょうど100はcem、101以上はcento e〜"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "ochenta, noventa, cien",
+          "kana": "オチェンタ、ノベンタ、シエン",
+          "note": "ちょうど100はcien、101以上はciento。ptのcem/centoと同じ使い分け"
         },
         "it": {
           "text": "ottanta, novanta, cento",
-          "kana": "",
-          "note": ""
+          "kana": "オッタンタ、ノヴァンタ、チェント",
+          "note": "itは常にcento。ptのcem/centoのような区別は無い"
         },
         "en": {
-          "text": ""
+          "text": "eighty, ninety, one hundred"
         }
       }
     },
@@ -2301,17 +2301,17 @@
           "note": "セントは省略して数字だけ言う。euros=エウルシュ"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "cinco euros con cincuenta",
+          "kana": "シンコ エウロス コン シンクエンタ",
+          "note": "esはconでつなぐことが多い。ptとitはe"
         },
         "it": {
           "text": "cinque euro e cinquanta",
-          "kana": "",
-          "note": ""
+          "kana": "チンクエ エウロ エ チンクアンタ",
+          "note": "euroは複数でも語尾が変わらない。ptのeurosとの差"
         },
         "en": {
-          "text": ""
+          "text": "five euros fifty"
         }
       }
     },
@@ -2331,17 +2331,17 @@
           "note": "個別の値段はQuanto custa、合計はQuanto é tudo"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Cuánto es todo?",
+          "kana": "クアント エス トド",
+          "note": "ptのQuanto é tudoとほぼ同形"
         },
         "it": {
           "text": "Quant'è in tutto?",
-          "kana": "",
-          "note": ""
+          "kana": "クアンテ イン トゥット",
+          "note": "in tuttoが入る。ptのQuanto é tudoより一語多い"
         },
         "en": {
-          "text": ""
+          "text": "How much is it all together?"
         }
       }
     },
@@ -2360,17 +2360,17 @@
           "note": "市場での値段交渉に。caroの語末oは「ウ」寄り"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Es muy caro.",
+          "kana": "エス ムイ カロ",
+          "note": "ptのmuitoに当たるのがmuy。形容詞の前ではmuchoにしない"
         },
         "it": {
           "text": "È troppo caro.",
-          "kana": "",
-          "note": ""
+          "kana": "エ トロッポ カーロ",
+          "note": "troppoは「過剰」。ptのmuitoの直訳ではない"
         },
         "en": {
-          "text": ""
+          "text": "That's too expensive."
         }
       }
     },
@@ -2390,17 +2390,17 @@
           "note": "hのhoraは無音。オーラシュ"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¿Qué hora es?",
+          "kana": "ケ オラ エス",
+          "note": "esは単数で聞く。ptのQue horas são?は複数"
         },
         "it": {
           "text": "Che ore sono?",
-          "kana": "",
-          "note": ""
+          "kana": "ケ オーレ ソノ",
+          "note": "ptと同じく複数で聞く。esだけが単数"
         },
         "en": {
-          "text": ""
+          "text": "What time is it?"
         }
       }
     },
@@ -2419,17 +2419,17 @@
           "note": "1時だけÉ uma hora（単数）"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Son las nueve.",
+          "kana": "ソン ラス ヌエベ",
+          "note": "定冠詞lasが要る。ptのSão nove horasには冠詞が無い"
         },
         "it": {
           "text": "Sono le nove.",
-          "kana": "",
-          "note": ""
+          "kana": "ソノ レ ノーヴェ",
+          "note": "esと同じく定冠詞leが要る。ptだけが冠詞なし"
         },
         "en": {
-          "text": ""
+          "text": "It's nine o'clock."
         }
       }
     },
@@ -2450,17 +2450,17 @@
           "note": "meiaは半分。meia de leiteと同じ語"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "nueve y media",
+          "kana": "ヌエベ イ メディア",
+          "note": "接続はy。ptのeと同じ働き"
         },
         "it": {
           "text": "nove e mezza",
-          "kana": "",
-          "note": ""
+          "kana": "ノーヴェ エ メッツァ",
+          "note": "mezzaはptのmeiaと同源"
         },
         "en": {
-          "text": ""
+          "text": "half past nine"
         }
       }
     },
@@ -2480,17 +2480,17 @@
           "note": "15分はum quarto（4分の1）"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "diez y cuarto",
+          "kana": "ディエス イ クアルト",
+          "note": "esはunを入れない。ptのum quartoとの差"
         },
         "it": {
           "text": "dieci e un quarto",
-          "kana": "",
-          "note": ""
+          "kana": "ディエチ エ ウン クアルト",
+          "note": "ptと同じくunが入る。esだけが省く"
         },
         "en": {
-          "text": ""
+          "text": "quarter past ten"
         }
       }
     },
@@ -2510,17 +2510,17 @@
           "note": "manhãは鼻音。「マニャン」"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "de la mañana / de la tarde",
+          "kana": "デ ラ マニャナ / デ ラ タルデ",
+          "note": "定冠詞laが入る。ptのdaは de+a の縮約"
         },
         "it": {
           "text": "di mattina / di pomeriggio",
-          "kana": "",
-          "note": ""
+          "kana": "ディ マッティーナ / ディ ポメリッジョ",
+          "note": "冠詞を入れない。3言語で形が最も分かれる"
         },
         "en": {
-          "text": ""
+          "text": "in the morning / in the afternoon"
         }
       }
     },
@@ -2541,17 +2541,17 @@
           "note": "予約の日付確認に使う"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "hoy / mañana / ayer",
+          "kana": "オイ / マニャナ / アジェル",
+          "note": "mañanaは「明日」と「朝」の両方。ptのamanhã/manhãは別語"
         },
         "it": {
           "text": "oggi / domani / ieri",
-          "kana": "",
-          "note": ""
+          "kana": "オッジ / ドマーニ / イエリ",
+          "note": "ptのhoje/amanhãと同源。ontemとieriは別語源"
         },
         "en": {
-          "text": ""
+          "text": "today / tomorrow / yesterday"
         }
       }
     },
@@ -2571,17 +2571,17 @@
           "note": "平日はsegunda〜sexta（第2〜第6）。日曜起点で数える"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "lunes / sábado / domingo",
+          "kana": "ルネス / サバド / ドミンゴ",
+          "note": "月曜はlunes。ptだけが「第2」と数で呼ぶ"
         },
         "it": {
           "text": "lunedì / sabato / domenica",
-          "kana": "",
-          "note": ""
+          "kana": "ルネディ / サバト / ドメニカ",
+          "note": "esと同じく曜日名。ptのsegundaのような数え方はしない"
         },
         "en": {
-          "text": ""
+          "text": "Monday / Saturday / Sunday"
         }
       }
     },
