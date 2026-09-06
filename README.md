@@ -321,3 +321,6 @@ iOSのPWAは長期未使用でストレージが破棄されうるため、設�
 - [ ] Phase 2 聞き取りドリル、ロールプレイ、シーン別台本、Vault連携
 - [ ] Phase 3 旅行モード画面、Service Worker、Cloud TTSのMP3差し替え
 - [ ] Phase 4 実機オフライン確認
+
+多言語対応（ポルトガル語 / スペイン語 / イタリア語）への拡張仕様は
+[docs/SPEC-multilingual.md](docs/SPEC-multilingual.md) にある。実装はフォーク後に行う。
