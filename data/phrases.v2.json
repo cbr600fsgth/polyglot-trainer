@@ -111,17 +111,17 @@
           "note": "朝から正午まで。店に入ったら必ずこれを先に言う"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Buenos días.",
+          "kana": "ブエノス ディアス",
+          "note": "複数形。単数のBuen díaは中南米の一部だけ"
         },
         "it": {
           "text": "Buongiorno.",
-          "kana": "",
-          "note": ""
+          "kana": "ブオンジョルノ",
+          "note": "昼を過ぎるとBuonaseraに切り替わる。境目は緩い"
         },
         "en": {
-          "text": ""
+          "text": "Good morning."
         }
       }
     },
@@ -141,17 +141,17 @@
           "note": "正午〜日没。tardeの語末eはほぼ消えて「タルド」"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Buenas tardes.",
+          "kana": "ブエナス タルデス",
+          "note": "昼食後から日没まで。ptのBoa tardeとほぼ同じ範囲"
         },
         "it": {
           "text": "Buon pomeriggio.",
-          "kana": "",
-          "note": ""
+          "kana": "ブオン ポメリッジョ",
+          "note": "実際はBuongiornoかBuonaseraで済ませることが多い"
         },
         "en": {
-          "text": ""
+          "text": "Good afternoon."
         }
       }
     },
@@ -171,17 +171,17 @@
           "note": "夕方以降の挨拶と別れの挨拶を兼ねる"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Buenas noches.",
+          "kana": "ブエナス ノチェス",
+          "note": "ptのBoa noiteと同じく、夜の挨拶と別れの両方に使える"
         },
         "it": {
-          "text": "Buonasera / Buonanotte.",
-          "kana": "",
-          "note": ""
+          "text": "Buonanotte.",
+          "kana": "ブオナノッテ",
+          "note": "ptのBoa noiteは夜の挨拶と別れを兼ねるが、イタリア語は出会いのBuonaseraと別れのBuonanotteに分かれる"
         },
         "en": {
-          "text": ""
+          "text": "Good evening."
         }
       }
     },
@@ -200,17 +200,17 @@
           "note": "Bom dia等と併用可。Olá, bom dia. が自然"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Hola.",
+          "kana": "オラ",
+          "note": "ptのOláとほぼ同じ。hは常に無音"
         },
         "it": {
           "text": "Ciao.",
-          "kana": "",
-          "note": ""
+          "kana": "チャオ",
+          "note": "出会いと別れの両方に使える。ptのOláは出会いのみ"
         },
         "en": {
-          "text": ""
+          "text": "Hi."
         }
       }
     },
@@ -230,17 +230,17 @@
           "note": "話し手が男性ならObrigado固定。女性店員からはObrigadaと返ってくる"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Gracias.",
+          "kana": "グラシアス",
+          "note": "性変化しない。ptのObrigado/Obrigadaと違い話し手の性別を問わない"
         },
         "it": {
           "text": "Grazie.",
-          "kana": "",
-          "note": "同源ではない"
+          "kana": "グラーツィエ",
+          "note": "ptのObrigadoとは同源ではない。語形から推測できないので個別に覚える"
         },
         "en": {
-          "text": ""
+          "text": "Thank you."
         }
       }
     },
@@ -259,17 +259,17 @@
           "note": "muitoは「ムイントゥ」と鼻音が入る"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Muchas gracias.",
+          "kana": "ムチャス グラシアス",
+          "note": "ptのMuito obrigadoと語順も発想も同じ"
         },
         "it": {
           "text": "Molte grazie.",
-          "kana": "",
-          "note": ""
+          "kana": "モルテ グラーツィエ",
+          "note": "日常ではGrazie mille（千の感謝）のほうがよく使われる"
         },
         "en": {
-          "text": ""
+          "text": "Thank you very much."
         }
       }
     },
@@ -288,17 +288,17 @@
           "note": "無強勢のdeは「ドゥ」"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "De nada.",
+          "kana": "デ ナダ",
+          "note": "ptと綴りまで同一。数少ない完全一致"
         },
         "it": {
           "text": "Di niente.",
-          "kana": "",
-          "note": ""
+          "kana": "ディ ニエンテ",
+          "note": "ptのDe nadaと構造が同じ（前置詞＋「無」）"
         },
         "en": {
-          "text": ""
+          "text": "You're welcome."
         }
       }
     },
@@ -318,17 +318,17 @@
           "note": "文末に付けるだけで丁寧になる。最も使う一語"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Por favor.",
+          "kana": "ポル ファボール",
+          "note": "ptと綴りまで同一。rは震え音"
         },
         "it": {
           "text": "Per favore.",
-          "kana": "",
-          "note": ""
+          "kana": "ペル ファヴォーレ",
+          "note": "ptのPor favorと同源。前置詞がperになる"
         },
         "en": {
-          "text": ""
+          "text": "Please."
         }
       }
     },
@@ -348,17 +348,17 @@
           "note": "現地で店員を呼ぶ標準表現。Por favorより自然。zは子音前で「シュ」"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "¡Perdone!",
+          "kana": "ペルドーネ",
+          "note": "店員を呼ぶときの定番。¡Oiga!はやや強い"
         },
         "it": {
           "text": "Scusi!",
-          "kana": "",
-          "note": ""
+          "kana": "スクーズィ",
+          "note": "呼びかけ。謝罪のScusiと同語で、語調と文脈で区別する"
         },
         "en": {
-          "text": ""
+          "text": "Excuse me!"
         }
       }
     },
@@ -378,17 +378,17 @@
           "note": "混雑した市電やバスで降りるときに使う"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Con permiso.",
+          "kana": "コン ペルミソ",
+          "note": "itのCon permessoと同形。ptのCom licençaだけ語が違う"
         },
         "it": {
           "text": "Con permesso.",
-          "kana": "",
-          "note": ""
+          "kana": "コン ペルメッソ",
+          "note": "esのCon permisoと同形。ptのCom licençaだけ語が違う"
         },
         "en": {
-          "text": ""
+          "text": "Excuse me."
         }
       }
     },
@@ -408,17 +408,17 @@
           "note": "ぶつかった時・間違えた時。語末eは消える"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Perdón.",
+          "kana": "ペルドン",
+          "note": "謝罪。Lo sientoはもっと重い場面向け"
         },
         "it": {
           "text": "Scusi.",
-          "kana": "",
-          "note": ""
+          "kana": "スクーズィ",
+          "note": "謝罪。greet-09の呼びかけと同語で、語調と文脈で区別する"
         },
         "en": {
-          "text": ""
+          "text": "I'm sorry."
         }
       }
     },
@@ -437,17 +437,17 @@
           "note": "店を出るとき。より丁寧な別れはAdeus（アデウシュ）"
         },
         "es": {
-          "text": "",
-          "kana": "",
-          "note": ""
+          "text": "Hasta luego.",
+          "kana": "アスタ ルエゴ",
+          "note": "ptのAté logoと語源も構造も同じ"
         },
         "it": {
           "text": "A dopo.",
-          "kana": "",
-          "note": ""
+          "kana": "ア ドーポ",
+          "note": "Arrivederciより軽い。ptのAté logoに近い"
         },
         "en": {
-          "text": ""
+          "text": "See you later."
         }
       }
     },
@@ -1051,9 +1051,9 @@
           "note": ""
         },
         "it": {
-          "text": "Ha...? / C'è...?",
+          "text": "C'è...?",
           "kana": "",
-          "note": ""
+          "note": "Ha...? は「持っているか」、C'è...? は「存在するか」。Tem mesa? Tem Wi-Fi? の用法にはC'èが寄り添う"
         },
         "en": {
           "text": ""
