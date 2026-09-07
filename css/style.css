@@ -14,6 +14,10 @@
   --again: #b04a3c;
   --radius: 14px;
   --tap: 52px;
+  /* 「必要なし」は記憶の軸の上の点ではないので採点色を借りない。無彩色で塗りだけで区別する */
+  --skip: #5a6472;
+  --skip-fill: #4b5563;
+  --skip-on-fill: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,7 +33,16 @@
     --good: #57b283;
     --vague: #d4ab55;
     --again: #dd7b6c;
+    --skip: #8d99a8;
+    --skip-fill: #8d99a8;
+    --skip-on-fill: #10161c;
   }
+}
+
+:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }
 
 * { box-sizing: border-box; }
@@ -223,6 +236,7 @@ button {
 }
 
 .ghost {
+  min-height: 44px;
   padding: 9px 16px;
   margin: 4px 4px 0 0;
   background: transparent;
@@ -287,13 +301,27 @@ button {
   text-align: right;
 }
 
+/* 4言語を並べるとカードがビューポートを超える。ページを伸ばさず、カードだけを
+   スクロールさせて採点行を常に画面内に固定する */
+#screen-session {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
 .card {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;              /* flex子をスクロールさせるのに必須 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;    /* 短いカードは中央 */
   text-align: center;
 }
+
+/* 長いカードで justify-content:center が先頭を切り落とす flexbox の罠を避ける */
+.card.is-long { justify-content: flex-start; }
 
 .card-scene {
   margin: 0 0 20px;
@@ -311,24 +339,116 @@ button {
 }
 
 .card-back {
-  margin-top: 28px;
-  padding-top: 24px;
+  margin-top: 20px;
+  padding-top: 18px;
   border-top: 1px solid var(--line);
 }
 
-.card-pt {
-  margin: 0;
-  font-size: 2rem;
-  line-height: 1.35;
+/* ---- 主言語（採点される言語）---- */
+.lang-chip {
+  margin: 0 0 6px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   color: var(--azul);
-  font-weight: 500;
 }
 
-.card-kana {
-  margin: 8px 0 14px;
+.lang-primary-text {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--azul);
+  overflow-wrap: anywhere;
+}
+
+.lang-primary-kana {
+  margin: 8px 0 0;
   font-size: 1rem;
+  line-height: 1.5;
   color: var(--ink-soft);
   letter-spacing: 0.04em;
+}
+
+.audio-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.lang-note {
+  margin: 12px 0 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-align: left;
+}
+
+/* ---- 参照言語（採点されない）---- */
+.ref-heading {
+  margin: 22px 0 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  text-align: left;
+}
+
+.ref-list { list-style: none; margin: 0; padding: 0; }
+
+.ref-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 10px;
+  align-items: start;
+  text-align: left;
+  padding: 6px 0;
+}
+
+.ref-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 44px;
+  padding: 0 6px;
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.ref-play:active { background: var(--line); }
+.ref-play[disabled] { opacity: 0.4; }
+
+.ref-body { padding-top: 2px; min-width: 0; }
+
+.ref-text {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.ref-kana {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+.ref-notes { margin-top: 18px; text-align: left; }
+.ref-notes summary {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  min-height: 32px;
+  display: flex;
+  align-items: center;
 }
 
 .card-meta {
@@ -350,13 +470,28 @@ button {
   color: var(--ink-soft);
 }
 
-.actions { margin-top: 16px; }
+/* .card { flex:1 } に押されて縮まないよう固定する。縮むと採点行が高さを失う */
+.actions {
+  flex: 0 0 auto;
+  margin-top: 16px;
+  position: relative;
+}
+
+/* 参照言語がスクロールの下に隠れていることを示す */
+.actions::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -20px;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+}
 
 .grade-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .grade {
@@ -372,6 +507,51 @@ button {
 .grade.vague { color: var(--vague); }
 .grade.good  { color: var(--good); }
 .grade:active { opacity: 0.7; }
+
+/* ---- 必要なし ----
+   採点3ボタンとは別の行に置く。4列にすると親指が届く右端で「できた」と隣接し、
+   しかも「だめ→あいまい→できた→必要なし」が段階のある尺度に見えてしまう。
+   罫線と14pxの間隔で下方向の押し過ぎを防ぐ */
+.skip-row {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.skip {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  background: transparent;
+  color: var(--skip);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+.skip:active { background: color-mix(in srgb, var(--skip) 12%, transparent); }
+
+/* 同じ枠・同じ高さのまま入れ替わるのでレイアウトシフトが起きない */
+.skip-confirm { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.skip-confirm.is-arming { pointer-events: none; }   /* タップ貫通防止。350msだけ */
+
+.skip-cancel {
+  min-height: 44px;
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.skip-yes {
+  min-height: 44px;
+  background: var(--skip-fill);
+  color: var(--skip-on-fill);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
 
 /* ---- 完了 ---- */
 
@@ -446,4 +626,163 @@ code {
   padding: 1px 5px;
   border-radius: 4px;
   font-size: 0.9em;
+}
+
+/* ---- 言語インジケータ（ホーム）---- */
+
+.lang-indicator {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 16px;
+  margin-bottom: 20px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+.lang-indicator .chev { color: var(--ink-soft); }
+
+.link-row {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 4px;
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ---- 言語スイッチャー（設定・初回セットアップ）---- */
+
+.lang-switch {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.lang-opt { position: relative; }
+
+.lang-opt input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lang-opt span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: var(--tap);
+  padding: 8px 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+}
+
+.lang-opt input:checked + span {
+  background: var(--azul);
+  color: #fff;
+  border-color: var(--azul);
+  font-weight: 500;
+}
+
+.lang-opt input:focus-visible + span { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+@media (prefers-color-scheme: dark) {
+  .lang-opt input:checked + span { color: #10161c; }
+}
+
+/* ---- 出発日（言語ごと）---- */
+
+.dep-grid { display: grid; gap: 10px; margin-top: 12px; }
+
+.dep-row {
+  display: grid;
+  grid-template-columns: 6.5em 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+/* .date-input の margin-top: 20px を打ち消す */
+.dep-row .date-input { margin-top: 0; }
+
+.dep-lang { font-size: 0.85rem; color: var(--ink-soft); }
+.dep-row.is-active .dep-lang { color: var(--azul); font-weight: 500; }
+
+/* ---- 除外リスト ---- */
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.excl-list { list-style: none; margin: 12px 0 0; padding: 0; }
+
+.excl-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.excl-main { min-width: 0; }
+.excl-jp { margin: 0; font-size: 0.95rem; line-height: 1.4; }
+.excl-target { margin: 3px 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+
+.excl-lang {
+  display: inline-block;
+  min-width: 2.2em;
+  margin-right: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--terra);
+  text-align: center;
+}
+
+.excl-date { margin: 3px 0 0; font-size: 0.72rem; color: var(--ink-soft); }
+
+.excl-restore {
+  min-height: 44px;
+  min-width: 68px;
+  padding: 0 14px;
+  background: transparent;
+  color: var(--azul);
+  border: 1px solid var(--azul);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.keys { margin-top: 8px; }
+.keys summary { min-height: 44px; display: flex; align-items: center; font-size: 0.9rem; }
+
+/* ---- 背の低い画面で約55pxを回収する ---- */
+
+@media (max-height: 700px) {
+  .session-bar { margin-bottom: 16px; }
+  .card-scene { margin-bottom: 12px; }
+  .card-jp { font-size: 1.4rem; }
+  .lang-primary-text { font-size: 1.75rem; }
+  .actions { margin-top: 10px; }
+  .grade-row { margin-top: 14px; }
+  .skip-row { margin-top: 10px; padding-top: 8px; }
 }

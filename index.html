@@ -18,9 +18,13 @@
 <!-- 初回セットアップ -->
 <section id="screen-setup" class="screen hidden">
   <div class="setup-box">
-    <h1 class="setup-title">出発日を入れてください</h1>
-    <p class="sub">出発日から逆算して学習計画を組みます。この日付はこの端末の中だけに保存され、
+    <h1 class="setup-title">学習する言語と出発日</h1>
+    <p class="sub">採点されるのは選んだ言語だけです。残りの言語は答えの下に参考として並びます。
+      出発日から逆算して学習計画を組みます。この日付はこの端末の中だけに保存され、
       どこにも送信されません。設定画面から後で変更できます。</p>
+
+    <div class="lang-switch" id="setup-lang-switch" role="radiogroup" aria-label="学習する言語"></div>
+
     <input type="date" id="input-departure" class="date-input" aria-label="出発日">
     <p id="setup-error" class="warning hidden"></p>
     <button id="btn-setup-save" class="primary">はじめる</button>
@@ -32,6 +36,10 @@
   <button id="btn-settings" class="corner" aria-label="設定">設定</button>
 
   <div class="home-top">
+    <button id="btn-lang" class="lang-indicator" aria-label="学習中の言語。設定で切り替える">
+      <span id="lang-name">ポルトガル語</span>
+      <span class="chev" aria-hidden="true">›</span>
+    </button>
     <p class="label">出発まで</p>
     <p class="countdown"><span id="days-left">--</span><span class="unit">日</span></p>
     <p id="departure-note" class="sub"></p>
@@ -43,7 +51,7 @@
       <span class="stat-label">連続日数</span>
     </div>
     <div class="stat">
-      <span class="stat-num"><span id="retained">0</span><span class="of">/<span id="total">0</span></span></span>
+      <span class="stat-num" id="retained-wrap"><span id="retained">0</span><span class="of">/<span id="total">0</span></span></span>
       <span class="stat-label">定着</span>
     </div>
   </div>
@@ -55,7 +63,11 @@
   <button id="btn-start" class="primary">今日の10分をはじめる</button>
 
   <p id="home-today" class="sub center"></p>
+  <button id="btn-excluded" class="link-row hidden">
+    除外したフレーズ <span id="excluded-count">0</span>件を見る ›
+  </button>
   <p id="audio-warning" class="warning hidden"></p>
+  <p id="save-warning" class="warning hidden"></p>
 </section>
 
 <!-- セッション -->
@@ -68,29 +80,51 @@
 
   <div id="card" class="card">
     <p id="card-scene" class="card-scene"></p>
-
-    <p id="card-jp" class="card-jp"></p>
+    <p id="card-jp" class="card-jp" lang="ja"></p>
 
     <div id="card-back" class="card-back hidden">
-      <p id="card-pt" class="card-pt"></p>
-      <p id="card-kana" class="card-kana"></p>
-      <button id="btn-replay" class="ghost">もう一度聞く</button>
-      <button id="btn-slow" class="ghost">ゆっくり</button>
-      <dl class="card-meta">
-        <dt>イタリア語</dt><dd id="card-it"></dd>
-        <dt>メモ</dt><dd id="card-note"></dd>
-      </dl>
+
+      <!-- 採点される言語。常にこのスロットが最も大きい -->
+      <section id="card-primary" class="lang-primary" aria-live="polite">
+        <p class="lang-chip"><span id="primary-chip">PT</span></p>
+        <p id="primary-text" class="lang-primary-text"></p>
+        <p id="primary-kana" class="lang-primary-kana" lang="ja"></p>
+        <div class="audio-row">
+          <button id="btn-replay" class="ghost">もう一度聞く</button>
+          <button id="btn-slow" class="ghost">ゆっくり</button>
+        </div>
+        <p id="primary-note" class="lang-note" lang="ja"></p>
+      </section>
+
+      <!-- 参考。採点されない -->
+      <p class="ref-heading">参考</p>
+      <ul id="ref-list" class="ref-list"></ul>
+
+      <details id="ref-notes" class="ref-notes hidden">
+        <summary>他の言語のメモ</summary>
+        <dl id="ref-notes-body" class="card-meta"></dl>
+      </details>
     </div>
   </div>
 
   <div class="actions">
     <button id="btn-reveal" class="primary">答えを見る</button>
+
     <div id="grade-row" class="grade-row hidden">
       <button class="grade again" data-grade="again">だめ</button>
       <button class="grade vague" data-grade="vague">あいまい</button>
       <button class="grade good" data-grade="good">できた</button>
     </div>
+
     <button id="btn-next" class="primary hidden">次へ</button>
+
+    <div id="skip-row" class="skip-row hidden" aria-live="polite">
+      <button id="btn-skip" class="skip">必要なし</button>
+      <div id="skip-confirm" class="skip-confirm hidden">
+        <button id="btn-skip-cancel" class="skip-cancel">やめる</button>
+        <button id="btn-skip-yes" class="skip-yes">除外する</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -102,6 +136,7 @@
     <p id="done-summary" class="sub center"></p>
     <p id="done-carry" class="sub center hidden"></p>
     <p id="done-overflow" class="sub center hidden"></p>
+    <p id="done-skipped" class="sub center hidden"></p>
   </div>
   <button id="btn-copy" class="secondary">デイリーノート用の1行をコピー</button>
   <button id="btn-home" class="primary">ホームへ</button>
@@ -115,24 +150,59 @@
   </div>
 
   <div class="settings-body">
+    <h2>学習する言語</h2>
+    <div class="lang-switch" id="lang-switch" role="radiogroup" aria-label="学習する言語"></div>
+    <p id="lang-switch-note" class="sub">採点されるのはここで選んだ言語だけ。残りの言語は答えの下に
+      参考として並ぶ。進捗・出発日・除外リストは言語ごとに分かれて保存され、切り替えても消えない。</p>
+
     <h2>出発日</h2>
-    <input type="date" id="input-departure-edit" class="date-input" aria-label="出発日">
+    <div class="dep-grid" id="dep-grid"></div>
+    <p id="departure-error" class="warning hidden"></p>
     <button id="btn-departure-save" class="secondary">出発日を保存</button>
     <p class="sub">この端末のみに保存され、どこにも送信されない。
       最終スイープは出発日の10日前に自動で始まる。</p>
 
-    <h2>音声</h2>
+    <h2>音声（<span id="voice-lang-name">ポルトガル語</span>）</h2>
     <p id="voice-status" class="mono"></p>
     <p id="voice-list" class="mono"></p>
+    <p class="sub">警告を出すのは学習中の言語だけ。参考として並ぶ言語の音声は判定しない。</p>
 
     <h2>進捗</h2>
     <p id="progress-detail" class="mono"></p>
-    <button id="btn-export" class="secondary">JSONを書き出す</button>
+    <p id="progress-all" class="mono"></p>
+    <p id="orphan-note" class="sub hidden"></p>
+    <button id="btn-orphan-purge" class="danger hidden">孤立した進捗を消す</button>
+
+    <h2>除外リスト</h2>
+    <p id="excl-summary" class="sub"></p>
+    <label class="check-row"><input type="checkbox" id="excl-all-langs"> 他の言語の除外も表示</label>
+    <ul id="excl-list" class="excl-list"></ul>
+    <p id="excl-empty" class="sub hidden">除外中のフレーズはありません。セッション中に「必要なし」を押すと、
+      その言語でだけ出題されなくなる。</p>
+    <button id="btn-excl-restore-all" class="secondary hidden">
+      表示中のすべてを戻す（<span id="excl-count">0</span>件）</button>
+
+    <h2>データ</h2>
+    <button id="btn-export" class="secondary">JSONを書き出す（全言語）</button>
     <label class="file-label">
       JSONを読み込む
       <input type="file" id="input-import" accept="application/json,.json">
     </label>
-    <button id="btn-reset" class="danger">進捗をすべて消す</button>
+    <button id="btn-legacy-import" class="secondary hidden">旧データ（pt.cards）から取り込み直す</button>
+    <button id="btn-reset-lang" class="danger"><span id="reset-lang-name">ポルトガル語</span>の進捗を消す</button>
+    <button id="btn-reset-all" class="danger">すべての言語の進捗を消す</button>
+
+    <h2>キーボード操作</h2>
+    <details class="keys">
+      <summary>ショートカット一覧</summary>
+      <dl class="card-meta">
+        <dt>Space / Enter</dt><dd>答えを見る / 次へ</dd>
+        <dt>1 / 2 / 3</dt><dd>だめ / あいまい / できた</dd>
+        <dt>4</dt><dd>必要なし（もう一度 4 で確定、Esc で取り消し）</dd>
+        <dt>P / S / I / E</dt><dd>ポルトガル語 / スペイン語 / イタリア語 / 英語 を再生</dd>
+        <dt>0</dt><dd>学習中の言語を ゆっくり ⇄ 標準 で再生</dd>
+      </dl>
+    </details>
 
     <h2>基準日</h2>
     <p class="mono">現在の基準日: <span id="today-value"></span>（<span id="mode-value"></span>モード）</p>
