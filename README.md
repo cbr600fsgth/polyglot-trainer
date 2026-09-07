@@ -326,5 +326,74 @@ iOSのPWAは長期未使用でストレージが破棄されうるため、設�
 - [ ] Phase 3 旅行モード画面、Service Worker、Cloud TTSのMP3差し替え
 - [ ] Phase 4 実機オフライン確認
 
-多言語対応（ポルトガル語 / スペイン語 / イタリア語）への拡張仕様は
-[docs/SPEC-multilingual.md](docs/SPEC-multilingual.md) にある。実装はフォーク後に行う。
+## 多言語対応
+
+ポルトガル語・スペイン語・イタリア語に対応した。設計は
+[docs/SPEC-multilingual.md](docs/SPEC-multilingual.md) にある。
+
+採点されるのは「主言語」1つだけで、残りの言語と英語は答えの下に参考として並ぶ。
+旅行前に1言語をマスターする使い方を前提にしているので、1日の出題上限は変えていない。
+進捗はフレーズ×言語で別々に保存するため、言語を切り替えても前の言語の箱・出発日・
+除外リストは残る。
+
+| 実装フェーズ | 状態 |
+|---|---|
+| データ整備（150文 × 4言語） | 完了 |
+| ストア（`poly.*` キー、旧 `pt.*` からの自動移行） | 完了 |
+| SRS（除外・孤立カード・スイープ順の凍結） | 完了 |
+| 画面（4言語の比較表示、「必要なし」、設定画面） | 完了。実機確認は未 |
+| 音声（言語別のボイス解決） | 完了。実機確認は未 |
+| 旅行モード画面 / Service Worker / Cloud TTS | 未着手 |
+
+### 検証
+
+```bash
+node tools/check-phrases.mjs && node tools/test-srs.mjs && node tools/test-store.mjs
+```
+
+`tools/check-phrases.mjs` は `data/phrases.json` を40項目で検証する。`--self-test` を
+付けると検証ツール自身のテストが走る。
+
+**スイープの網羅保証には上限がある。** `SWEEP_DAYS × SWEEP_CAP = 10 × 25 = 250枚`を
+超えると、1回目の割り当てまで切り捨てられて出題されないカードが無警告で発生する。
+検証ツールが200枚超を警告、250枚超をエラーにする。
+
+**スイープ期間中は `phrases` 配列への末尾追記だけにする。** 途中挿入すると
+`i % n` の割り当てが全カードでずれ、約15枚が出題されなくなる。実装側でも
+スイープ突入時に並びを `trip.sweepOrder` へ凍結して防いでいるが、編集規約としても守る。
+
+**フレーズのidは恒久で、再利用しない。** 消したidを別の意味で使い回すと、
+古い箱や `suspended` を新しいフレーズが継承し、一度も見ていないフレーズが
+永久に除外される。設定画面に「孤立した進捗」として可視化してある。
+
+### フレーズの追加
+
+`data/phrases.json` の `phrases` 配列に足す。`langs` に4言語すべてを入れ、
+`scenes` と `tags` に無いキーは使わない（検証ツールがエラーにする）。
+
+```json
+{
+  "id": "rest-order-99",
+  "scene": "restaurante",
+  "week": 2,
+  "jp": "これをください",
+  "tags": ["core", "must"],
+  "langs": {
+    "pt": { "text": "Queria isto, por favor.", "kana": "キリア イシュトゥ、プル ファヴォール", "note": "Queria は Eu quero より丁寧" },
+    "es": { "text": "Quería esto, por favor.", "kana": "ケリア エスト、ポル ファボール", "note": "ptのQueriaと同形" },
+    "it": { "text": "Vorrei questo, per favore.", "kana": "ヴォッレイ クエスト、ペル ファヴォーレ", "note": "volereの条件法" },
+    "en": { "text": "I'd like this, please." }
+  }
+}
+```
+
+### 進捗データ
+
+localStorage の `poly.progress`（言語別のカード）、`poly.trips`（言語別の出発日）、
+`poly.meta`（ストリーク等。言語横断で1つ）、`poly.settings`（主言語）。
+
+旧アプリの `pt.*` は起動時に一度だけ `poly.*` へ移され、旧キーは消さずに残る。
+GitHub Pages では `ユーザー名.github.io` がリポジトリをまたいで同一オリジンになるため、
+このキー改名が旧アプリとの衝突を防いでいる。
+
+書き出しJSONには全言語の出発日が入るので、リポジトリにコミットしない。
