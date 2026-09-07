@@ -1,1656 +1,4589 @@
 {
-  "version": 1,
-  "note": "ヨーロッパポルトガル語（pt-PT）。配列の順序が学習カリキュラムの投入順を決める。追記する場合は該当weekの末尾に足す。",
+  "kind": "phrases",
+  "version": 2,
+  "note": "配列の順序が学習カリキュラムの投入順を決める。スイープ期間中は末尾への追記のみ許される。",
+  "langs": {
+    "pt": {
+      "label": "ポルトガル語",
+      "labelShort": "PT",
+      "gradable": true,
+      "hasKana": true,
+      "default": true,
+      "status": "ready",
+      "speech": {
+        "prefer": [
+          "pt-PT"
+        ],
+        "accept": [
+          "pt-BR",
+          "pt"
+        ],
+        "warn": "この端末にヨーロッパポルトガル語の音声がありません。ブラジル音声で代用中のため発音が実際と異なります。設定 → 音声 から確認してください。"
+      }
+    },
+    "es": {
+      "label": "スペイン語",
+      "labelShort": "ES",
+      "gradable": true,
+      "hasKana": true,
+      "status": "ready",
+      "speech": {
+        "prefer": [
+          "es-ES"
+        ],
+        "accept": [
+          "es-419",
+          "es-MX",
+          "es-US",
+          "es"
+        ],
+        "warn": "この端末にスペイン（イベリア）の音声がありません。中南米音声で代用中のため ci / ce / z の発音が実際と異なります。設定 → 音声 から確認してください。"
+      }
+    },
+    "it": {
+      "label": "イタリア語",
+      "labelShort": "IT",
+      "gradable": true,
+      "hasKana": true,
+      "status": "ready",
+      "speech": {
+        "prefer": [
+          "it-IT"
+        ],
+        "accept": [
+          "it"
+        ],
+        "warn": null
+      }
+    },
+    "en": {
+      "label": "英語",
+      "labelShort": "EN",
+      "gradable": false,
+      "hasKana": false,
+      "status": "ready",
+      "speech": {
+        "prefer": [
+          "en-GB"
+        ],
+        "accept": [
+          "en-US",
+          "en-AU",
+          "en"
+        ],
+        "warn": null
+      }
+    }
+  },
+  "scenes": {
+    "greet": "あいさつ",
+    "basic": "基本",
+    "numero": "数字・時刻",
+    "pedir": "頼む・尋ねる",
+    "restaurante": "レストラン",
+    "cafe": "カフェ",
+    "transporte": "移動",
+    "hotel": "宿",
+    "compras": "買い物・チケット",
+    "problema": "困ったとき"
+  },
+  "tags": {
+    "core": "旅行必須の中核",
+    "must": "暗記必須",
+    "ptpt": "pt-PT固有の語形（ブラジル語形と異なる）",
+    "frame": "他の語を差し替えて使える型",
+    "fragment": "文ではない断片（数詞・時刻・曜日）。終止符なし・小文字始まりを許す"
+  },
   "phrases": [
     {
       "id": "greet-01",
       "scene": "greet",
       "week": 1,
       "jp": "おはようございます",
-      "pt": "Bom dia.",
-      "kana": "ボン ディア",
-      "it": "Buongiorno",
-      "note": "朝から正午まで。店に入ったら必ずこれを先に言う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Bom dia.",
+          "kana": "ボン ディア",
+          "note": "朝から正午まで。店に入ったら必ずこれを先に言う"
+        },
+        "es": {
+          "text": "Buenos días.",
+          "kana": "ブエノス ディアス",
+          "note": "複数形。単数のBuen díaは中南米の一部だけ"
+        },
+        "it": {
+          "text": "Buongiorno.",
+          "kana": "ブオンジョルノ",
+          "note": "昼を過ぎるとBuonaseraに切り替わる。境目は緩い"
+        },
+        "en": {
+          "text": "Good morning."
+        }
+      }
     },
     {
       "id": "greet-02",
       "scene": "greet",
       "week": 1,
       "jp": "こんにちは（昼から日没まで）",
-      "pt": "Boa tarde.",
-      "kana": "ボア タルド",
-      "it": "Buon pomeriggio",
-      "note": "正午〜日没。tardeの語末eはほぼ消えて「タルド」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Boa tarde.",
+          "kana": "ボア タルド",
+          "note": "正午〜日没。tardeの語末eはほぼ消えて「タルド」"
+        },
+        "es": {
+          "text": "Buenas tardes.",
+          "kana": "ブエナス タルデス",
+          "note": "昼食後から日没まで。ptのBoa tardeとほぼ同じ範囲"
+        },
+        "it": {
+          "text": "Buon pomeriggio.",
+          "kana": "ブオン ポメリッジョ",
+          "note": "実際はBuongiornoかBuonaseraで済ませることが多い"
+        },
+        "en": {
+          "text": "Good afternoon."
+        }
+      }
     },
     {
       "id": "greet-03",
       "scene": "greet",
       "week": 1,
       "jp": "こんばんは / おやすみなさい",
-      "pt": "Boa noite.",
-      "kana": "ボア ノイト",
-      "it": "Buonasera / Buonanotte",
-      "note": "夕方以降の挨拶と別れの挨拶を兼ねる",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Boa noite.",
+          "kana": "ボア ノイト",
+          "note": "夕方以降の挨拶と別れの挨拶を兼ねる"
+        },
+        "es": {
+          "text": "Buenas noches.",
+          "kana": "ブエナス ノチェス",
+          "note": "ptのBoa noiteと同じく、夜の挨拶と別れの両方に使える"
+        },
+        "it": {
+          "text": "Buonanotte.",
+          "kana": "ブオナノッテ",
+          "note": "ptのBoa noiteは夜の挨拶と別れを兼ねるが、イタリア語は出会いのBuonaseraと別れのBuonanotteに分かれる"
+        },
+        "en": {
+          "text": "Good evening."
+        }
+      }
     },
     {
       "id": "greet-04",
       "scene": "greet",
       "week": 1,
       "jp": "やあ（カジュアル）",
-      "pt": "Olá.",
-      "kana": "オラ",
-      "it": "Ciao",
-      "note": "Bom dia等と併用可。Olá, bom dia. が自然",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Olá.",
+          "kana": "オラ",
+          "note": "Bom dia等と併用可。Olá, bom dia. が自然"
+        },
+        "es": {
+          "text": "Hola.",
+          "kana": "オラ",
+          "note": "ptのOláとほぼ同じ。hは常に無音"
+        },
+        "it": {
+          "text": "Ciao.",
+          "kana": "チャオ",
+          "note": "出会いと別れの両方に使える。ptのOláは出会いのみ"
+        },
+        "en": {
+          "text": "Hi."
+        }
+      }
     },
     {
       "id": "greet-05",
       "scene": "greet",
       "week": 1,
       "jp": "ありがとう",
-      "pt": "Obrigado.",
-      "kana": "オブリガードゥ",
-      "it": "Grazie（同源ではない）",
-      "note": "話し手が男性ならObrigado固定。女性店員からはObrigadaと返ってくる",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Obrigado.",
+          "kana": "オブリガードゥ",
+          "note": "話し手が男性ならObrigado固定。女性店員からはObrigadaと返ってくる"
+        },
+        "es": {
+          "text": "Gracias.",
+          "kana": "グラシアス",
+          "note": "性変化しない。ptのObrigado/Obrigadaと違い話し手の性別を問わない"
+        },
+        "it": {
+          "text": "Grazie.",
+          "kana": "グラーツィエ",
+          "note": "ptのObrigadoとは同源ではない。語形から推測できないので個別に覚える"
+        },
+        "en": {
+          "text": "Thank you."
+        }
+      }
     },
     {
       "id": "greet-06",
       "scene": "greet",
       "week": 1,
       "jp": "本当にありがとう",
-      "pt": "Muito obrigado.",
-      "kana": "ムイントゥ オブリガードゥ",
-      "it": "Molte grazie",
-      "note": "muitoは「ムイントゥ」と鼻音が入る",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Muito obrigado.",
+          "kana": "ムイントゥ オブリガードゥ",
+          "note": "muitoは「ムイントゥ」と鼻音が入る"
+        },
+        "es": {
+          "text": "Muchas gracias.",
+          "kana": "ムチャス グラシアス",
+          "note": "ptのMuito obrigadoと語順も発想も同じ"
+        },
+        "it": {
+          "text": "Molte grazie.",
+          "kana": "モルテ グラーツィエ",
+          "note": "日常ではGrazie mille（千の感謝）のほうがよく使われる"
+        },
+        "en": {
+          "text": "Thank you very much."
+        }
+      }
     },
     {
       "id": "greet-07",
       "scene": "greet",
       "week": 1,
       "jp": "どういたしまして",
-      "pt": "De nada.",
-      "kana": "ドゥ ナダ",
-      "it": "Di niente",
-      "note": "無強勢のdeは「ドゥ」",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "De nada.",
+          "kana": "ドゥ ナダ",
+          "note": "無強勢のdeは「ドゥ」"
+        },
+        "es": {
+          "text": "De nada.",
+          "kana": "デ ナダ",
+          "note": "ptと綴りまで同一。数少ない完全一致"
+        },
+        "it": {
+          "text": "Di niente.",
+          "kana": "ディ ニエンテ",
+          "note": "ptのDe nadaと構造が同じ（前置詞＋「無」）"
+        },
+        "en": {
+          "text": "You're welcome."
+        }
+      }
     },
     {
       "id": "greet-08",
       "scene": "greet",
       "week": 1,
       "jp": "お願いします",
-      "pt": "Por favor.",
-      "kana": "プル ファヴォール",
-      "it": "Per favore",
-      "note": "文末に付けるだけで丁寧になる。最も使う一語",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Por favor.",
+          "kana": "プル ファヴォール",
+          "note": "文末に付けるだけで丁寧になる。最も使う一語"
+        },
+        "es": {
+          "text": "Por favor.",
+          "kana": "ポル ファボール",
+          "note": "ptと綴りまで同一。rは震え音"
+        },
+        "it": {
+          "text": "Per favore.",
+          "kana": "ペル ファヴォーレ",
+          "note": "ptのPor favorと同源。前置詞がperになる"
+        },
+        "en": {
+          "text": "Please."
+        }
+      }
     },
     {
       "id": "greet-09",
       "scene": "greet",
       "week": 1,
       "jp": "すみません（店員を呼ぶ）",
-      "pt": "Faz favor!",
-      "kana": "ファシュ ファヴォール",
-      "it": "Scusi!",
-      "note": "現地で店員を呼ぶ標準表現。Por favorより自然。zは子音前で「シュ」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Faz favor!",
+          "kana": "ファシュ ファヴォール",
+          "note": "現地で店員を呼ぶ標準表現。Por favorより自然。zは子音前で「シュ」"
+        },
+        "es": {
+          "text": "¡Perdone!",
+          "kana": "ペルドーネ",
+          "note": "店員を呼ぶときの定番。¡Oiga!はやや強い"
+        },
+        "it": {
+          "text": "Scusi!",
+          "kana": "スクーズィ",
+          "note": "呼びかけ。謝罪のScusiと同語で、語調と文脈で区別する"
+        },
+        "en": {
+          "text": "Excuse me!"
+        }
+      }
     },
     {
       "id": "greet-10",
       "scene": "greet",
       "week": 1,
       "jp": "失礼します（前を通る）",
-      "pt": "Com licença.",
-      "kana": "コン リセンサ",
-      "it": "Con permesso",
-      "note": "混雑した市電やバスで降りるときに使う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Com licença.",
+          "kana": "コン リセンサ",
+          "note": "混雑した市電やバスで降りるときに使う"
+        },
+        "es": {
+          "text": "Con permiso.",
+          "kana": "コン ペルミソ",
+          "note": "itのCon permessoと同形。ptのCom licençaだけ語が違う"
+        },
+        "it": {
+          "text": "Con permesso.",
+          "kana": "コン ペルメッソ",
+          "note": "esのCon permisoと同形。ptのCom licençaだけ語が違う"
+        },
+        "en": {
+          "text": "Excuse me."
+        }
+      }
     },
     {
       "id": "greet-11",
       "scene": "greet",
       "week": 1,
       "jp": "ごめんなさい / すみません",
-      "pt": "Desculpe.",
-      "kana": "ドゥシュクルプ",
-      "it": "Scusi",
-      "note": "ぶつかった時・間違えた時。語末eは消える",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Desculpe.",
+          "kana": "ドゥシュクルプ",
+          "note": "ぶつかった時・間違えた時。語末eは消える"
+        },
+        "es": {
+          "text": "Perdón.",
+          "kana": "ペルドン",
+          "note": "謝罪。Lo sientoはもっと重い場面向け"
+        },
+        "it": {
+          "text": "Scusi.",
+          "kana": "スクーズィ",
+          "note": "謝罪。greet-09の呼びかけと同語で、語調と文脈で区別する"
+        },
+        "en": {
+          "text": "I'm sorry."
+        }
+      }
     },
     {
       "id": "greet-12",
       "scene": "greet",
       "week": 1,
       "jp": "またね / さようなら",
-      "pt": "Até logo.",
-      "kana": "アテ ログ",
-      "it": "A dopo",
-      "note": "店を出るとき。より丁寧な別れはAdeus（アデウシュ）",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Até logo.",
+          "kana": "アテ ログ",
+          "note": "店を出るとき。より丁寧な別れはAdeus（アデウシュ）"
+        },
+        "es": {
+          "text": "Hasta luego.",
+          "kana": "アスタ ルエゴ",
+          "note": "ptのAté logoと語源も構造も同じ"
+        },
+        "it": {
+          "text": "A dopo.",
+          "kana": "ア ドーポ",
+          "note": "Arrivederciより軽い。ptのAté logoに近い"
+        },
+        "en": {
+          "text": "See you later."
+        }
+      }
     },
     {
       "id": "basic-01",
       "scene": "basic",
       "week": 1,
       "jp": "はい",
-      "pt": "Sim.",
-      "kana": "シン",
-      "it": "Sì",
-      "note": "鼻母音。「シー」ではなく「シン」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Sim.",
+          "kana": "シン",
+          "note": "鼻母音。「シー」ではなく「シン」"
+        },
+        "es": {
+          "text": "Sí.",
+          "kana": "シ",
+          "note": "ptのSimと違い鼻母音ではない。素直に「シ」"
+        },
+        "it": {
+          "text": "Sì.",
+          "kana": "スィ",
+          "note": "ptのSimと同源だが鼻母音化しない"
+        },
+        "en": {
+          "text": "Yes."
+        }
+      }
     },
     {
       "id": "basic-02",
       "scene": "basic",
       "week": 1,
       "jp": "いいえ",
-      "pt": "Não.",
-      "kana": "ナォン",
-      "it": "No",
-      "note": "ãoは鼻音で「アォン」。ポルトガル語最重要の音",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Não.",
+          "kana": "ナォン",
+          "note": "ãoは鼻音で「アォン」。ポルトガル語最重要の音"
+        },
+        "es": {
+          "text": "No.",
+          "kana": "ノ",
+          "note": "ptのNãoのような鼻音化はない"
+        },
+        "it": {
+          "text": "No.",
+          "kana": "ノ",
+          "note": "ptのNãoと同源。鼻母音はイタリア語には無い"
+        },
+        "en": {
+          "text": "No."
+        }
+      }
     },
     {
       "id": "basic-03",
       "scene": "basic",
       "week": 1,
       "jp": "いいえ、けっこうです",
-      "pt": "Não, obrigado.",
-      "kana": "ナォン、オブリガードゥ",
-      "it": "No, grazie",
-      "note": "クーベルや客引きを断る基本形",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Não, obrigado.",
+          "kana": "ナォン、オブリガードゥ",
+          "note": "クーベルや客引きを断る基本形"
+        },
+        "es": {
+          "text": "No, gracias.",
+          "kana": "ノ、グラシアス",
+          "note": "断りの定型。ptと語順は同じ"
+        },
+        "it": {
+          "text": "No, grazie.",
+          "kana": "ノ、グラーツィエ",
+          "note": "ptと語順は同じ。感謝の語だけが違う"
+        },
+        "en": {
+          "text": "No, thank you."
+        }
+      }
     },
     {
       "id": "basic-04",
       "scene": "basic",
       "week": 1,
       "jp": "わかりました / 大丈夫です",
-      "pt": "Está bem.",
-      "kana": "シュタ ベン",
-      "it": "Va bene",
-      "note": "Estáの語頭eは消えて「シュタ」。会話の相槌に多用",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Está bem.",
+          "kana": "シュタ ベン",
+          "note": "Estáの語頭eは消えて「シュタ」。会話の相槌に多用"
+        },
+        "es": {
+          "text": "Está bien.",
+          "kana": "エスタ ビエン",
+          "note": "ptとほぼ同綴り。ptは語頭eが消えるがesは残して「エスタ」"
+        },
+        "it": {
+          "text": "Va bene.",
+          "kana": "ヴァ ベーネ",
+          "note": "動詞がandare。ptのEstá bemとは発想が別"
+        },
+        "en": {
+          "text": "That's fine."
+        }
+      }
     },
     {
       "id": "basic-05",
       "scene": "basic",
       "week": 1,
       "jp": "わかりません",
-      "pt": "Não compreendo.",
-      "kana": "ナォン コンプリエンドゥ",
-      "it": "Non capisco",
-      "note": "pt-PTではentendoよりcompreendoが一般的",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Não compreendo.",
+          "kana": "ナォン コンプリエンドゥ",
+          "note": "pt-PTではentendoよりcompreendoが一般的"
+        },
+        "es": {
+          "text": "No entiendo.",
+          "kana": "ノ エンティエンド",
+          "note": "esはentenderが普通。eがieに割れる"
+        },
+        "it": {
+          "text": "Non capisco.",
+          "kana": "ノン カピスコ",
+          "note": "capireはptのcompreenderとは別語。形から推測できない"
+        },
+        "en": {
+          "text": "I don't understand."
+        }
+      }
     },
     {
       "id": "basic-06",
       "scene": "basic",
       "week": 1,
       "jp": "ポルトガル語は話せません",
-      "pt": "Não falo português.",
-      "kana": "ナォン ファル プルトゥゲシュ",
-      "it": "Non parlo portoghese",
-      "note": "「少しだけ」はFalo um pouco（ファル ウン ポーク）",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Não falo português.",
+          "kana": "ナォン ファル プルトゥゲシュ",
+          "note": "「少しだけ」はFalo um pouco（ファル ウン ポーク）"
+        },
+        "es": {
+          "text": "No hablo español.",
+          "kana": "ノ アブロ エスパニョール",
+          "note": "現地の言語名を入れる。hは無音。動詞はhablar"
+        },
+        "it": {
+          "text": "Non parlo italiano.",
+          "kana": "ノン パルロ イタリアーノ",
+          "note": "現地の言語名を入れる。移行時はportogheseだったが現地で使う形に直した"
+        },
+        "en": {
+          "text": "I don't speak Portuguese."
+        }
+      }
     },
     {
       "id": "basic-07",
       "scene": "basic",
       "week": 1,
       "jp": "英語を話せますか",
-      "pt": "Fala inglês?",
-      "kana": "ファラ イングレシュ",
-      "it": "Parla inglese?",
-      "note": "まずBom diaとFaz favorを言ってからこれを聞くと通りがよい",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Fala inglês?",
+          "kana": "ファラ イングレシュ",
+          "note": "まずBom diaとFaz favorを言ってからこれを聞くと通りがよい"
+        },
+        "es": {
+          "text": "¿Habla inglés?",
+          "kana": "アブラ イングレス",
+          "note": "hは無音。ptのfalarと違い動詞はhablar"
+        },
+        "it": {
+          "text": "Parla inglese?",
+          "kana": "パルラ イングレーゼ",
+          "note": "parlareはptのfalarとは別語源"
+        },
+        "en": {
+          "text": "Do you speak English?"
+        }
+      }
     },
     {
       "id": "basic-08",
       "scene": "basic",
       "week": 1,
       "jp": "もう一度言ってください",
-      "pt": "Pode repetir, por favor?",
-      "kana": "ポドゥ ヘペティール、プル ファヴォール",
-      "it": "Può ripetere, per favore?",
-      "note": "語頭のrは喉のh音。「レ」ではなく「ヘ」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode repetir, por favor?",
+          "kana": "ポドゥ ヘペティール、プル ファヴォール",
+          "note": "語頭のrは喉のh音。「レ」ではなく「ヘ」"
+        },
+        "es": {
+          "text": "¿Puede repetir, por favor?",
+          "kana": "プエデ レペティール、ポル ファボール",
+          "note": "ptのPodeと同源。rは震え音で「ヘ」にならない"
+        },
+        "it": {
+          "text": "Può ripetere, per favore?",
+          "kana": "プオ リペーテレ、ペル ファヴォーレ",
+          "note": "ptのPodeと同源。語末の母音を落とさず読む"
+        },
+        "en": {
+          "text": "Could you say that again?"
+        }
+      }
     },
     {
       "id": "numero-01",
       "scene": "numero",
       "week": 1,
       "jp": "1、2、3",
-      "pt": "um, dois, três",
-      "kana": "ウン、ドイシュ、トレシュ",
-      "it": "uno, due, tre",
-      "note": "語末sは「シュ」。dois=ドイシュ。ここが最重要の発音差",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "um, dois, três",
+          "kana": "ウン、ドイシュ、トレシュ",
+          "note": "語末sは「シュ」。dois=ドイシュ。ここが最重要の発音差"
+        },
+        "es": {
+          "text": "uno, dos, tres",
+          "kana": "ウノ、ドス、トレス",
+          "note": "語末sは「ス」。ptの「シュ」との差が最大の違い"
+        },
+        "it": {
+          "text": "uno, due, tre",
+          "kana": "ウノ、ドゥーエ、トレ",
+          "note": "ptのdois/trêsと違い語末sが無い"
+        },
+        "en": {
+          "text": "one, two, three"
+        }
+      }
     },
     {
       "id": "numero-02",
       "scene": "numero",
       "week": 1,
       "jp": "4、5、6",
-      "pt": "quatro, cinco, seis",
-      "kana": "クアトル、シンク、セイシュ",
-      "it": "quattro, cinque, sei",
-      "note": "quatroの語末roは「トル」に近い",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "quatro, cinco, seis",
+          "kana": "クアトル、シンク、セイシュ",
+          "note": "quatroの語末roは「トル」に近い"
+        },
+        "es": {
+          "text": "cuatro, cinco, seis",
+          "kana": "クアトロ、シンコ、セイス",
+          "note": "cincoはptと同綴りだが語末oを「オ」と読む"
+        },
+        "it": {
+          "text": "quattro, cinque, sei",
+          "kana": "クアットロ、チンクエ、セイ",
+          "note": "ciは「チ」。esのcincoは「シンコ」で読みが分かれる"
+        },
+        "en": {
+          "text": "four, five, six"
+        }
+      }
     },
     {
       "id": "numero-03",
       "scene": "numero",
       "week": 1,
       "jp": "7、8、9、10",
-      "pt": "sete, oito, nove, dez",
-      "kana": "セトゥ、オイトゥ、ノヴ、デシュ",
-      "it": "sette, otto, nove, dieci",
-      "note": "dez=デシュ。10ユーロはdez euros（デシュ エウルシュ）",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "sete, oito, nove, dez",
+          "kana": "セトゥ、オイトゥ、ノヴ、デシュ",
+          "note": "dez=デシュ。10ユーロはdez euros（デシュ エウルシュ）"
+        },
+        "es": {
+          "text": "siete, ocho, nueve, diez",
+          "kana": "シエテ、オチョ、ヌエベ、ディエス",
+          "note": "eがieに割れる。ptのsete/noveと形で見分けられる"
+        },
+        "it": {
+          "text": "sette, otto, nove, dieci",
+          "kana": "セッテ、オット、ノーヴェ、ディエチ",
+          "note": "ptのsete/oito/noveに近い。10だけ形が離れる"
+        },
+        "en": {
+          "text": "seven, eight, nine, ten"
+        }
+      }
     },
     {
       "id": "numero-04",
       "scene": "numero",
       "week": 1,
       "jp": "11、12、13",
-      "pt": "onze, doze, treze",
-      "kana": "オンズ、ドーズ、トレーズ",
-      "it": "undici, dodici, tredici",
-      "note": "語末eは消えて子音で終わる感覚",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "onze, doze, treze",
+          "kana": "オンズ、ドーズ、トレーズ",
+          "note": "語末eは消えて子音で終わる感覚"
+        },
+        "es": {
+          "text": "once, doce, trece",
+          "kana": "オンセ、ドセ、トレセ",
+          "note": "ptのonze/doze/trezeとほぼ同形。zは「ス」"
+        },
+        "it": {
+          "text": "undici, dodici, tredici",
+          "kana": "ウンディチ、ドディチ、トレディチ",
+          "note": "-diciが付く。ptやesとは形が離れる"
+        },
+        "en": {
+          "text": "eleven, twelve, thirteen"
+        }
+      }
     },
     {
       "id": "numero-05",
       "scene": "numero",
       "week": 1,
       "jp": "14、15、16",
-      "pt": "catorze, quinze, dezasseis",
-      "kana": "カトルズ、キンズ、ドゥザセイシュ",
-      "it": "quattordici, quindici, sedici",
-      "note": "pt-PT形。ブラジルはquatorze / dezesseis で綴りが違う",
-      "tags": ["core", "ptpt"]
+      "tags": [
+        "core",
+        "ptpt",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "catorze, quinze, dezasseis",
+          "kana": "カトルズ、キンズ、ドゥザセイシュ",
+          "note": "pt-PT形。ブラジルはquatorze / dezesseis で綴りが違う"
+        },
+        "es": {
+          "text": "catorce, quince, dieciséis",
+          "kana": "カトルセ、キンセ、ディエシセイス",
+          "note": "16からdieci+数の形。ptのdezasseisと発想は同じ"
+        },
+        "it": {
+          "text": "quattordici, quindici, sedici",
+          "kana": "クアットルディチ、クインディチ、セーディチ",
+          "note": "16はsediciで規則から外れる"
+        },
+        "en": {
+          "text": "fourteen, fifteen, sixteen"
+        }
+      }
     },
     {
       "id": "numero-06",
       "scene": "numero",
       "week": 1,
       "jp": "17、18、19、20",
-      "pt": "dezassete, dezoito, dezanove, vinte",
-      "kana": "ドゥザセトゥ、ドゥゾイトゥ、ドゥザノヴ、ヴィントゥ",
-      "it": "diciassette, diciotto, diciannove, venti",
-      "note": "pt-PT形。ブラジルはdezessete / dezenove",
-      "tags": ["core", "ptpt"]
+      "tags": [
+        "core",
+        "ptpt",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "dezassete, dezoito, dezanove, vinte",
+          "kana": "ドゥザセトゥ、ドゥゾイトゥ、ドゥザノヴ、ヴィントゥ",
+          "note": "pt-PT形。ブラジルはdezessete / dezenove"
+        },
+        "es": {
+          "text": "diecisiete, dieciocho, diecinueve, veinte",
+          "kana": "ディエシシエテ、ディエシオチョ、ディエシヌエベ、ベインテ",
+          "note": "10+nの形。ptのdezasseteと同じ発想"
+        },
+        "it": {
+          "text": "diciassette, diciotto, diciannove, venti",
+          "kana": "ディチャッセッテ、ディチョット、ディチャンノーヴェ、ヴェンティ",
+          "note": "3言語とも10+nの発想は共通"
+        },
+        "en": {
+          "text": "seventeen, eighteen, nineteen, twenty"
+        }
+      }
     },
     {
       "id": "numero-07",
       "scene": "numero",
       "week": 1,
       "jp": "0 / 半分",
-      "pt": "zero / meio",
-      "kana": "ゼル、メイウ",
-      "it": "zero / mezzo",
-      "note": "meia de leiteのmeiaはこのmeioの女性形",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "zero / meio",
+          "kana": "ゼル、メイウ",
+          "note": "meia de leiteのmeiaはこのmeioの女性形"
+        },
+        "es": {
+          "text": "cero / medio",
+          "kana": "セロ / メディオ",
+          "note": "ptはzeroだがesはceroと綴る"
+        },
+        "it": {
+          "text": "zero / mezzo",
+          "kana": "ゼロ / メッツォ",
+          "note": "mezzoはptのmeioと同源。zzは「ツ」"
+        },
+        "en": {
+          "text": "zero / half"
+        }
+      }
     },
     {
       "id": "pedir-01",
       "scene": "pedir",
       "week": 1,
       "jp": "これをください",
-      "pt": "Queria isto, por favor.",
-      "kana": "キリア イシュトゥ、プル ファヴォール",
-      "it": "Vorrei questo, per favore",
-      "note": "注文の万能型。指差しと併用で何でも頼める。Eu queroより丁寧",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Queria isto, por favor.",
+          "kana": "キリア イシュトゥ、プル ファヴォール",
+          "note": "注文の万能型。指差しと併用で何でも頼める。Eu queroより丁寧"
+        },
+        "es": {
+          "text": "Quería esto, por favor.",
+          "kana": "ケリア エスト、ポル ファボール",
+          "note": "ptのQueriaと同形。丁寧な依頼の定型"
+        },
+        "it": {
+          "text": "Vorrei questo, per favore.",
+          "kana": "ヴォッレイ クエスト、ペル ファヴォーレ",
+          "note": "volereの条件法。ptのquererとは別動詞"
+        },
+        "en": {
+          "text": "I'd like this, please."
+        }
+      }
     },
     {
       "id": "pedir-02",
       "scene": "pedir",
       "week": 1,
       "jp": "2つください",
-      "pt": "Queria dois, por favor.",
-      "kana": "キリア ドイシュ、プル ファヴォール",
-      "it": "Vorrei due, per favore",
-      "note": "Queria + 数 + por favor。夫婦2人旅の基本形",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Queria dois, por favor.",
+          "kana": "キリア ドイシュ、プル ファヴォール",
+          "note": "Queria + 数 + por favor。夫婦2人旅の基本形"
+        },
+        "es": {
+          "text": "Quería dos, por favor.",
+          "kana": "ケリア ドス、ポル ファボール",
+          "note": "dosは性変化しない。ptのdois/duasだけが性で変わる"
+        },
+        "it": {
+          "text": "Vorrei due, per favore.",
+          "kana": "ヴォッレイ ドゥーエ、ペル ファヴォーレ",
+          "note": "dueも性変化しない。ptのdois/duasだけが性で変わる"
+        },
+        "en": {
+          "text": "Two, please."
+        }
+      }
     },
     {
       "id": "pedir-03",
       "scene": "pedir",
       "week": 1,
       "jp": "いくらですか",
-      "pt": "Quanto custa?",
-      "kana": "クアントゥ クシュタ",
-      "it": "Quanto costa?",
-      "note": "イタリア語とほぼ同一。合計額はQuanto é?（クアントゥ エ）",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Quanto custa?",
+          "kana": "クアントゥ クシュタ",
+          "note": "イタリア語とほぼ同一。合計額はQuanto é?（クアントゥ エ）"
+        },
+        "es": {
+          "text": "¿Cuánto cuesta?",
+          "kana": "クアント クエスタ",
+          "note": "ptのQuanto custaとほぼ同一。oがueに割れる"
+        },
+        "it": {
+          "text": "Quanto costa?",
+          "kana": "クアント コスタ",
+          "note": "3言語でいちばん形が近い。ほぼそのまま通じる"
+        },
+        "en": {
+          "text": "How much is it?"
+        }
+      }
     },
     {
       "id": "pedir-04",
       "scene": "pedir",
       "week": 1,
       "jp": "〜はどこですか",
-      "pt": "Onde é...?",
-      "kana": "オンド エ",
-      "it": "Dov'è...?",
-      "note": "駅・トイレ・店名を後ろに付けるだけ。Onde é a estação?",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Onde é...?",
+          "kana": "オンド エ",
+          "note": "駅・トイレ・店名を後ろに付けるだけ。Onde é a estação?"
+        },
+        "es": {
+          "text": "¿Dónde está...?",
+          "kana": "ドンデ エスタ",
+          "note": "位置はestarを使う。ptのOnde éとは動詞が違う"
+        },
+        "it": {
+          "text": "Dov'è...?",
+          "kana": "ドヴェ",
+          "note": "dove è の縮約。ptのOnde éと同じ構造"
+        },
+        "en": {
+          "text": "Where is...?"
+        }
+      }
     },
     {
       "id": "pedir-05",
       "scene": "pedir",
       "week": 1,
       "jp": "〜はありますか",
-      "pt": "Tem...?",
-      "kana": "テン",
-      "it": "Ha...? / C'è...?",
-      "note": "Tem mesa? Tem Wi-Fi? と何にでも使える最短の質問",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tem...?",
+          "kana": "テン",
+          "note": "Tem mesa? Tem Wi-Fi? と何にでも使える最短の質問"
+        },
+        "es": {
+          "text": "¿Hay...?",
+          "kana": "アイ",
+          "note": "存在のhay。ptのTemに当たる万能形"
+        },
+        "it": {
+          "text": "C'è...?",
+          "kana": "チェ",
+          "note": "Ha...? は「持っているか」、C'è...? は「存在するか」。Tem mesa? Tem Wi-Fi? の用法にはC'èが寄り添う"
+        },
+        "en": {
+          "text": "Is there...?"
+        }
+      }
     },
     {
       "id": "pedir-06",
       "scene": "pedir",
       "week": 1,
       "jp": "手伝ってもらえますか",
-      "pt": "Pode ajudar-me?",
-      "kana": "ポドゥ アジュダール ム",
-      "it": "Può aiutarmi?",
-      "note": "pt-PTは代名詞を動詞の後ろに付ける。ブラジルはPode me ajudar?",
-      "tags": ["core", "ptpt"]
+      "tags": [
+        "core",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode ajudar-me?",
+          "kana": "ポドゥ アジュダール ム",
+          "note": "pt-PTは代名詞を動詞の後ろに付ける。ブラジルはPode me ajudar?"
+        },
+        "es": {
+          "text": "¿Puede ayudarme?",
+          "kana": "プエデ アユダールメ",
+          "note": "esも代名詞を不定詞の後ろに付ける。ptと同じ語順"
+        },
+        "it": {
+          "text": "Può aiutarmi?",
+          "kana": "プオ アイウタルミ",
+          "note": "代名詞を不定詞に付ける点はptと同じ"
+        },
+        "en": {
+          "text": "Could you help me?"
+        }
+      }
     },
     {
       "id": "pedir-07",
       "scene": "pedir",
       "week": 1,
       "jp": "ちょっと待ってください",
-      "pt": "Só um momento.",
-      "kana": "ソ ウン モメントゥ",
-      "it": "Solo un momento",
-      "note": "財布を出す間、写真を撮る間などに",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Só um momento.",
+          "kana": "ソ ウン モメントゥ",
+          "note": "財布を出す間、写真を撮る間などに"
+        },
+        "es": {
+          "text": "Solo un momento.",
+          "kana": "ソロ ウン モメント",
+          "note": "itと綴りまで同一。ptのSóだけが短い"
+        },
+        "it": {
+          "text": "Solo un momento.",
+          "kana": "ソロ ウン モメント",
+          "note": "esと綴りまで同一。ptのSóだけが短い"
+        },
+        "en": {
+          "text": "Just a moment."
+        }
+      }
     },
     {
       "id": "pedir-08",
       "scene": "pedir",
       "week": 1,
       "jp": "2人です",
-      "pt": "Somos dois.",
-      "kana": "ソムシュ ドイシュ",
-      "it": "Siamo in due",
-      "note": "店に入って人数を聞かれたときの答え。指2本と併用",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Somos dois.",
+          "kana": "ソムシュ ドイシュ",
+          "note": "店に入って人数を聞かれたときの答え。指2本と併用"
+        },
+        "es": {
+          "text": "Somos dos.",
+          "kana": "ソモス ドス",
+          "note": "ptのSomos doisと同形。語末sは「ス」で濁らない"
+        },
+        "it": {
+          "text": "Siamo in due.",
+          "kana": "スィアーモ イン ドゥーエ",
+          "note": "inが入るのがイタリア語の癖。ptのSomos doisには無い"
+        },
+        "en": {
+          "text": "Two of us."
+        }
+      }
     },
     {
       "id": "rest-01",
       "scene": "restaurante",
       "week": 2,
       "jp": "こんばんは、2人です",
-      "pt": "Boa noite, somos dois.",
-      "kana": "ボア ノイト、ソムシュ ドイシュ",
-      "it": "Buonasera, siamo in due",
-      "note": "入店の第一声。挨拶と人数を一息で言うのが現地流",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Boa noite, somos dois.",
+          "kana": "ボア ノイト、ソムシュ ドイシュ",
+          "note": "入店の第一声。挨拶と人数を一息で言うのが現地流"
+        },
+        "es": {
+          "text": "Buenas noches, somos dos.",
+          "kana": "ブエナス ノチェス、ソモス ドス",
+          "note": "挨拶と人数を一息で。ptと同じ構成"
+        },
+        "it": {
+          "text": "Buonasera, siamo in due.",
+          "kana": "ブオナセーラ、スィアーモ イン ドゥーエ",
+          "note": "inが入るのがitの癖。ptのsomos doisには無い"
+        },
+        "en": {
+          "text": "Good evening, two of us."
+        }
+      }
     },
     {
       "id": "rest-02",
       "scene": "restaurante",
       "week": 2,
       "jp": "2人のテーブルはありますか",
-      "pt": "Tem mesa para dois?",
-      "kana": "テン メザ パラ ドイシュ",
-      "it": "Ha un tavolo per due?",
-      "note": "予約なしで入るとき。sは母音間で濁って「メザ」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tem mesa para dois?",
+          "kana": "テン メザ パラ ドイシュ",
+          "note": "予約なしで入るとき。sは母音間で濁って「メザ」"
+        },
+        "es": {
+          "text": "¿Tienen mesa para dos?",
+          "kana": "ティエネン メサ パラ ドス",
+          "note": "esは3人称複数で聞くのが自然。sは濁らず「メサ」"
+        },
+        "it": {
+          "text": "Ha un tavolo per due?",
+          "kana": "ア ウン タヴォロ ペル ドゥーエ",
+          "note": "冠詞unが要る。ptのTem mesaは無冠詞"
+        },
+        "en": {
+          "text": "Do you have a table for two?"
+        }
+      }
     },
     {
       "id": "rest-03",
       "scene": "restaurante",
       "week": 2,
       "jp": "予約しています",
-      "pt": "Temos reserva.",
-      "kana": "テムシュ フゼルヴァ",
-      "it": "Abbiamo una prenotazione",
-      "note": "語頭rは喉のh音で「フ」に近い。名前を続けて言う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Temos reserva.",
+          "kana": "テムシュ フゼルヴァ",
+          "note": "語頭rは喉のh音で「フ」に近い。名前を続けて言う"
+        },
+        "es": {
+          "text": "Tenemos reserva.",
+          "kana": "テネモス レセルバ",
+          "note": "ptと同形。rは震え音で「ヘ」にならない"
+        },
+        "it": {
+          "text": "Abbiamo una prenotazione.",
+          "kana": "アッビアーモ ウナ プレノタツィオーネ",
+          "note": "語が長く形も違う。ptのreservaとは別語"
+        },
+        "en": {
+          "text": "We have a reservation."
+        }
+      }
     },
     {
       "id": "rest-04",
       "scene": "restaurante",
       "week": 2,
       "jp": "ここに座っていいですか",
-      "pt": "Podemos sentar aqui?",
-      "kana": "ポデムシュ センタール アキ",
-      "it": "Possiamo sederci qui?",
-      "note": "テラス席を指しながら。勝手に座らず必ず聞く",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Podemos sentar aqui?",
+          "kana": "ポデムシュ センタール アキ",
+          "note": "テラス席を指しながら。勝手に座らず必ず聞く"
+        },
+        "es": {
+          "text": "¿Podemos sentarnos aquí?",
+          "kana": "ポデモス センタルノス アキ",
+          "note": "esは再帰代名詞nosが付く。ptのsentarは付けない"
+        },
+        "it": {
+          "text": "Possiamo sederci qui?",
+          "kana": "ポッスィアーモ セデルチ クイ",
+          "note": "再帰のciが付く。ptだけが再帰にしない"
+        },
+        "en": {
+          "text": "May we sit here?"
+        }
+      }
     },
     {
       "id": "rest-05",
       "scene": "restaurante",
       "week": 2,
       "jp": "メニューをお願いします",
-      "pt": "A ementa, por favor.",
-      "kana": "ア イメンタ、プル ファヴォール",
-      "it": "Il menù, per favore",
-      "note": "pt-PTはementa。menuも通じるがementaが現地語",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A ementa, por favor.",
+          "kana": "ア イメンタ、プル ファヴォール",
+          "note": "pt-PTはementa。menuも通じるがementaが現地語"
+        },
+        "es": {
+          "text": "La carta, por favor.",
+          "kana": "ラ カルタ、ポル ファボール",
+          "note": "esはcarta。menúは定食を指すことがある"
+        },
+        "it": {
+          "text": "Il menù, per favore.",
+          "kana": "イル メニュ、ペル ファヴォーレ",
+          "note": "ptのementaはpt-PT固有。es/itは別語"
+        },
+        "en": {
+          "text": "The menu, please."
+        }
+      }
     },
     {
       "id": "rest-06",
       "scene": "restaurante",
       "week": 2,
       "jp": "おすすめは何ですか",
-      "pt": "O que recomenda?",
-      "kana": "ウ キ ヘコメンダ",
-      "it": "Cosa consiglia?",
-      "note": "ローカル食堂で最も有効な一言。冠詞oは「ウ」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "O que recomenda?",
+          "kana": "ウ キ ヘコメンダ",
+          "note": "ローカル食堂で最も有効な一言。冠詞oは「ウ」"
+        },
+        "es": {
+          "text": "¿Qué recomienda?",
+          "kana": "ケ レコミエンダ",
+          "note": "ptと同じ動詞。eがieに割れる"
+        },
+        "it": {
+          "text": "Cosa consiglia?",
+          "kana": "コーザ コンスィリャ",
+          "note": "consigliareはptのrecomendarとは別語"
+        },
+        "en": {
+          "text": "What do you recommend?"
+        }
+      }
     },
     {
       "id": "rest-07",
       "scene": "restaurante",
       "week": 2,
       "jp": "今日の魚は何ですか",
-      "pt": "Qual é o peixe de hoje?",
-      "kana": "クアル エ ウ ペイシュ ドゥ オージュ",
-      "it": "Qual è il pesce di oggi?",
-      "note": "ナザレの漁師町で使う本命。peixe=ペイシュ",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Qual é o peixe de hoje?",
+          "kana": "クアル エ ウ ペイシュ ドゥ オージュ",
+          "note": "ナザレの漁師町で使う本命。peixe=ペイシュ"
+        },
+        "es": {
+          "text": "¿Cuál es el pescado de hoy?",
+          "kana": "クアル エス エル ペスカド デ オイ",
+          "note": "料理の魚はpescado。生きた魚はpez"
+        },
+        "it": {
+          "text": "Qual è il pesce di oggi?",
+          "kana": "クアレ イル ペッシェ ディ オッジ",
+          "note": "pesceはptのpeixeと同源。読みは「ペッシェ」"
+        },
+        "en": {
+          "text": "What is today's fish?"
+        }
+      }
     },
     {
       "id": "rest-08",
       "scene": "restaurante",
       "week": 2,
       "jp": "今日の定食は何ですか",
-      "pt": "Qual é o prato do dia?",
-      "kana": "クアル エ ウ プラトゥ ドゥ ディア",
-      "it": "Qual è il piatto del giorno?",
-      "note": "日替わり定食。安くて量が多く現地の定番",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Qual é o prato do dia?",
+          "kana": "クアル エ ウ プラトゥ ドゥ ディア",
+          "note": "日替わり定食。安くて量が多く現地の定番"
+        },
+        "es": {
+          "text": "¿Cuál es el plato del día?",
+          "kana": "クアル エス エル プラト デル ディア",
+          "note": "ptのpratoに当たるのがplato。3言語でほぼ同形"
+        },
+        "it": {
+          "text": "Qual è il piatto del giorno?",
+          "kana": "クアレ イル ピアット デル ジョルノ",
+          "note": "ptのprato do diaと語順も同じ"
+        },
+        "en": {
+          "text": "What is today's set menu?"
+        }
+      }
     },
     {
       "id": "rest-09",
       "scene": "restaurante",
       "week": 2,
       "jp": "焼き魚をください",
-      "pt": "Queria o peixe grelhado.",
-      "kana": "キリア ウ ペイシュ グレリャードゥ",
-      "it": "Vorrei il pesce alla griglia",
-      "note": "grelhadoは炭火焼き。lhは「リャ」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Queria o peixe grelhado.",
+          "kana": "キリア ウ ペイシュ グレリャードゥ",
+          "note": "grelhadoは炭火焼き。lhは「リャ」"
+        },
+        "es": {
+          "text": "Quería el pescado a la plancha.",
+          "kana": "ケリア エル ペスカド ア ラ プランチャ",
+          "note": "鉄板焼きはa la plancha、炭火はa la brasa"
+        },
+        "it": {
+          "text": "Vorrei il pesce alla griglia.",
+          "kana": "ヴォッレイ イル ペッシェ アッラ グリーリャ",
+          "note": "alla grigliaは網焼き。ptのgrelhadoと同源"
+        },
+        "en": {
+          "text": "I'd like the grilled fish."
+        }
+      }
     },
     {
       "id": "rest-10",
       "scene": "restaurante",
       "week": 2,
       "jp": "私も同じものを",
-      "pt": "Para mim, o mesmo.",
-      "kana": "パラ ミン、ウ メジュム",
-      "it": "Per me, lo stesso",
-      "note": "2人目の注文が一瞬で済む。mesmo=メジュム",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Para mim, o mesmo.",
+          "kana": "パラ ミン、ウ メジュム",
+          "note": "2人目の注文が一瞬で済む。mesmo=メジュム"
+        },
+        "es": {
+          "text": "Para mí, lo mismo.",
+          "kana": "パラ ミ、ロ ミスモ",
+          "note": "ptのo mesmoに当たるのがlo mismo。語順は同じ"
+        },
+        "it": {
+          "text": "Per me, lo stesso.",
+          "kana": "ペル メ、ロ ステッソ",
+          "note": "esのlo mismoと構造が同じ"
+        },
+        "en": {
+          "text": "The same for me."
+        }
+      }
     },
     {
       "id": "rest-11",
       "scene": "restaurante",
       "week": 2,
       "jp": "ハウスワインを1本",
-      "pt": "Uma garrafa de vinho da casa.",
-      "kana": "ウマ ガハーファ ドゥ ヴィーニュ ダ カザ",
-      "it": "Una bottiglia di vino della casa",
-      "note": "rrは喉のh音。ハウスワインは安くて質がよい",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Uma garrafa de vinho da casa.",
+          "kana": "ウマ ガハーファ ドゥ ヴィーニュ ダ カザ",
+          "note": "rrは喉のh音。ハウスワインは安くて質がよい"
+        },
+        "es": {
+          "text": "Una botella de vino de la casa.",
+          "kana": "ウナ ボテリャ デ ビノ デ ラ カサ",
+          "note": "ptのgarrafaに当たるのがbotella。itのbottigliaと同源"
+        },
+        "it": {
+          "text": "Una bottiglia di vino della casa.",
+          "kana": "ウナ ボッティリャ ディ ヴィーノ デッラ カーザ",
+          "note": "esのbotellaと同源。ptのgarrafaだけが別語"
+        },
+        "en": {
+          "text": "A bottle of house wine."
+        }
+      }
     },
     {
       "id": "rest-12",
       "scene": "restaurante",
       "week": 2,
       "jp": "ヴィーニョヴェルデをグラスで",
-      "pt": "Um copo de vinho verde.",
-      "kana": "ウン コプ ドゥ ヴィーニュ ヴェルドゥ",
-      "it": "Un bicchiere di vino verde",
-      "note": "微発泡の若い白。魚料理に合う北部の定番",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Um copo de vinho verde.",
+          "kana": "ウン コプ ドゥ ヴィーニュ ヴェルドゥ",
+          "note": "微発泡の若い白。魚料理に合う北部の定番"
+        },
+        "es": {
+          "text": "Una copa de vino verde.",
+          "kana": "ウナ コパ デ ビノ ベルデ",
+          "note": "esのcopaはptのcopoと同源だが女性名詞"
+        },
+        "it": {
+          "text": "Un bicchiere di vino verde.",
+          "kana": "ウン ビッキエーレ ディ ヴィーノ ヴェルデ",
+          "note": "bicchiereはptのcopoとは別語"
+        },
+        "en": {
+          "text": "A glass of vinho verde."
+        }
+      }
     },
     {
       "id": "rest-13",
       "scene": "restaurante",
       "week": 2,
       "jp": "炭酸なしの水をお願いします",
-      "pt": "Água sem gás, por favor.",
-      "kana": "アグア セン ガシュ、プル ファヴォール",
-      "it": "Acqua naturale, per favore",
-      "note": "炭酸入りはcom gás。sem=「〜なし」の万能語",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Água sem gás, por favor.",
+          "kana": "アグア セン ガシュ、プル ファヴォール",
+          "note": "炭酸入りはcom gás。sem=「〜なし」の万能語"
+        },
+        "es": {
+          "text": "Agua sin gas, por favor.",
+          "kana": "アグア シン ガス、ポル ファボール",
+          "note": "ptのsemに当たるのがsin。ほぼ同形"
+        },
+        "it": {
+          "text": "Acqua naturale, per favore.",
+          "kana": "アックア ナトゥラーレ、ペル ファヴォーレ",
+          "note": "itはnaturaleと言う。senza gasも通じる"
+        },
+        "en": {
+          "text": "Still water, please."
+        }
+      }
     },
     {
       "id": "rest-14",
       "scene": "restaurante",
       "week": 2,
       "jp": "パンをもっとください",
-      "pt": "Mais pão, por favor.",
-      "kana": "マイシュ パォン、プル ファヴォール",
-      "it": "Ancora pane, per favore",
-      "note": "maisは「もっと」。ただし追加パンは課金されることがある",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Mais pão, por favor.",
+          "kana": "マイシュ パォン、プル ファヴォール",
+          "note": "maisは「もっと」。ただし追加パンは課金されることがある"
+        },
+        "es": {
+          "text": "Más pan, por favor.",
+          "kana": "マス パン、ポル ファボール",
+          "note": "ptのmaisとほぼ同形。追加は課金されることがある"
+        },
+        "it": {
+          "text": "Ancora pane, per favore.",
+          "kana": "アンコーラ パーネ、ペル ファヴォーレ",
+          "note": "itはancora（もっと）。ptのmaisとは別語"
+        },
+        "en": {
+          "text": "More bread, please."
+        }
+      }
     },
     {
       "id": "rest-15",
       "scene": "restaurante",
       "week": 2,
       "jp": "これは辛いですか",
-      "pt": "Isto é picante?",
-      "kana": "イシュトゥ エ ピカント",
-      "it": "Questo è piccante?",
-      "note": "ピリピリチキンの辛さ確認に",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Isto é picante?",
+          "kana": "イシュトゥ エ ピカント",
+          "note": "ピリピリチキンの辛さ確認に"
+        },
+        "es": {
+          "text": "¿Esto es picante?",
+          "kana": "エスト エス ピカンテ",
+          "note": "3言語ともpicante系。そのまま通じる"
+        },
+        "it": {
+          "text": "Questo è piccante?",
+          "kana": "クエスト エ ピッカンテ",
+          "note": "ptのpicanteと同源。cが重なる"
+        },
+        "en": {
+          "text": "Is this spicy?"
+        }
+      }
     },
     {
       "id": "couvert-01",
       "scene": "restaurante",
       "week": 2,
       "jp": "クーベルは要りません",
-      "pt": "Não queremos o couvert, obrigado.",
-      "kana": "ナォン クレムシュ ウ クヴェール、オブリガードゥ",
-      "it": "Non vogliamo il coperto, grazie",
-      "note": "席に勝手に出るパン・オリーブは食べた分だけ課金。断るならこれ",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Não queremos o couvert, obrigado.",
+          "kana": "ナォン クレムシュ ウ クヴェール、オブリガードゥ",
+          "note": "席に勝手に出るパン・オリーブは食べた分だけ課金。断るならこれ"
+        },
+        "es": {
+          "text": "No queremos el cubierto, gracias.",
+          "kana": "ノ ケレモス エル クビエルト、グラシアス",
+          "note": "esのcubiertoも席料。スペインでは出ないことも多い"
+        },
+        "it": {
+          "text": "Non vogliamo il coperto, grazie.",
+          "kana": "ノン ヴォリャーモ イル コペルト、グラーツィエ",
+          "note": "copertoはイタリアの席料。ptのcouvertと同じ制度"
+        },
+        "en": {
+          "text": "We don't want the couvert, thank you."
+        }
+      }
     },
     {
       "id": "couvert-02",
       "scene": "restaurante",
       "week": 2,
       "jp": "これは有料ですか",
-      "pt": "Isto é pago?",
-      "kana": "イシュトゥ エ パーグ",
-      "it": "Questo è a pagamento?",
-      "note": "出てきた皿を指して確認。イタリアのcopertoと同じ制度",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Isto é pago?",
+          "kana": "イシュトゥ エ パーグ",
+          "note": "出てきた皿を指して確認。イタリアのcopertoと同じ制度"
+        },
+        "es": {
+          "text": "¿Esto se paga?",
+          "kana": "エスト セ パガ",
+          "note": "esは再帰で「有料か」を表す。ptのé pagoとは形が違う"
+        },
+        "it": {
+          "text": "Questo è a pagamento?",
+          "kana": "クエスト エ ア パガメント",
+          "note": "a pagamentoで「有料」。ptのpagoより一語多い"
+        },
+        "en": {
+          "text": "Is this charged?"
+        }
+      }
     },
     {
       "id": "couvert-03",
       "scene": "restaurante",
       "week": 2,
       "jp": "甲殻類のアレルギーがあります",
-      "pt": "Tenho alergia a marisco.",
-      "kana": "テニュ アレルジア ア マリシュク",
-      "it": "Ho un'allergia ai frutti di mare",
-      "note": "Tenho alergia a 〜 の型。魚はpeixe、乳製品はlactose",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tenho alergia a marisco.",
+          "kana": "テニュ アレルジア ア マリシュク",
+          "note": "Tenho alergia a 〜 の型。魚はpeixe、乳製品はlactose"
+        },
+        "es": {
+          "text": "Tengo alergia al marisco.",
+          "kana": "テンゴ アレルヒア アル マリスコ",
+          "note": "ptとほぼ同形。giは「ヒ」と読む"
+        },
+        "it": {
+          "text": "Ho un'allergia ai frutti di mare.",
+          "kana": "オ ウナッレルジーア アイ フルッティ ディ マーレ",
+          "note": "itはfrutti di mare（海の果実）。ptのmariscoとは別語"
+        },
+        "en": {
+          "text": "I have a shellfish allergy."
+        }
+      }
     },
     {
       "id": "couvert-04",
       "scene": "restaurante",
       "week": 2,
       "jp": "これに〜は入っていますか",
-      "pt": "Isto leva...?",
-      "kana": "イシュトゥ レヴァ",
-      "it": "Questo contiene...?",
-      "note": "levaは料理に「入っている」の現地表現",
-      "tags": ["core", "frame"]
+      "tags": [
+        "core",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Isto leva...?",
+          "kana": "イシュトゥ レヴァ",
+          "note": "levaは料理に「入っている」の現地表現"
+        },
+        "es": {
+          "text": "¿Esto lleva...?",
+          "kana": "エスト リェバ",
+          "note": "ptのlevaと同源のlleva。llは「リャ」"
+        },
+        "it": {
+          "text": "Questo contiene...?",
+          "kana": "クエスト コンティエーネ",
+          "note": "itはcontiene（含む）。ptのlevaは現地の言い方"
+        },
+        "en": {
+          "text": "Does this contain...?"
+        }
+      }
     },
     {
       "id": "couvert-05",
       "scene": "restaurante",
       "week": 2,
       "jp": "パクチー抜きでお願いします",
-      "pt": "Sem coentros, por favor.",
-      "kana": "セン コエントルシュ、プル ファヴォール",
-      "it": "Senza coriandolo, per favore",
-      "note": "ポルトガル料理はパクチー多用。苦手なら必須の一言",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Sem coentros, por favor.",
+          "kana": "セン コエントルシュ、プル ファヴォール",
+          "note": "ポルトガル料理はパクチー多用。苦手なら必須の一言"
+        },
+        "es": {
+          "text": "Sin cilantro, por favor.",
+          "kana": "シン シラントロ、ポル ファボール",
+          "note": "esはcilantro。ptのcoentrosとは形が違う"
+        },
+        "it": {
+          "text": "Senza coriandolo, per favore.",
+          "kana": "センツァ コリアンドロ、ペル ファヴォーレ",
+          "note": "senzaはptのsemと同源。zは「ツ」"
+        },
+        "en": {
+          "text": "No coriander, please."
+        }
+      }
     },
     {
       "id": "conta-01",
       "scene": "restaurante",
       "week": 2,
       "jp": "お会計をお願いします",
-      "pt": "A conta, por favor.",
-      "kana": "ア コンタ、プル ファヴォール",
-      "it": "Il conto, per favore",
-      "note": "イタリア語とほぼ同一。滞在中最も使う一文",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A conta, por favor.",
+          "kana": "ア コンタ、プル ファヴォール",
+          "note": "イタリア語とほぼ同一。滞在中最も使う一文"
+        },
+        "es": {
+          "text": "La cuenta, por favor.",
+          "kana": "ラ クエンタ、ポル ファボール",
+          "note": "ptのcontaと同源。oがueに割れる"
+        },
+        "it": {
+          "text": "Il conto, per favore.",
+          "kana": "イル コント、ペル ファヴォーレ",
+          "note": "ptのcontaとほぼ同一。滞在中いちばん使う"
+        },
+        "en": {
+          "text": "The bill, please."
+        }
+      }
     },
     {
       "id": "conta-02",
       "scene": "restaurante",
       "week": 2,
       "jp": "カードで払えますか",
-      "pt": "Posso pagar com cartão?",
-      "kana": "ポス パガール コン カルタォン",
-      "it": "Posso pagare con la carta?",
-      "note": "小さな食堂は現金のみのことがある。先に聞く",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Posso pagar com cartão?",
+          "kana": "ポス パガール コン カルタォン",
+          "note": "小さな食堂は現金のみのことがある。先に聞く"
+        },
+        "es": {
+          "text": "¿Puedo pagar con tarjeta?",
+          "kana": "プエド パガール コン タルヘタ",
+          "note": "esはtarjeta。ptのcartãoとは形が違う"
+        },
+        "it": {
+          "text": "Posso pagare con la carta?",
+          "kana": "ポッソ パガーレ コン ラ カルタ",
+          "note": "ptのPossoと同形。cartaに定冠詞が付く"
+        },
+        "en": {
+          "text": "Can I pay by card?"
+        }
+      }
     },
     {
       "id": "conta-03",
       "scene": "restaurante",
       "week": 2,
       "jp": "ユーロで払います",
-      "pt": "Em euros, por favor.",
-      "kana": "エン エウルシュ、プル ファヴォール",
-      "it": "In euro, per favore",
-      "note": "端末が円建て決済を提案してきたとき（DCC回避）に使う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Em euros, por favor.",
+          "kana": "エン エウルシュ、プル ファヴォール",
+          "note": "端末が円建て決済を提案してきたとき（DCC回避）に使う"
+        },
+        "es": {
+          "text": "En euros, por favor.",
+          "kana": "エン エウロス、ポル ファボール",
+          "note": "ptとほぼ同形。円建て決済を断るときに使う"
+        },
+        "it": {
+          "text": "In euro, per favore.",
+          "kana": "イン エウロ、ペル ファヴォーレ",
+          "note": "euroは複数でも変化しない。ptのeurosとの差"
+        },
+        "en": {
+          "text": "In euros, please."
+        }
+      }
     },
     {
       "id": "conta-04",
       "scene": "restaurante",
       "week": 2,
       "jp": "おつりは結構です",
-      "pt": "Está tudo certo.",
-      "kana": "シュタ トゥドゥ セルトゥ",
-      "it": "Va bene così",
-      "note": "チップを渡すときの決まり文句。チップは義務ではない",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Está tudo certo.",
+          "kana": "シュタ トゥドゥ セルトゥ",
+          "note": "チップを渡すときの決まり文句。チップは義務ではない"
+        },
+        "es": {
+          "text": "Está bien así.",
+          "kana": "エスタ ビエン アシ",
+          "note": "itのVa bene cosìと同じ発想。ptだけが別の言い方"
+        },
+        "it": {
+          "text": "Va bene così.",
+          "kana": "ヴァ ベーネ コズィ",
+          "note": "esのEstá bien asíと同じ発想"
+        },
+        "en": {
+          "text": "Keep the change."
+        }
+      }
     },
     {
       "id": "conta-05",
       "scene": "restaurante",
       "week": 2,
       "jp": "とても美味しかったです",
-      "pt": "Estava muito bom.",
-      "kana": "シュタヴァ ムイントゥ ボン",
-      "it": "Era molto buono",
-      "note": "帰り際に言うと店の空気が変わる。費用ゼロで効果最大",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Estava muito bom.",
+          "kana": "シュタヴァ ムイントゥ ボン",
+          "note": "帰り際に言うと店の空気が変わる。費用ゼロで効果最大"
+        },
+        "es": {
+          "text": "Estaba muy bueno.",
+          "kana": "エスタバ ムイ ブエノ",
+          "note": "ptのEstava muito bomと語形がほぼ同じ"
+        },
+        "it": {
+          "text": "Era molto buono.",
+          "kana": "エラ モルト ブオーノ",
+          "note": "動詞がessere。ptはestarを使う"
+        },
+        "en": {
+          "text": "It was very good."
+        }
+      }
     },
     {
       "id": "conta-06",
       "scene": "restaurante",
       "week": 2,
       "jp": "領収書をください",
-      "pt": "A fatura, por favor.",
-      "kana": "ア ファトゥーラ、プル ファヴォール",
-      "it": "La fattura, per favore",
-      "note": "VAT還付や記録用。faturaが正式な領収書",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A fatura, por favor.",
+          "kana": "ア ファトゥーラ、プル ファヴォール",
+          "note": "VAT還付や記録用。faturaが正式な領収書"
+        },
+        "es": {
+          "text": "La factura, por favor.",
+          "kana": "ラ ファクトゥラ、ポル ファボール",
+          "note": "3言語ともfactura系。VAT還付に必要"
+        },
+        "it": {
+          "text": "La fattura, per favore.",
+          "kana": "ラ ファットゥーラ、ペル ファヴォーレ",
+          "note": "ptのfaturaと同源。ttが重なる"
+        },
+        "en": {
+          "text": "The receipt, please."
+        }
+      }
     },
     {
       "id": "cafe-01",
       "scene": "cafe",
       "week": 2,
       "jp": "エスプレッソを1つ",
-      "pt": "Um café, por favor.",
-      "kana": "ウン カフェ、プル ファヴォール",
-      "it": "Un caffè, per favore",
-      "note": "caféはエスプレッソを指す。リスボンではbicaとも言う",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Um café, por favor.",
+          "kana": "ウン カフェ、プル ファヴォール",
+          "note": "caféはエスプレッソを指す。リスボンではbicaとも言う"
+        },
+        "es": {
+          "text": "Un café solo, por favor.",
+          "kana": "ウン カフェ ソロ、ポル ファボール",
+          "note": "soloを付けないとミルク入りが来ることがある"
+        },
+        "it": {
+          "text": "Un caffè, per favore.",
+          "kana": "ウン カッフェ、ペル ファヴォーレ",
+          "note": "itもcaffèだけでエスプレッソ。ptと同じ感覚"
+        },
+        "en": {
+          "text": "An espresso, please."
+        }
+      }
     },
     {
       "id": "cafe-02",
       "scene": "cafe",
       "week": 2,
       "jp": "カフェオレ（カップ）を1つ",
-      "pt": "Uma meia de leite.",
-      "kana": "ウマ メイア ドゥ レイト",
-      "it": "Un caffellatte",
-      "note": "カップで出るミルクコーヒー。朝の定番",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Uma meia de leite.",
+          "kana": "ウマ メイア ドゥ レイト",
+          "note": "カップで出るミルクコーヒー。朝の定番"
+        },
+        "es": {
+          "text": "Un café con leche.",
+          "kana": "ウン カフェ コン レチェ",
+          "note": "esの定番。ptのmeia de leiteに当たる"
+        },
+        "it": {
+          "text": "Un caffellatte.",
+          "kana": "ウン カッフェラッテ",
+          "note": "1語で書く。ptのmeia de leiteとは発想が違う"
+        },
+        "en": {
+          "text": "A latte."
+        }
+      }
     },
     {
       "id": "cafe-03",
       "scene": "cafe",
       "week": 2,
       "jp": "カフェラテ（グラス）を1つ",
-      "pt": "Um galão.",
-      "kana": "ウン ガラォン",
-      "it": "Un latte macchiato in bicchiere",
-      "note": "背の高いグラスでミルク多め。meia de leiteとの違いは器",
-      "tags": ["core", "ptpt"]
+      "tags": [
+        "core",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Um galão.",
+          "kana": "ウン ガラォン",
+          "note": "背の高いグラスでミルク多め。meia de leiteとの違いは器"
+        },
+        "es": {
+          "text": "Un café con leche en vaso.",
+          "kana": "ウン カフェ コン レチェ エン バソ",
+          "note": "esにgalãoに当たる専用語は無い。器を指定して頼む"
+        },
+        "it": {
+          "text": "Un latte macchiato in bicchiere.",
+          "kana": "ウン ラッテ マッキアート イン ビッキエーレ",
+          "note": "itも専用語が無い。ptのgalãoは現地語"
+        },
+        "en": {
+          "text": "A tall milky coffee."
+        }
+      }
     },
     {
       "id": "cafe-04",
       "scene": "cafe",
       "week": 2,
       "jp": "パステルデナタを2つ",
-      "pt": "Dois pastéis de nata.",
-      "kana": "ドイシュ パシュテイシュ ドゥ ナタ",
-      "it": "Due pasticcini alla crema",
-      "note": "単数はum pastel de nata。複数形はpastéis（パシュテイシュ）",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Dois pastéis de nata.",
+          "kana": "ドイシュ パシュテイシュ ドゥ ナタ",
+          "note": "単数はum pastel de nata。複数形はpastéis（パシュテイシュ）"
+        },
+        "es": {
+          "text": "Dos pasteles de nata.",
+          "kana": "ドス パステレス デ ナタ",
+          "note": "esの複数はpasteles。ptのpastéisは鼻音化する"
+        },
+        "it": {
+          "text": "Due pasticcini alla crema.",
+          "kana": "ドゥーエ パスティッチーニ アッラ クレーマ",
+          "note": "itに専用語は無い。現地ではpastel de nataで通じる"
+        },
+        "en": {
+          "text": "Two custard tarts."
+        }
+      }
     },
     {
       "id": "cafe-05",
       "scene": "cafe",
       "week": 2,
       "jp": "シナモンをかけてください",
-      "pt": "Com canela, por favor.",
-      "kana": "コン カネラ、プル ファヴォール",
-      "it": "Con cannella, per favore",
-      "note": "パステルデナタの現地流。粉砂糖はaçúcar em pó",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Com canela, por favor.",
+          "kana": "コン カネラ、プル ファヴォール",
+          "note": "パステルデナタの現地流。粉砂糖はaçúcar em pó"
+        },
+        "es": {
+          "text": "Con canela, por favor.",
+          "kana": "コン カネラ、ポル ファボール",
+          "note": "ptと綴りまで同一"
+        },
+        "it": {
+          "text": "Con cannella, per favore.",
+          "kana": "コン カンネッラ、ペル ファヴォーレ",
+          "note": "ptのcanelaと同源。nが重なる"
+        },
+        "en": {
+          "text": "With cinnamon, please."
+        }
+      }
     },
     {
       "id": "cafe-06",
       "scene": "cafe",
       "week": 2,
       "jp": "持ち帰りで",
-      "pt": "Para levar.",
-      "kana": "パラ ルヴァール",
-      "it": "Da portare via",
-      "note": "注文の最後に付ける。levarの無強勢eは消える",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Para levar.",
+          "kana": "パラ ルヴァール",
+          "note": "注文の最後に付ける。levarの無強勢eは消える"
+        },
+        "es": {
+          "text": "Para llevar.",
+          "kana": "パラ リェバール",
+          "note": "ptのlevarと同源のllevar。llは「リャ」"
+        },
+        "it": {
+          "text": "Da portare via.",
+          "kana": "ダ ポルターレ ヴィア",
+          "note": "portare viaで「持ち去る」。ptのlevarとは別語"
+        },
+        "en": {
+          "text": "To take away."
+        }
+      }
     },
     {
       "id": "cafe-07",
       "scene": "cafe",
       "week": 2,
       "jp": "ここで食べます",
-      "pt": "É para aqui.",
-      "kana": "エ パラ アキ",
-      "it": "Qui, grazie",
-      "note": "カウンターで立ち飲みすると席料がかからず安い",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "É para aqui.",
+          "kana": "エ パラ アキ",
+          "note": "カウンターで立ち飲みすると席料がかからず安い"
+        },
+        "es": {
+          "text": "Para tomar aquí.",
+          "kana": "パラ トマール アキ",
+          "note": "esはtomarを入れる。ptのÉ para aquiより明示的"
+        },
+        "it": {
+          "text": "Qui, grazie.",
+          "kana": "クイ、グラーツィエ",
+          "note": "itは一語で済ませる。ptのÉ para aquiと同じ働き"
+        },
+        "en": {
+          "text": "To have here."
+        }
+      }
     },
     {
       "id": "cafe-08",
       "scene": "cafe",
       "week": 2,
       "jp": "ハムチーズトーストを1つ",
-      "pt": "Uma tosta mista.",
-      "kana": "ウマ トシュタ ミシュタ",
-      "it": "Un toast prosciutto e formaggio",
-      "note": "軽い昼食の定番。どのカフェにもある",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Uma tosta mista.",
+          "kana": "ウマ トシュタ ミシュタ",
+          "note": "軽い昼食の定番。どのカフェにもある"
+        },
+        "es": {
+          "text": "Un sándwich mixto.",
+          "kana": "ウン サンドゥイチ ミクスト",
+          "note": "esはsándwich mixto。ptのtosta mistaと同じ中身"
+        },
+        "it": {
+          "text": "Un toast prosciutto e formaggio.",
+          "kana": "ウン トースト プロシュット エ フォルマッジョ",
+          "note": "itは中身を並べて言う。ptのtosta mistaが最短"
+        },
+        "en": {
+          "text": "A ham and cheese toastie."
+        }
+      }
     },
     {
       "id": "cafe-09",
       "scene": "cafe",
       "week": 2,
       "jp": "生ビールを小グラスで",
-      "pt": "Uma imperial, por favor.",
-      "kana": "ウマ インペリアル、プル ファヴォール",
-      "it": "Una birra piccola alla spina",
-      "note": "リスボンはimperial、ポルトではfino（フィーヌ）と言う",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Uma imperial, por favor.",
+          "kana": "ウマ インペリアル、プル ファヴォール",
+          "note": "リスボンはimperial、ポルトではfino（フィーヌ）と言う"
+        },
+        "es": {
+          "text": "Una caña, por favor.",
+          "kana": "ウナ カニャ、ポル ファボール",
+          "note": "スペインはcaña。ptのimperialに当たる小グラス"
+        },
+        "it": {
+          "text": "Una birra piccola alla spina.",
+          "kana": "ウナ ビッラ ピッコラ アッラ スピーナ",
+          "note": "alla spinaで生。ptのimperialのような一語の名前は無い"
+        },
+        "en": {
+          "text": "A small draft beer, please."
+        }
+      }
     },
     {
       "id": "num2-01",
       "scene": "numero",
       "week": 3,
       "jp": "21、30、40",
-      "pt": "vinte e um, trinta, quarenta",
-      "kana": "ヴィント イ ウン、トリンタ、クアレンタ",
-      "it": "ventuno, trenta, quaranta",
-      "note": "21以降は「20と1」と足していく。vinte e um",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "vinte e um, trinta, quarenta",
+          "kana": "ヴィント イ ウン、トリンタ、クアレンタ",
+          "note": "21以降は「20と1」と足していく。vinte e um"
+        },
+        "es": {
+          "text": "veintiuno, treinta, cuarenta",
+          "kana": "ベインティウノ、トレインタ、クアレンタ",
+          "note": "21は1語に詰める。ptのvinte e umと違い接続詞を書かない"
+        },
+        "it": {
+          "text": "ventuno, trenta, quaranta",
+          "kana": "ヴェントゥーノ、トレンタ、クアランタ",
+          "note": "esと同じく21は1語。ptだけが e でつなぐ"
+        },
+        "en": {
+          "text": "twenty-one, thirty, forty"
+        }
+      }
     },
     {
       "id": "num2-02",
       "scene": "numero",
       "week": 3,
       "jp": "50、60、70",
-      "pt": "cinquenta, sessenta, setenta",
-      "kana": "シンクエンタ、セセンタ、セテンタ",
-      "it": "cinquanta, sessanta, settanta",
-      "note": "値段を聞き取るのに必須",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "cinquenta, sessenta, setenta",
+          "kana": "シンクエンタ、セセンタ、セテンタ",
+          "note": "値段を聞き取るのに必須"
+        },
+        "es": {
+          "text": "cincuenta, sesenta, setenta",
+          "kana": "シンクエンタ、セセンタ、セテンタ",
+          "note": "ptとほぼ同形で聞き取りやすい"
+        },
+        "it": {
+          "text": "cinquanta, sessanta, settanta",
+          "kana": "チンクアンタ、セッサンタ、セッタンタ",
+          "note": "語尾が-antaで揃う。ptの-entaと1音違い"
+        },
+        "en": {
+          "text": "fifty, sixty, seventy"
+        }
+      }
     },
     {
       "id": "num2-03",
       "scene": "numero",
       "week": 3,
       "jp": "80、90、100",
-      "pt": "oitenta, noventa, cem",
-      "kana": "オイテンタ、ノヴェンタ、セン",
-      "it": "ottanta, novanta, cento",
-      "note": "ちょうど100はcem、101以上はcento e〜",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "oitenta, noventa, cem",
+          "kana": "オイテンタ、ノヴェンタ、セン",
+          "note": "ちょうど100はcem、101以上はcento e〜"
+        },
+        "es": {
+          "text": "ochenta, noventa, cien",
+          "kana": "オチェンタ、ノベンタ、シエン",
+          "note": "ちょうど100はcien、101以上はciento。ptのcem/centoと同じ使い分け"
+        },
+        "it": {
+          "text": "ottanta, novanta, cento",
+          "kana": "オッタンタ、ノヴァンタ、チェント",
+          "note": "itは常にcento。ptのcem/centoのような区別は無い"
+        },
+        "en": {
+          "text": "eighty, ninety, one hundred"
+        }
+      }
     },
     {
       "id": "num2-04",
       "scene": "numero",
       "week": 3,
       "jp": "5ユーロ50セント",
-      "pt": "cinco euros e cinquenta",
-      "kana": "シンク エウルシュ イ シンクエンタ",
-      "it": "cinque euro e cinquanta",
-      "note": "セントは省略して数字だけ言う。euros=エウルシュ",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "cinco euros e cinquenta",
+          "kana": "シンク エウルシュ イ シンクエンタ",
+          "note": "セントは省略して数字だけ言う。euros=エウルシュ"
+        },
+        "es": {
+          "text": "cinco euros con cincuenta",
+          "kana": "シンコ エウロス コン シンクエンタ",
+          "note": "esはconでつなぐことが多い。ptとitはe"
+        },
+        "it": {
+          "text": "cinque euro e cinquanta",
+          "kana": "チンクエ エウロ エ チンクアンタ",
+          "note": "euroは複数でも語尾が変わらない。ptのeurosとの差"
+        },
+        "en": {
+          "text": "five euros fifty"
+        }
+      }
     },
     {
       "id": "num2-05",
       "scene": "numero",
       "week": 3,
       "jp": "全部でいくらですか",
-      "pt": "Quanto é tudo?",
-      "kana": "クアントゥ エ トゥドゥ",
-      "it": "Quant'è in tutto?",
-      "note": "個別の値段はQuanto custa、合計はQuanto é tudo",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Quanto é tudo?",
+          "kana": "クアントゥ エ トゥドゥ",
+          "note": "個別の値段はQuanto custa、合計はQuanto é tudo"
+        },
+        "es": {
+          "text": "¿Cuánto es todo?",
+          "kana": "クアント エス トド",
+          "note": "ptのQuanto é tudoとほぼ同形"
+        },
+        "it": {
+          "text": "Quant'è in tutto?",
+          "kana": "クアンテ イン トゥット",
+          "note": "in tuttoが入る。ptのQuanto é tudoより一語多い"
+        },
+        "en": {
+          "text": "How much is it all together?"
+        }
+      }
     },
     {
       "id": "num2-06",
       "scene": "numero",
       "week": 3,
       "jp": "高すぎます",
-      "pt": "É muito caro.",
-      "kana": "エ ムイントゥ カール",
-      "it": "È troppo caro",
-      "note": "市場での値段交渉に。caroの語末oは「ウ」寄り",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "É muito caro.",
+          "kana": "エ ムイントゥ カール",
+          "note": "市場での値段交渉に。caroの語末oは「ウ」寄り"
+        },
+        "es": {
+          "text": "Es muy caro.",
+          "kana": "エス ムイ カロ",
+          "note": "ptのmuitoに当たるのがmuy。形容詞の前ではmuchoにしない"
+        },
+        "it": {
+          "text": "È troppo caro.",
+          "kana": "エ トロッポ カーロ",
+          "note": "troppoは「過剰」。ptのmuitoの直訳ではない"
+        },
+        "en": {
+          "text": "That's too expensive."
+        }
+      }
     },
     {
       "id": "num2-07",
       "scene": "numero",
       "week": 3,
       "jp": "何時ですか",
-      "pt": "Que horas são?",
-      "kana": "キ オーラシュ サォン",
-      "it": "Che ore sono?",
-      "note": "hのhoraは無音。オーラシュ",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Que horas são?",
+          "kana": "キ オーラシュ サォン",
+          "note": "hのhoraは無音。オーラシュ"
+        },
+        "es": {
+          "text": "¿Qué hora es?",
+          "kana": "ケ オラ エス",
+          "note": "esは単数で聞く。ptのQue horas são?は複数"
+        },
+        "it": {
+          "text": "Che ore sono?",
+          "kana": "ケ オーレ ソノ",
+          "note": "ptと同じく複数で聞く。esだけが単数"
+        },
+        "en": {
+          "text": "What time is it?"
+        }
+      }
     },
     {
       "id": "num2-08",
       "scene": "numero",
       "week": 3,
       "jp": "9時です",
-      "pt": "São nove horas.",
-      "kana": "サォン ノヴ オーラシュ",
-      "it": "Sono le nove",
-      "note": "1時だけÉ uma hora（単数）",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "São nove horas.",
+          "kana": "サォン ノヴ オーラシュ",
+          "note": "1時だけÉ uma hora（単数）"
+        },
+        "es": {
+          "text": "Son las nueve.",
+          "kana": "ソン ラス ヌエベ",
+          "note": "定冠詞lasが要る。ptのSão nove horasには冠詞が無い"
+        },
+        "it": {
+          "text": "Sono le nove.",
+          "kana": "ソノ レ ノーヴェ",
+          "note": "esと同じく定冠詞leが要る。ptだけが冠詞なし"
+        },
+        "en": {
+          "text": "It's nine o'clock."
+        }
+      }
     },
     {
       "id": "num2-09",
       "scene": "numero",
       "week": 3,
       "jp": "9時半",
-      "pt": "nove e meia",
-      "kana": "ノヴ イ メイア",
-      "it": "nove e mezza",
-      "note": "meiaは半分。meia de leiteと同じ語",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "nove e meia",
+          "kana": "ノヴ イ メイア",
+          "note": "meiaは半分。meia de leiteと同じ語"
+        },
+        "es": {
+          "text": "nueve y media",
+          "kana": "ヌエベ イ メディア",
+          "note": "接続はy。ptのeと同じ働き"
+        },
+        "it": {
+          "text": "nove e mezza",
+          "kana": "ノーヴェ エ メッツァ",
+          "note": "mezzaはptのmeiaと同源"
+        },
+        "en": {
+          "text": "half past nine"
+        }
+      }
     },
     {
       "id": "num2-10",
       "scene": "numero",
       "week": 3,
       "jp": "10時15分",
-      "pt": "dez e um quarto",
-      "kana": "デシュ イ ウン クアルト",
-      "it": "dieci e un quarto",
-      "note": "15分はum quarto（4分の1）",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "dez e um quarto",
+          "kana": "デシュ イ ウン クアルト",
+          "note": "15分はum quarto（4分の1）"
+        },
+        "es": {
+          "text": "diez y cuarto",
+          "kana": "ディエス イ クアルト",
+          "note": "esはunを入れない。ptのum quartoとの差"
+        },
+        "it": {
+          "text": "dieci e un quarto",
+          "kana": "ディエチ エ ウン クアルト",
+          "note": "ptと同じくunが入る。esだけが省く"
+        },
+        "en": {
+          "text": "quarter past ten"
+        }
+      }
     },
     {
       "id": "num2-11",
       "scene": "numero",
       "week": 3,
       "jp": "午前 / 午後",
-      "pt": "da manhã / da tarde",
-      "kana": "ダ マニャン / ダ タルド",
-      "it": "di mattina / di pomeriggio",
-      "note": "manhãは鼻音。「マニャン」",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "da manhã / da tarde",
+          "kana": "ダ マニャン / ダ タルド",
+          "note": "manhãは鼻音。「マニャン」"
+        },
+        "es": {
+          "text": "de la mañana / de la tarde",
+          "kana": "デ ラ マニャナ / デ ラ タルデ",
+          "note": "定冠詞laが入る。ptのdaは de+a の縮約"
+        },
+        "it": {
+          "text": "di mattina / di pomeriggio",
+          "kana": "ディ マッティーナ / ディ ポメリッジョ",
+          "note": "冠詞を入れない。3言語で形が最も分かれる"
+        },
+        "en": {
+          "text": "in the morning / in the afternoon"
+        }
+      }
     },
     {
       "id": "num2-12",
       "scene": "numero",
       "week": 3,
       "jp": "今日 / 明日 / 昨日",
-      "pt": "hoje / amanhã / ontem",
-      "kana": "オージュ / アマニャン / オンテン",
-      "it": "oggi / domani / ieri",
-      "note": "予約の日付確認に使う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "hoje / amanhã / ontem",
+          "kana": "オージュ / アマニャン / オンテン",
+          "note": "予約の日付確認に使う"
+        },
+        "es": {
+          "text": "hoy / mañana / ayer",
+          "kana": "オイ / マニャナ / アジェル",
+          "note": "mañanaは「明日」と「朝」の両方。ptのamanhã/manhãは別語"
+        },
+        "it": {
+          "text": "oggi / domani / ieri",
+          "kana": "オッジ / ドマーニ / イエリ",
+          "note": "ptのhoje/amanhãと同源。ontemとieriは別語源"
+        },
+        "en": {
+          "text": "today / tomorrow / yesterday"
+        }
+      }
     },
     {
       "id": "num2-13",
       "scene": "numero",
       "week": 3,
       "jp": "月曜 / 土曜 / 日曜",
-      "pt": "segunda / sábado / domingo",
-      "kana": "セグンダ / サーバドゥ / ドミング",
-      "it": "lunedì / sabato / domenica",
-      "note": "平日はsegunda〜sexta（第2〜第6）。日曜起点で数える",
-      "tags": ["core"]
+      "tags": [
+        "core",
+        "fragment"
+      ],
+      "langs": {
+        "pt": {
+          "text": "segunda / sábado / domingo",
+          "kana": "セグンダ / サーバドゥ / ドミング",
+          "note": "平日はsegunda〜sexta（第2〜第6）。日曜起点で数える"
+        },
+        "es": {
+          "text": "lunes / sábado / domingo",
+          "kana": "ルネス / サバド / ドミンゴ",
+          "note": "月曜はlunes。ptだけが「第2」と数で呼ぶ"
+        },
+        "it": {
+          "text": "lunedì / sabato / domenica",
+          "kana": "ルネディ / サバト / ドメニカ",
+          "note": "esと同じく曜日名。ptのsegundaのような数え方はしない"
+        },
+        "en": {
+          "text": "Monday / Saturday / Sunday"
+        }
+      }
     },
     {
       "id": "trans-01",
       "scene": "transporte",
       "week": 3,
       "jp": "切符を2枚ください",
-      "pt": "Dois bilhetes, por favor.",
-      "kana": "ドイシュ ビリェーテシュ、プル ファヴォール",
-      "it": "Due biglietti, per favore",
-      "note": "lhは「リャ」。bilhetes=ビリェーテシュ",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Dois bilhetes, por favor.",
+          "kana": "ドイシュ ビリェーテシュ、プル ファヴォール",
+          "note": "lhは「リャ」。bilhetes=ビリェーテシュ"
+        },
+        "es": {
+          "text": "Dos billetes, por favor.",
+          "kana": "ドス ビリェテス、ポル ファボール",
+          "note": "ptのbilhetesと同源。llは「リャ」"
+        },
+        "it": {
+          "text": "Due biglietti, per favore.",
+          "kana": "ドゥーエ ビリェッティ、ペル ファヴォーレ",
+          "note": "ptのbilheteと同源。glは「リャ」"
+        },
+        "en": {
+          "text": "Two tickets, please."
+        }
+      }
     },
     {
       "id": "trans-02",
       "scene": "transporte",
       "week": 3,
       "jp": "ナザレ行きのバスはどこから出ますか",
-      "pt": "De onde parte o autocarro para Nazaré?",
-      "kana": "ドゥ オンド パルト ウ アウトカーフ パラ ナザレ",
-      "it": "Da dove parte l'autobus per Nazaré?",
-      "note": "バスはautocarro。ブラジルのônibusは通じにくい",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "De onde parte o autocarro para Nazaré?",
+          "kana": "ドゥ オンド パルト ウ アウトカーフ パラ ナザレ",
+          "note": "バスはautocarro。ブラジルのônibusは通じにくい"
+        },
+        "es": {
+          "text": "¿De dónde sale el autobús para Nazaré?",
+          "kana": "デ ドンデ サレ エル アウトブス パラ ナサレ",
+          "note": "esはautobús。ptのautocarroは現地語"
+        },
+        "it": {
+          "text": "Da dove parte l'autobus per Nazaré?",
+          "kana": "ダ ドヴェ パルテ ラウトブス ペル ナザレ",
+          "note": "itもautobus。ptのautocarroだけが違う"
+        },
+        "en": {
+          "text": "Where does the bus to Nazaré leave from?"
+        }
+      }
     },
     {
       "id": "trans-03",
       "scene": "transporte",
       "week": 3,
       "jp": "何番ホームですか",
-      "pt": "Qual é a plataforma?",
-      "kana": "クアル エ ア プラタフォルマ",
-      "it": "Qual è il binario?",
-      "note": "バスターミナルでは乗り場番号にも使う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Qual é a plataforma?",
+          "kana": "クアル エ ア プラタフォルマ",
+          "note": "バスターミナルでは乗り場番号にも使う"
+        },
+        "es": {
+          "text": "¿Cuál es el andén?",
+          "kana": "クアル エス エル アンデン",
+          "note": "esはandén。ptのplataformaとは形が違う"
+        },
+        "it": {
+          "text": "Qual è il binario?",
+          "kana": "クアレ イル ビナーリオ",
+          "note": "itはbinario。3言語すべて別語なので個別に覚える"
+        },
+        "en": {
+          "text": "Which platform is it?"
+        }
+      }
     },
     {
       "id": "trans-04",
       "scene": "transporte",
       "week": 3,
       "jp": "何時に出ますか",
-      "pt": "A que horas parte?",
-      "kana": "ア キ オーラシュ パルト",
-      "it": "A che ora parte?",
-      "note": "答えは数字だけ返ってくることが多い",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A que horas parte?",
+          "kana": "ア キ オーラシュ パルト",
+          "note": "答えは数字だけ返ってくることが多い"
+        },
+        "es": {
+          "text": "¿A qué hora sale?",
+          "kana": "ア ケ オラ サレ",
+          "note": "esはsalir。ptのpartirとは動詞が違う"
+        },
+        "it": {
+          "text": "A che ora parte?",
+          "kana": "ア ケ オラ パルテ",
+          "note": "ptのparteと同形。ほぼそのまま通じる"
+        },
+        "en": {
+          "text": "What time does it leave?"
+        }
+      }
     },
     {
       "id": "trans-05",
       "scene": "transporte",
       "week": 3,
       "jp": "何時に着きますか",
-      "pt": "A que horas chega?",
-      "kana": "ア キ オーラシュ シェーガ",
-      "it": "A che ora arriva?",
-      "note": "chはポルトガル語で「シュ」。chega=シェーガ",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A que horas chega?",
+          "kana": "ア キ オーラシュ シェーガ",
+          "note": "chはポルトガル語で「シュ」。chega=シェーガ"
+        },
+        "es": {
+          "text": "¿A qué hora llega?",
+          "kana": "ア ケ オラ リェガ",
+          "note": "ptのchegaと同源のllega。llは「リャ」"
+        },
+        "it": {
+          "text": "A che ora arriva?",
+          "kana": "ア ケ オラ アッリーヴァ",
+          "note": "arrivareはptのchegarとは別語源"
+        },
+        "en": {
+          "text": "What time does it arrive?"
+        }
+      }
     },
     {
       "id": "trans-06",
       "scene": "transporte",
       "week": 3,
       "jp": "これはシントラ行きですか",
-      "pt": "Este vai para Sintra?",
-      "kana": "エシュト ヴァイ パラ シントラ",
-      "it": "Questo va a Sintra?",
-      "note": "乗る前の確認。行き先だけ差し替えて使える",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Este vai para Sintra?",
+          "kana": "エシュト ヴァイ パラ シントラ",
+          "note": "乗る前の確認。行き先だけ差し替えて使える"
+        },
+        "es": {
+          "text": "¿Este va a Sintra?",
+          "kana": "エステ バ ア シントラ",
+          "note": "ptのEste vai paraとほぼ同形。paraをaにする"
+        },
+        "it": {
+          "text": "Questo va a Sintra?",
+          "kana": "クエスト ヴァ ア スィントラ",
+          "note": "ptとほぼ同形。行き先だけ差し替えて使える"
+        },
+        "en": {
+          "text": "Does this go to Sintra?"
+        }
+      }
     },
     {
       "id": "trans-07",
       "scene": "transporte",
       "week": 3,
       "jp": "往復ください",
-      "pt": "Ida e volta, por favor.",
-      "kana": "イダ イ ヴォルタ、プル ファヴォール",
-      "it": "Andata e ritorno",
-      "note": "片道はSó ida（ソ イダ）",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Ida e volta, por favor.",
+          "kana": "イダ イ ヴォルタ、プル ファヴォール",
+          "note": "片道はSó ida（ソ イダ）"
+        },
+        "es": {
+          "text": "Ida y vuelta, por favor.",
+          "kana": "イダ イ ブエルタ、ポル ファボール",
+          "note": "ptのIda e voltaとほぼ同形。片道はsolo ida"
+        },
+        "it": {
+          "text": "Andata e ritorno.",
+          "kana": "アンダータ エ リトルノ",
+          "note": "ptのida e voltaと発想は同じだが語が違う"
+        },
+        "en": {
+          "text": "A return ticket, please."
+        }
+      }
     },
     {
       "id": "trans-08",
       "scene": "transporte",
       "week": 3,
       "jp": "この席は空いていますか",
-      "pt": "Este lugar está livre?",
-      "kana": "エシュト ルガール シュタ リヴル",
-      "it": "Questo posto è libero?",
-      "note": "指定席のバスでも確認しておくと安全",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Este lugar está livre?",
+          "kana": "エシュト ルガール シュタ リヴル",
+          "note": "指定席のバスでも確認しておくと安全"
+        },
+        "es": {
+          "text": "¿Está libre este asiento?",
+          "kana": "エスタ リブレ エステ アシエント",
+          "note": "esはasiento。ptのlugarより具体的な語"
+        },
+        "it": {
+          "text": "Questo posto è libero?",
+          "kana": "クエスト ポスト エ リーベロ",
+          "note": "ptのlugarに当たるのがposto。liberoは同源"
+        },
+        "en": {
+          "text": "Is this seat free?"
+        }
+      }
     },
     {
       "id": "trans-09",
       "scene": "transporte",
       "week": 3,
       "jp": "座席を予約しています",
-      "pt": "Tenho lugar marcado.",
-      "kana": "テニュ ルガール マルカードゥ",
-      "it": "Ho il posto prenotato",
-      "note": "購入済みの長距離バスで席を主張するとき",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tenho lugar marcado.",
+          "kana": "テニュ ルガール マルカードゥ",
+          "note": "購入済みの長距離バスで席を主張するとき"
+        },
+        "es": {
+          "text": "Tengo asiento reservado.",
+          "kana": "テンゴ アシエント レセルバド",
+          "note": "ptのlugar marcadoと同じ意味。語が違う"
+        },
+        "it": {
+          "text": "Ho il posto prenotato.",
+          "kana": "オ イル ポスト プレノタート",
+          "note": "ptのmarcadoに当たるのがprenotato"
+        },
+        "en": {
+          "text": "I have a reserved seat."
+        }
+      }
     },
     {
       "id": "trans-10",
       "scene": "transporte",
       "week": 3,
       "jp": "どこで降りればいいですか",
-      "pt": "Onde devo sair?",
-      "kana": "オンド デヴ サイール",
-      "it": "Dove devo scendere?",
-      "note": "行き先を告げた後に続けて聞く",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Onde devo sair?",
+          "kana": "オンド デヴ サイール",
+          "note": "行き先を告げた後に続けて聞く"
+        },
+        "es": {
+          "text": "¿Dónde tengo que bajar?",
+          "kana": "ドンデ テンゴ ケ バハール",
+          "note": "esはbajar（降りる）。ptのsairとは別語"
+        },
+        "it": {
+          "text": "Dove devo scendere?",
+          "kana": "ドヴェ デーヴォ シェンデレ",
+          "note": "scendereはptのsairとは別語。降車専用の語"
+        },
+        "en": {
+          "text": "Where should I get off?"
+        }
+      }
     },
     {
       "id": "trans-11",
       "scene": "transporte",
       "week": 3,
       "jp": "次で降ります",
-      "pt": "Saio na próxima.",
-      "kana": "サイウ ナ プロシマ",
-      "it": "Scendo alla prossima",
-      "note": "混んだ市電で降りる意思を伝える",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Saio na próxima.",
+          "kana": "サイウ ナ プロシマ",
+          "note": "混んだ市電で降りる意思を伝える"
+        },
+        "es": {
+          "text": "Bajo en la próxima.",
+          "kana": "バホ エン ラ プロクシマ",
+          "note": "ptのSaio na próximaと同じ構成"
+        },
+        "it": {
+          "text": "Scendo alla prossima.",
+          "kana": "シェンド アッラ プロッスィマ",
+          "note": "ptと同じ構成。動詞だけが違う"
+        },
+        "en": {
+          "text": "I'm getting off at the next stop."
+        }
+      }
     },
     {
       "id": "trans-12",
       "scene": "transporte",
       "week": 3,
       "jp": "カードをタッチする必要がありますか",
-      "pt": "Tenho de validar o cartão?",
-      "kana": "テニュ ドゥ ヴァリダール ウ カルタォン",
-      "it": "Devo validare la carta?",
-      "note": "Navegante・Andanteの改札確認。ter de = 〜しなければならない",
-      "tags": ["core", "ptpt"]
+      "tags": [
+        "core",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tenho de validar o cartão?",
+          "kana": "テニュ ドゥ ヴァリダール ウ カルタォン",
+          "note": "Navegante・Andanteの改札確認。ter de = 〜しなければならない"
+        },
+        "es": {
+          "text": "¿Tengo que validar la tarjeta?",
+          "kana": "テンゴ ケ バリダール ラ タルヘタ",
+          "note": "ptのTenho de validarと同形。cartãoはtarjeta"
+        },
+        "it": {
+          "text": "Devo validare la carta?",
+          "kana": "デーヴォ ヴァリダーレ ラ カルタ",
+          "note": "ptのvalidarと同源。3言語で形が近い"
+        },
+        "en": {
+          "text": "Do I need to validate the card?"
+        }
+      }
     },
     {
       "id": "trans-13",
       "scene": "transporte",
       "week": 3,
       "jp": "ケーブルカーはどこですか",
-      "pt": "Onde é o ascensor?",
-      "kana": "オンド エ ウ アシュセンソール",
-      "it": "Dov'è la funicolare?",
-      "note": "ナザレのシティオ地区へ上がるケーブルカー",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Onde é o ascensor?",
+          "kana": "オンド エ ウ アシュセンソール",
+          "note": "ナザレのシティオ地区へ上がるケーブルカー"
+        },
+        "es": {
+          "text": "¿Dónde está el funicular?",
+          "kana": "ドンデ エスタ エル フニクラール",
+          "note": "esはfunicular。ptのascensorは現地語"
+        },
+        "it": {
+          "text": "Dov'è la funicolare?",
+          "kana": "ドヴェ ラ フニコラーレ",
+          "note": "esのfunicularと同源。ptのascensorだけが違う"
+        },
+        "en": {
+          "text": "Where is the funicular?"
+        }
+      }
     },
     {
       "id": "trans-14",
       "scene": "transporte",
       "week": 3,
       "jp": "この住所までお願いします",
-      "pt": "Para este endereço, por favor.",
-      "kana": "パラ エシュト エンデレース、プル ファヴォール",
-      "it": "A questo indirizzo, per favore",
-      "note": "スマホの画面を見せながら。BoltやUberでも使う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Para este endereço, por favor.",
+          "kana": "パラ エシュト エンデレース、プル ファヴォール",
+          "note": "スマホの画面を見せながら。BoltやUberでも使う"
+        },
+        "es": {
+          "text": "A esta dirección, por favor.",
+          "kana": "ア エスタ ディレクシオン、ポル ファボール",
+          "note": "esはdirección。ptのendereçoとは別語"
+        },
+        "it": {
+          "text": "A questo indirizzo, per favore.",
+          "kana": "ア クエスト インディリッツォ、ペル ファヴォーレ",
+          "note": "itはindirizzo。3言語すべて別語"
+        },
+        "en": {
+          "text": "To this address, please."
+        }
+      }
     },
     {
       "id": "trans-15",
       "scene": "transporte",
       "week": 3,
       "jp": "空港までお願いします",
-      "pt": "Para o aeroporto, por favor.",
-      "kana": "パラ ウ アエロポルト、プル ファヴォール",
-      "it": "All'aeroporto, per favore",
-      "note": "帰国日のポルト空港へ",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Para o aeroporto, por favor.",
+          "kana": "パラ ウ アエロポルト、プル ファヴォール",
+          "note": "帰国日のポルト空港へ"
+        },
+        "es": {
+          "text": "Al aeropuerto, por favor.",
+          "kana": "アル アエロプエルト、ポル ファボール",
+          "note": "ptのaeroportoと同源。oがueに割れる"
+        },
+        "it": {
+          "text": "All'aeroporto, per favore.",
+          "kana": "アッラエロポルト、ペル ファヴォーレ",
+          "note": "ptのaeroportoとほぼ同形"
+        },
+        "en": {
+          "text": "To the airport, please."
+        }
+      }
     },
     {
       "id": "trans-16",
       "scene": "transporte",
       "week": 3,
       "jp": "メーターを使ってください",
-      "pt": "Pode ligar o taxímetro?",
-      "kana": "ポドゥ リガール ウ タクシーメトル",
-      "it": "Può accendere il tassametro?",
-      "note": "流しのタクシーでの定額提示を避ける",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode ligar o taxímetro?",
+          "kana": "ポドゥ リガール ウ タクシーメトル",
+          "note": "流しのタクシーでの定額提示を避ける"
+        },
+        "es": {
+          "text": "¿Puede poner el taxímetro?",
+          "kana": "プエデ ポネール エル タクシメトロ",
+          "note": "ptのligarに当たるのがponer。定額提示を避ける一言"
+        },
+        "it": {
+          "text": "Può accendere il tassametro?",
+          "kana": "プオ アッチェンデレ イル タッサメトロ",
+          "note": "accendereは「点ける」。ptのligarと同じ働き"
+        },
+        "en": {
+          "text": "Could you turn on the meter?"
+        }
+      }
     },
     {
       "id": "trans-17",
       "scene": "transporte",
       "week": 3,
       "jp": "ここで止めてください",
-      "pt": "Pare aqui, por favor.",
-      "kana": "パーレ アキ、プル ファヴォール",
-      "it": "Si fermi qui, per favore",
-      "note": "目的地の手前で降りたいとき",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pare aqui, por favor.",
+          "kana": "パーレ アキ、プル ファヴォール",
+          "note": "目的地の手前で降りたいとき"
+        },
+        "es": {
+          "text": "Pare aquí, por favor.",
+          "kana": "パレ アキ、ポル ファボール",
+          "note": "ptと綴りまで同一"
+        },
+        "it": {
+          "text": "Si fermi qui, per favore.",
+          "kana": "スィ フェルミ クイ、ペル ファヴォーレ",
+          "note": "再帰のsiが要る。ptのPareより一語多い"
+        },
+        "en": {
+          "text": "Stop here, please."
+        }
+      }
     },
     {
       "id": "trans-18",
       "scene": "transporte",
       "week": 3,
       "jp": "トランクを開けてもらえますか",
-      "pt": "Pode abrir a mala?",
-      "kana": "ポドゥ アブリール ア マラ",
-      "it": "Può aprire il bagagliaio?",
-      "note": "malaはスーツケースとトランクの両方を指す",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode abrir a mala?",
+          "kana": "ポドゥ アブリール ア マラ",
+          "note": "malaはスーツケースとトランクの両方を指す"
+        },
+        "es": {
+          "text": "¿Puede abrir el maletero?",
+          "kana": "プエデ アブリール エル マレテロ",
+          "note": "esはmaletero（トランク）。ptのmalaは荷物も指す"
+        },
+        "it": {
+          "text": "Può aprire il bagagliaio?",
+          "kana": "プオ アプリーレ イル バガリャイオ",
+          "note": "itはbagagliaio。3言語すべて別語"
+        },
+        "en": {
+          "text": "Could you open the trunk?"
+        }
+      }
     },
     {
       "id": "trans-19",
       "scene": "transporte",
       "week": 3,
       "jp": "歩いて行けますか",
-      "pt": "Posso ir a pé?",
-      "kana": "ポス イール ア ペ",
-      "it": "Posso andare a piedi?",
-      "note": "リスボンとポルトは坂が急なので先に聞く",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Posso ir a pé?",
+          "kana": "ポス イール ア ペ",
+          "note": "リスボンとポルトは坂が急なので先に聞く"
+        },
+        "es": {
+          "text": "¿Puedo ir a pie?",
+          "kana": "プエド イール ア ピエ",
+          "note": "ptと綴りがほぼ同一。a pieで「徒歩で」"
+        },
+        "it": {
+          "text": "Posso andare a piedi?",
+          "kana": "ポッソ アンダーレ ア ピエーディ",
+          "note": "itは複数形のpiedi。ptのa péは単数"
+        },
+        "en": {
+          "text": "Can I walk there?"
+        }
+      }
     },
     {
       "id": "trans-20",
       "scene": "transporte",
       "week": 3,
       "jp": "どのくらいかかりますか",
-      "pt": "Quanto tempo demora?",
-      "kana": "クアントゥ テンプ デモーラ",
-      "it": "Quanto tempo ci vuole?",
-      "note": "所要時間。距離はA que distância fica",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Quanto tempo demora?",
+          "kana": "クアントゥ テンプ デモーラ",
+          "note": "所要時間。距離はA que distância fica"
+        },
+        "es": {
+          "text": "¿Cuánto tiempo tarda?",
+          "kana": "クアント ティエンポ タルダ",
+          "note": "esはtardar。ptのdemorarとは別語"
+        },
+        "it": {
+          "text": "Quanto tempo ci vuole?",
+          "kana": "クアント テンポ チ ヴオーレ",
+          "note": "ci vuoleで所要時間。直訳しにくい定型"
+        },
+        "en": {
+          "text": "How long does it take?"
+        }
+      }
     },
     {
       "id": "trans-21",
       "scene": "transporte",
       "week": 3,
       "jp": "遅れていますか",
-      "pt": "Está atrasado?",
-      "kana": "シュタ アトラザードゥ",
-      "it": "È in ritardo?",
-      "note": "バスや電車が来ないとき",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Está atrasado?",
+          "kana": "シュタ アトラザードゥ",
+          "note": "バスや電車が来ないとき"
+        },
+        "es": {
+          "text": "¿Va con retraso?",
+          "kana": "バ コン レトラソ",
+          "note": "esはretraso。ptのatrasadoと同源"
+        },
+        "it": {
+          "text": "È in ritardo?",
+          "kana": "エ イン リタルド",
+          "note": "in ritardoで遅延。ptのatrasadoとは別語"
+        },
+        "en": {
+          "text": "Is it delayed?"
+        }
+      }
     },
     {
       "id": "trans-22",
       "scene": "transporte",
       "week": 3,
       "jp": "地図で見せてもらえますか",
-      "pt": "Pode mostrar-me no mapa?",
-      "kana": "ポドゥ モシュトラール ム ヌ マパ",
-      "it": "Può mostrarmi sulla mappa?",
-      "note": "説明が聞き取れないときの最終手段",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode mostrar-me no mapa?",
+          "kana": "ポドゥ モシュトラール ム ヌ マパ",
+          "note": "説明が聞き取れないときの最終手段"
+        },
+        "es": {
+          "text": "¿Puede mostrarme en el mapa?",
+          "kana": "プエデ モストラールメ エン エル マパ",
+          "note": "ptと同じく代名詞を不定詞の後ろに付ける"
+        },
+        "it": {
+          "text": "Può mostrarmi sulla mappa?",
+          "kana": "プオ モストラルミ スッラ マッパ",
+          "note": "ptのmostrar-meと同じ語順"
+        },
+        "en": {
+          "text": "Could you show me on the map?"
+        }
+      }
     },
     {
       "id": "hotel-01",
       "scene": "hotel",
       "week": 4,
       "jp": "チェックインをお願いします",
-      "pt": "Queria fazer o check-in.",
-      "kana": "キリア ファゼール ウ シェッキン",
-      "it": "Vorrei fare il check-in",
-      "note": "Queriaの型がここでも使える",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Queria fazer o check-in.",
+          "kana": "キリア ファゼール ウ シェッキン",
+          "note": "Queriaの型がここでも使える"
+        },
+        "es": {
+          "text": "Quería hacer el check-in.",
+          "kana": "ケリア アセール エル チェックイン",
+          "note": "ptのQueria fazerと同形。hacerのhは無音"
+        },
+        "it": {
+          "text": "Vorrei fare il check-in.",
+          "kana": "ヴォッレイ ファーレ イル チェックイン",
+          "note": "ptのfazerと同源のfare"
+        },
+        "en": {
+          "text": "I'd like to check in."
+        }
+      }
     },
     {
       "id": "hotel-02",
       "scene": "hotel",
       "week": 4,
       "jp": "予約はタナカの名前です",
-      "pt": "A reserva está no nome de Tanaka.",
-      "kana": "ア フゼルヴァ シュタ ヌ ノーム ドゥ タナカ",
-      "it": "La prenotazione è a nome Tanaka",
-      "note": "名前の部分を自分の姓に差し替えて使う。レストランの予約でも同じ言い方",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A reserva está no nome de Tanaka.",
+          "kana": "ア フゼルヴァ シュタ ヌ ノーム ドゥ タナカ",
+          "note": "名前の部分を自分の姓に差し替えて使う。レストランの予約でも同じ言い方"
+        },
+        "es": {
+          "text": "La reserva está a nombre de Tanaka.",
+          "kana": "ラ レセルバ エスタ ア ノンブレ デ タナカ",
+          "note": "ptのno nome deに当たるのがa nombre de"
+        },
+        "it": {
+          "text": "La prenotazione è a nome Tanaka.",
+          "kana": "ラ プレノタツィオーネ エ ア ノーメ タナカ",
+          "note": "前置詞diを入れないのがitの形"
+        },
+        "en": {
+          "text": "The reservation is under the name Tanaka."
+        }
+      }
     },
     {
       "id": "hotel-03",
       "scene": "hotel",
       "week": 4,
       "jp": "2泊です",
-      "pt": "Duas noites.",
-      "kana": "ドゥアシュ ノイテシュ",
-      "it": "Due notti",
-      "note": "noiteは女性名詞なのでduas（女性形）",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Duas noites.",
+          "kana": "ドゥアシュ ノイテシュ",
+          "note": "noiteは女性名詞なのでduas（女性形）"
+        },
+        "es": {
+          "text": "Dos noches.",
+          "kana": "ドス ノチェス",
+          "note": "dosは性変化しない。ptのduasだけが女性形になる"
+        },
+        "it": {
+          "text": "Due notti.",
+          "kana": "ドゥーエ ノッティ",
+          "note": "dueも性変化しない。ptのduasだけが女性形"
+        },
+        "en": {
+          "text": "Two nights."
+        }
+      }
     },
     {
       "id": "hotel-04",
       "scene": "hotel",
       "week": 4,
       "jp": "鍵をお願いします",
-      "pt": "A chave, por favor.",
-      "kana": "ア シャーヴ、プル ファヴォール",
-      "it": "La chiave, per favore",
-      "note": "chaveはchで「シャ」",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A chave, por favor.",
+          "kana": "ア シャーヴ、プル ファヴォール",
+          "note": "chaveはchで「シャ」"
+        },
+        "es": {
+          "text": "La llave, por favor.",
+          "kana": "ラ リャベ、ポル ファボール",
+          "note": "ptのchaveと同源のllave。clavis由来"
+        },
+        "it": {
+          "text": "La chiave, per favore.",
+          "kana": "ラ キアーヴェ、ペル ファヴォーレ",
+          "note": "ptのchaveと同源。chは「キ」"
+        },
+        "en": {
+          "text": "The key, please."
+        }
+      }
     },
     {
       "id": "hotel-05",
       "scene": "hotel",
       "week": 4,
       "jp": "Wi-Fiのパスワードは何ですか",
-      "pt": "Qual é a senha do Wi-Fi?",
-      "kana": "クアル エ ア セーニャ ドゥ ウィフィ",
-      "it": "Qual è la password del Wi-Fi?",
-      "note": "senhaはパスワード。palavra-passeとも言う",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Qual é a senha do Wi-Fi?",
+          "kana": "クアル エ ア セーニャ ドゥ ウィフィ",
+          "note": "senhaはパスワード。palavra-passeとも言う"
+        },
+        "es": {
+          "text": "¿Cuál es la contraseña del Wi-Fi?",
+          "kana": "クアル エス ラ コントラセニャ デル ワイファイ",
+          "note": "esはcontraseña。ptのsenhaと同源"
+        },
+        "it": {
+          "text": "Qual è la password del Wi-Fi?",
+          "kana": "クアレ ラ パスワード デル ワイファイ",
+          "note": "itは英語をそのまま使う。ptのsenhaに当たる語を使わない"
+        },
+        "en": {
+          "text": "What is the Wi-Fi password?"
+        }
+      }
     },
     {
       "id": "hotel-06",
       "scene": "hotel",
       "week": 4,
       "jp": "朝食は何時からですか",
-      "pt": "A que horas é o pequeno-almoço?",
-      "kana": "ア キ オーラシュ エ ウ プケーヌ アルモース",
-      "it": "A che ora è la colazione?",
-      "note": "朝食はpequeno-almoço。ブラジルのcafé da manhãとは別語",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A que horas é o pequeno-almoço?",
+          "kana": "ア キ オーラシュ エ ウ プケーヌ アルモース",
+          "note": "朝食はpequeno-almoço。ブラジルのcafé da manhãとは別語"
+        },
+        "es": {
+          "text": "¿A qué hora es el desayuno?",
+          "kana": "ア ケ オラ エス エル デサジュノ",
+          "note": "esはdesayuno。ptのpequeno-almoçoとは別語"
+        },
+        "it": {
+          "text": "A che ora è la colazione?",
+          "kana": "ア ケ オラ エ ラ コラツィオーネ",
+          "note": "itはcolazione。3言語すべて別語"
+        },
+        "en": {
+          "text": "What time is breakfast?"
+        }
+      }
     },
     {
       "id": "hotel-07",
       "scene": "hotel",
       "week": 4,
       "jp": "タオルをもう1枚ください",
-      "pt": "Mais uma toalha, por favor.",
-      "kana": "マイシュ ウマ トアーリャ、プル ファヴォール",
-      "it": "Un altro asciugamano, per favore",
-      "note": "Mais um / Mais uma で何でも追加を頼める",
-      "tags": ["core", "frame"]
+      "tags": [
+        "core",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Mais uma toalha, por favor.",
+          "kana": "マイシュ ウマ トアーリャ、プル ファヴォール",
+          "note": "Mais um / Mais uma で何でも追加を頼める"
+        },
+        "es": {
+          "text": "Otra toalla, por favor.",
+          "kana": "オトラ トアリャ、ポル ファボール",
+          "note": "ptのtoalhaと同源。追加はotro/otraで頼む"
+        },
+        "it": {
+          "text": "Un altro asciugamano, per favore.",
+          "kana": "ウン アルトロ アッシュガマーノ、ペル ファヴォーレ",
+          "note": "itはasciugamano。ptのtoalhaとは別語"
+        },
+        "en": {
+          "text": "One more towel, please."
+        }
+      }
     },
     {
       "id": "hotel-08",
       "scene": "hotel",
       "week": 4,
       "jp": "お湯が出ません",
-      "pt": "Não há água quente.",
-      "kana": "ナォン ア アグア ケント",
-      "it": "Non c'è acqua calda",
-      "note": "há は「ある」。hは無音で「ア」",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Não há água quente.",
+          "kana": "ナォン ア アグア ケント",
+          "note": "há は「ある」。hは無音で「ア」"
+        },
+        "es": {
+          "text": "No hay agua caliente.",
+          "kana": "ノ アイ アグア カリエンテ",
+          "note": "ptのNão háと同じ構造。hayは存在の語"
+        },
+        "it": {
+          "text": "Non c'è acqua calda.",
+          "kana": "ノン チェ アックア カルダ",
+          "note": "c'è はptのháと同じ働き"
+        },
+        "en": {
+          "text": "There is no hot water."
+        }
+      }
     },
     {
       "id": "hotel-09",
       "scene": "hotel",
       "week": 4,
       "jp": "エアコンが動きません",
-      "pt": "O ar condicionado não funciona.",
-      "kana": "ウ アール コンディシオナードゥ ナォン フンシオナ",
-      "it": "L'aria condizionata non funziona",
-      "note": "〜não funciona で故障を伝える型",
-      "tags": ["core", "frame"]
+      "tags": [
+        "core",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "O ar condicionado não funciona.",
+          "kana": "ウ アール コンディシオナードゥ ナォン フンシオナ",
+          "note": "〜não funciona で故障を伝える型"
+        },
+        "es": {
+          "text": "El aire acondicionado no funciona.",
+          "kana": "エル アイレ アコンディシオナド ノ フンシオナ",
+          "note": "ptとほぼ同形。故障を伝える型"
+        },
+        "it": {
+          "text": "L'aria condizionata non funziona.",
+          "kana": "ラリア コンディツィオナータ ノン フンツィオナ",
+          "note": "ptのnão funcionaと同形。3言語で共通の型"
+        },
+        "en": {
+          "text": "The air conditioning is not working."
+        }
+      }
     },
     {
       "id": "hotel-10",
       "scene": "hotel",
       "week": 4,
       "jp": "部屋が寒いです",
-      "pt": "O quarto está frio.",
-      "kana": "ウ クアルト シュタ フリウ",
-      "it": "La camera è fredda",
-      "note": "quartoは部屋。暑いはestá com calor",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "O quarto está frio.",
+          "kana": "ウ クアルト シュタ フリウ",
+          "note": "quartoは部屋。暑いはestá com calor"
+        },
+        "es": {
+          "text": "La habitación está fría.",
+          "kana": "ラ アビタシオン エスタ フリア",
+          "note": "esはhabitación。ptのquartoとは別語"
+        },
+        "it": {
+          "text": "La camera è fredda.",
+          "kana": "ラ カメラ エ フレッダ",
+          "note": "itはcamera。3言語すべて別語なので個別に覚える"
+        },
+        "en": {
+          "text": "The room is cold."
+        }
+      }
     },
     {
       "id": "hotel-11",
       "scene": "hotel",
       "week": 4,
       "jp": "もっと静かな部屋はありますか",
-      "pt": "Tem um quarto mais silencioso?",
-      "kana": "テン ウン クアルト マイシュ シレンシオーズ",
-      "it": "Ha una camera più silenziosa?",
-      "note": "旧市街は夜まで賑やかなので使う場面がある",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tem um quarto mais silencioso?",
+          "kana": "テン ウン クアルト マイシュ シレンシオーズ",
+          "note": "旧市街は夜まで賑やかなので使う場面がある"
+        },
+        "es": {
+          "text": "¿Tienen una habitación más silenciosa?",
+          "kana": "ティエネン ウナ アビタシオン マス シレンシオサ",
+          "note": "ptのTem umと同じ型。más silenciosaも同源"
+        },
+        "it": {
+          "text": "Ha una camera più silenziosa?",
+          "kana": "ア ウナ カメラ ピウ スィレンツィオーザ",
+          "note": "ptのmaisに当たるのがpiù"
+        },
+        "en": {
+          "text": "Do you have a quieter room?"
+        }
+      }
     },
     {
       "id": "hotel-12",
       "scene": "hotel",
       "week": 4,
       "jp": "荷物を預かってもらえますか",
-      "pt": "Podem guardar as malas?",
-      "kana": "ポデン グアルダール アシュ マラシュ",
-      "it": "Potete tenere le valigie?",
-      "note": "チェックアウト後の観光に必須",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Podem guardar as malas?",
+          "kana": "ポデン グアルダール アシュ マラシュ",
+          "note": "チェックアウト後の観光に必須"
+        },
+        "es": {
+          "text": "¿Pueden guardar las maletas?",
+          "kana": "プエデン グアルダール ラス マレタス",
+          "note": "ptのPodem guardarと同形。malasはmaletas"
+        },
+        "it": {
+          "text": "Potete tenere le valigie?",
+          "kana": "ポテーテ テネーレ レ ヴァリージェ",
+          "note": "itはtenere（持つ）。ptのguardarとは別語"
+        },
+        "en": {
+          "text": "Could you keep our luggage?"
+        }
+      }
     },
     {
       "id": "hotel-13",
       "scene": "hotel",
       "week": 4,
       "jp": "チェックアウトは何時ですか",
-      "pt": "A que horas é o check-out?",
-      "kana": "ア キ オーラシュ エ ウ シェッカウト",
-      "it": "A che ora è il check-out?",
-      "note": "延長できるかはPodemos sair mais tarde",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "A que horas é o check-out?",
+          "kana": "ア キ オーラシュ エ ウ シェッカウト",
+          "note": "延長できるかはPodemos sair mais tarde"
+        },
+        "es": {
+          "text": "¿A qué hora es el check-out?",
+          "kana": "ア ケ オラ エス エル チェックアウト",
+          "note": "ptと同形。3言語とも英語をそのまま使う"
+        },
+        "it": {
+          "text": "A che ora è il check-out?",
+          "kana": "ア ケ オラ エ イル チェックアウト",
+          "note": "ptと同形。3言語とも英語をそのまま使う"
+        },
+        "en": {
+          "text": "What time is check-out?"
+        }
+      }
     },
     {
       "id": "hotel-14",
       "scene": "hotel",
       "week": 4,
       "jp": "タクシーを呼んでもらえますか",
-      "pt": "Podem chamar um táxi?",
-      "kana": "ポデン シャマール ウン タクシ",
-      "it": "Potete chiamare un taxi?",
-      "note": "早朝の移動は前夜に頼んでおく",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Podem chamar um táxi?",
+          "kana": "ポデン シャマール ウン タクシ",
+          "note": "早朝の移動は前夜に頼んでおく"
+        },
+        "es": {
+          "text": "¿Pueden llamar un taxi?",
+          "kana": "プエデン リャマール ウン タクシ",
+          "note": "ptのchamarに当たるのがllamar"
+        },
+        "it": {
+          "text": "Potete chiamare un taxi?",
+          "kana": "ポテーテ キアマーレ ウン タクシ",
+          "note": "ptのchamarと同源のchiamare"
+        },
+        "en": {
+          "text": "Could you call a taxi?"
+        }
+      }
     },
     {
       "id": "hotel-15",
       "scene": "hotel",
       "week": 4,
       "jp": "とても早く出発します",
-      "pt": "Saímos muito cedo.",
-      "kana": "サイムシュ ムイントゥ セードゥ",
-      "it": "Partiamo molto presto",
-      "note": "早朝出発を伝えて朝食や精算を前倒しする",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Saímos muito cedo.",
+          "kana": "サイムシュ ムイントゥ セードゥ",
+          "note": "早朝出発を伝えて朝食や精算を前倒しする"
+        },
+        "es": {
+          "text": "Salimos muy temprano.",
+          "kana": "サリモス ムイ テンプラノ",
+          "note": "esはtemprano。ptのcedoとは別語"
+        },
+        "it": {
+          "text": "Partiamo molto presto.",
+          "kana": "パルティアーモ モルト プレスト",
+          "note": "itはpresto。3言語すべて別語"
+        },
+        "en": {
+          "text": "We are leaving very early."
+        }
+      }
     },
     {
       "id": "hotel-16",
       "scene": "hotel",
       "week": 4,
       "jp": "ありがとう、とても良かったです",
-      "pt": "Obrigado, foi ótimo.",
-      "kana": "オブリガードゥ、フォイ オーティム",
-      "it": "Grazie, è stato ottimo",
-      "note": "チェックアウト時に。家族経営の宿では特に効く",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Obrigado, foi ótimo.",
+          "kana": "オブリガードゥ、フォイ オーティム",
+          "note": "チェックアウト時に。家族経営の宿では特に効く"
+        },
+        "es": {
+          "text": "Gracias, ha sido excelente.",
+          "kana": "グラシアス、ア スィド エクセレンテ",
+          "note": "ptのfoi ótimoに当たる。完了形で言うのが自然"
+        },
+        "it": {
+          "text": "Grazie, è stato ottimo.",
+          "kana": "グラーツィエ、エ スタート オッティモ",
+          "note": "ptのótimoと同源のottimo"
+        },
+        "en": {
+          "text": "Thank you, it was excellent."
+        }
+      }
     },
     {
       "id": "shop-01",
       "scene": "compras",
       "week": 4,
       "jp": "見ているだけです",
-      "pt": "Só estou a ver.",
-      "kana": "ソ シュトウ ア ヴェール",
-      "it": "Sto solo guardando",
-      "note": "pt-PTは estar a + 不定詞。ブラジルのestou vendoとは形が違う",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Só estou a ver.",
+          "kana": "ソ シュトウ ア ヴェール",
+          "note": "pt-PTは estar a + 不定詞。ブラジルのestou vendoとは形が違う"
+        },
+        "es": {
+          "text": "Solo estoy mirando.",
+          "kana": "ソロ エストイ ミランド",
+          "note": "esは現在分詞。ptのestar a + 不定詞はpt-PT固有の形"
+        },
+        "it": {
+          "text": "Sto solo guardando.",
+          "kana": "スト ソロ グアルダンド",
+          "note": "esと同じく現在分詞。ptのa verだけが不定詞"
+        },
+        "en": {
+          "text": "I'm just looking."
+        }
+      }
     },
     {
       "id": "shop-02",
       "scene": "compras",
       "week": 4,
       "jp": "これを見せてもらえますか",
-      "pt": "Pode mostrar-me isto?",
-      "kana": "ポドゥ モシュトラール ム イシュトゥ",
-      "it": "Può mostrarmi questo?",
-      "note": "代名詞を動詞の後ろに付けるpt-PTの形",
-      "tags": ["core", "ptpt"]
+      "tags": [
+        "core",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode mostrar-me isto?",
+          "kana": "ポドゥ モシュトラール ム イシュトゥ",
+          "note": "代名詞を動詞の後ろに付けるpt-PTの形"
+        },
+        "es": {
+          "text": "¿Puede mostrarme esto?",
+          "kana": "プエデ モストラールメ エスト",
+          "note": "ptと同じく代名詞を不定詞の後ろに付ける"
+        },
+        "it": {
+          "text": "Può mostrarmi questo?",
+          "kana": "プオ モストラルミ クエスト",
+          "note": "ptのmostrar-meと同じ語順"
+        },
+        "en": {
+          "text": "Could you show me this?"
+        }
+      }
     },
     {
       "id": "shop-03",
       "scene": "compras",
       "week": 4,
       "jp": "試着できますか",
-      "pt": "Posso experimentar?",
-      "kana": "ポス エシュペリメンタール",
-      "it": "Posso provare?",
-      "note": "xは「シュ」。experimentar=エシュペリメンタール",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Posso experimentar?",
+          "kana": "ポス エシュペリメンタール",
+          "note": "xは「シュ」。experimentar=エシュペリメンタール"
+        },
+        "es": {
+          "text": "¿Puedo probarlo?",
+          "kana": "プエド プロバールロ",
+          "note": "esはprobar。ptのexperimentarとは別語"
+        },
+        "it": {
+          "text": "Posso provare?",
+          "kana": "ポッソ プロヴァーレ",
+          "note": "esのprobarと同源。ptのexperimentarだけが違う"
+        },
+        "en": {
+          "text": "Can I try it on?"
+        }
+      }
     },
     {
       "id": "shop-04",
       "scene": "compras",
       "week": 4,
       "jp": "別の色はありますか",
-      "pt": "Tem noutra cor?",
-      "kana": "テン ノウトラ コール",
-      "it": "Ha in un altro colore?",
-      "note": "noutra = em + outra の縮約。pt-PTでよく使う",
-      "tags": ["core", "ptpt"]
+      "tags": [
+        "core",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tem noutra cor?",
+          "kana": "テン ノウトラ コール",
+          "note": "noutra = em + outra の縮約。pt-PTでよく使う"
+        },
+        "es": {
+          "text": "¿Lo tienen en otro color?",
+          "kana": "ロ ティエネン エン オトロ コロール",
+          "note": "ptのnoutraは em+outra の縮約。esは縮約しない"
+        },
+        "it": {
+          "text": "Ha in un altro colore?",
+          "kana": "ア イン ウン アルトロ コローレ",
+          "note": "itも縮約しない。ptのnoutraがpt-PT固有"
+        },
+        "en": {
+          "text": "Do you have it in another color?"
+        }
+      }
     },
     {
       "id": "shop-05",
       "scene": "compras",
       "week": 4,
       "jp": "大きいサイズはありますか",
-      "pt": "Tem um tamanho maior?",
-      "kana": "テン ウン タマーニュ マイオール",
-      "it": "Ha una taglia più grande?",
-      "note": "小さいはmenor。nhは「ニュ」",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tem um tamanho maior?",
+          "kana": "テン ウン タマーニュ マイオール",
+          "note": "小さいはmenor。nhは「ニュ」"
+        },
+        "es": {
+          "text": "¿Tienen una talla más grande?",
+          "kana": "ティエネン ウナ タリャ マス グランデ",
+          "note": "esはtalla。ptのtamanhoとは別語"
+        },
+        "it": {
+          "text": "Ha una taglia più grande?",
+          "kana": "ア ウナ タリャ ピウ グランデ",
+          "note": "esと同じくtaglia。ptのtamanhoだけが違う"
+        },
+        "en": {
+          "text": "Do you have a larger size?"
+        }
+      }
     },
     {
       "id": "shop-06",
       "scene": "compras",
       "week": 4,
       "jp": "これにします",
-      "pt": "Fico com este.",
-      "kana": "フィーク コン エシュト",
-      "it": "Prendo questo",
-      "note": "直訳は「これと一緒にいます」。購入決定の定型",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Fico com este.",
+          "kana": "フィーク コン エシュト",
+          "note": "直訳は「これと一緒にいます」。購入決定の定型"
+        },
+        "es": {
+          "text": "Me quedo con este.",
+          "kana": "メ ケド コン エステ",
+          "note": "ptのFico com esteと同じ発想。再帰のmeが要る"
+        },
+        "it": {
+          "text": "Prendo questo.",
+          "kana": "プレンド クエスト",
+          "note": "itはprendere（取る）。ptのficarとは発想が違う"
+        },
+        "en": {
+          "text": "I'll take this one."
+        }
+      }
     },
     {
       "id": "shop-07",
       "scene": "compras",
       "week": 4,
       "jp": "袋をもらえますか",
-      "pt": "Pode dar-me um saco?",
-      "kana": "ポドゥ ダール ム ウン サーク",
-      "it": "Mi può dare un sacchetto?",
-      "note": "ポルトガルは有料。数セント請求される",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode dar-me um saco?",
+          "kana": "ポドゥ ダール ム ウン サーク",
+          "note": "ポルトガルは有料。数セント請求される"
+        },
+        "es": {
+          "text": "¿Me puede dar una bolsa?",
+          "kana": "メ プエデ ダール ウナ ボルサ",
+          "note": "esはbolsa。ptと同じくポルトガル・スペインとも有料"
+        },
+        "it": {
+          "text": "Mi può dare un sacchetto?",
+          "kana": "ミ プオ ダーレ ウン サッケット",
+          "note": "itはsacchetto。ptのsacoと同源"
+        },
+        "en": {
+          "text": "Could I have a bag?"
+        }
+      }
     },
     {
       "id": "shop-08",
       "scene": "compras",
       "week": 4,
       "jp": "包んでもらえますか",
-      "pt": "Pode embrulhar?",
-      "kana": "ポドゥ エンブルリャール",
-      "it": "Può incartare?",
-      "note": "土産物を割れないように包んでもらう",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode embrulhar?",
+          "kana": "ポドゥ エンブルリャール",
+          "note": "土産物を割れないように包んでもらう"
+        },
+        "es": {
+          "text": "¿Me lo puede envolver?",
+          "kana": "メ ロ プエデ エンボルベール",
+          "note": "ptのembrulharと同源のenvolver"
+        },
+        "it": {
+          "text": "Può incartare?",
+          "kana": "プオ インカルターレ",
+          "note": "itはincartare（紙で包む）。ptのembrulharとは別語"
+        },
+        "en": {
+          "text": "Could you wrap it?"
+        }
+      }
     },
     {
       "id": "shop-09",
       "scene": "compras",
       "week": 4,
       "jp": "カードは使えますか",
-      "pt": "Aceitam cartão?",
-      "kana": "アセイタン カルタォン",
-      "it": "Accettate la carta?",
-      "note": "市場や小店は現金のみのことがある",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Aceitam cartão?",
+          "kana": "アセイタン カルタォン",
+          "note": "市場や小店は現金のみのことがある"
+        },
+        "es": {
+          "text": "¿Aceptan tarjeta?",
+          "kana": "アセプタン タルヘタ",
+          "note": "ptのAceitamと同源。cartãoはtarjeta"
+        },
+        "it": {
+          "text": "Accettate la carta?",
+          "kana": "アッチェッターテ ラ カルタ",
+          "note": "ptのaceitarと同源のaccettare"
+        },
+        "en": {
+          "text": "Do you accept cards?"
+        }
+      }
     },
     {
       "id": "shop-10",
       "scene": "compras",
       "week": 4,
       "jp": "免税の書類をお願いします",
-      "pt": "Queria os papéis para o reembolso do IVA.",
-      "kana": "キリア ウシュ パペイシュ パラ ウ フエンボルス ドゥ イーヴァ",
-      "it": "Vorrei i documenti per il rimborso IVA",
-      "note": "IVAは付加価値税。ポルト空港での還付手続きに必要",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Queria os papéis para o reembolso do IVA.",
+          "kana": "キリア ウシュ パペイシュ パラ ウ フエンボルス ドゥ イーヴァ",
+          "note": "IVAは付加価値税。ポルト空港での還付手続きに必要"
+        },
+        "es": {
+          "text": "Quería los papeles para la devolución del IVA.",
+          "kana": "ケリア ロス パペレス パラ ラ デボルシオン デル イバ",
+          "note": "IVAは3言語共通の略語。還付はdevolución"
+        },
+        "it": {
+          "text": "Vorrei i documenti per il rimborso IVA.",
+          "kana": "ヴォッレイ イ ドクメンティ ペル イル リンボルソ イーヴァ",
+          "note": "IVAは3言語共通。還付はrimborso"
+        },
+        "en": {
+          "text": "I'd like the VAT refund forms."
+        }
+      }
     },
     {
       "id": "shop-11",
       "scene": "compras",
       "week": 4,
       "jp": "少し安くなりますか",
-      "pt": "Pode fazer mais barato?",
-      "kana": "ポドゥ ファゼール マイシュ バラート",
-      "it": "Può farmi un prezzo migliore?",
-      "note": "市場でのみ。店舗では使わない",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode fazer mais barato?",
+          "kana": "ポドゥ ファゼール マイシュ バラート",
+          "note": "市場でのみ。店舗では使わない"
+        },
+        "es": {
+          "text": "¿Me puede hacer un precio mejor?",
+          "kana": "メ プエデ アセール ウン プレシオ メホール",
+          "note": "itと同じ言い方。ptのmais baratoは直接的"
+        },
+        "it": {
+          "text": "Può farmi un prezzo migliore?",
+          "kana": "プオ ファルミ ウン プレッツォ ミリョーレ",
+          "note": "esと同じ言い方。ptのmais baratoより婉曲"
+        },
+        "en": {
+          "text": "Could you give me a better price?"
+        }
+      }
     },
     {
       "id": "shop-12",
       "scene": "compras",
       "week": 4,
       "jp": "入場券を2枚ください",
-      "pt": "Duas entradas, por favor.",
-      "kana": "ドゥアシュ エントラーダシュ、プル ファヴォール",
-      "it": "Due biglietti d'ingresso",
-      "note": "entradaは入場券。乗車券はbilhete",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Duas entradas, por favor.",
+          "kana": "ドゥアシュ エントラーダシュ、プル ファヴォール",
+          "note": "entradaは入場券。乗車券はbilhete"
+        },
+        "es": {
+          "text": "Dos entradas, por favor.",
+          "kana": "ドス エントラダス、ポル ファボール",
+          "note": "ptと綴りまで同一。乗車券のbilleteとは別語"
+        },
+        "it": {
+          "text": "Due biglietti d'ingresso.",
+          "kana": "ドゥーエ ビリェッティ ディングレッソ",
+          "note": "itはbiglietto d’ingresso。ptのentradaのような専用語を使わない"
+        },
+        "en": {
+          "text": "Two admission tickets, please."
+        }
+      }
     },
     {
       "id": "shop-13",
       "scene": "compras",
       "week": 4,
       "jp": "もう券を持っています",
-      "pt": "Já tenho bilhete.",
-      "kana": "ジャ テニュ ビリェート",
-      "it": "Ho già il biglietto",
-      "note": "ジェロニモス修道院やレロ書店の事前予約分",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Já tenho bilhete.",
+          "kana": "ジャ テニュ ビリェート",
+          "note": "ジェロニモス修道院やレロ書店の事前予約分"
+        },
+        "es": {
+          "text": "Ya tengo entrada.",
+          "kana": "ジャ テンゴ エントラダ",
+          "note": "ptのJá tenhoと同形。yaは「ジャ」"
+        },
+        "it": {
+          "text": "Ho già il biglietto.",
+          "kana": "オ ジャ イル ビリェット",
+          "note": "ptのjáと同源のgià。語順が後ろに来る"
+        },
+        "en": {
+          "text": "I already have a ticket."
+        }
+      }
     },
     {
       "id": "shop-14",
       "scene": "compras",
       "week": 4,
       "jp": "何時まで開いていますか",
-      "pt": "Até que horas está aberto?",
-      "kana": "アテ キ オーラシュ シュタ アベルト",
-      "it": "Fino a che ora è aperto?",
-      "note": "閉まっているはestá fechado",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Até que horas está aberto?",
+          "kana": "アテ キ オーラシュ シュタ アベルト",
+          "note": "閉まっているはestá fechado"
+        },
+        "es": {
+          "text": "¿Hasta qué hora está abierto?",
+          "kana": "アスタ ケ オラ エスタ アビエルト",
+          "note": "ptのAté que horasと同形。abiertoは同源"
+        },
+        "it": {
+          "text": "Fino a che ora è aperto?",
+          "kana": "フィーノ ア ケ オラ エ アペルト",
+          "note": "itはfino a。ptのatéと同じ働き"
+        },
+        "en": {
+          "text": "How late are you open?"
+        }
+      }
     },
     {
       "id": "shop-15",
       "scene": "compras",
       "week": 4,
       "jp": "写真を撮ってもいいですか",
-      "pt": "Posso tirar fotos?",
-      "kana": "ポス ティラール フォトシュ",
-      "it": "Posso fare foto?",
-      "note": "教会や書店では禁止のこともある",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Posso tirar fotos?",
+          "kana": "ポス ティラール フォトシュ",
+          "note": "教会や書店では禁止のこともある"
+        },
+        "es": {
+          "text": "¿Puedo hacer fotos?",
+          "kana": "プエド アセール フォトス",
+          "note": "esはhacer。ptのtirarとは動詞が違う"
+        },
+        "it": {
+          "text": "Posso fare foto?",
+          "kana": "ポッソ ファーレ フォト",
+          "note": "itもfare。ptのtirarだけが違う"
+        },
+        "en": {
+          "text": "May I take photos?"
+        }
+      }
     },
     {
       "id": "shop-16",
       "scene": "compras",
       "week": 4,
       "jp": "写真を撮ってもらえますか",
-      "pt": "Pode tirar-nos uma foto?",
-      "kana": "ポドゥ ティラール ヌシュ ウマ フォト",
-      "it": "Ci può fare una foto?",
-      "note": "-nos は「私たちを」。夫婦での写真に",
-      "tags": ["core", "must", "ptpt"]
+      "tags": [
+        "core",
+        "must",
+        "ptpt"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Pode tirar-nos uma foto?",
+          "kana": "ポドゥ ティラール ヌシュ ウマ フォト",
+          "note": "-nos は「私たちを」。夫婦での写真に"
+        },
+        "es": {
+          "text": "¿Nos puede hacer una foto?",
+          "kana": "ノス プエデ アセール ウナ フォト",
+          "note": "ptのtirar-nosに当たる。nosが前に出る"
+        },
+        "it": {
+          "text": "Ci può fare una foto?",
+          "kana": "チ プオ ファーレ ウナ フォト",
+          "note": "ciが前に出る。ptは動詞の後ろに付ける"
+        },
+        "en": {
+          "text": "Could you take a photo of us?"
+        }
+      }
     },
     {
       "id": "shop-17",
       "scene": "compras",
       "week": 4,
       "jp": "これは何ですか",
-      "pt": "O que é isto?",
-      "kana": "ウ キ エ イシュトゥ",
-      "it": "Che cos'è questo?",
-      "note": "市場の魚や惣菜を指して聞く",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "O que é isto?",
+          "kana": "ウ キ エ イシュトゥ",
+          "note": "市場の魚や惣菜を指して聞く"
+        },
+        "es": {
+          "text": "¿Qué es esto?",
+          "kana": "ケ エス エスト",
+          "note": "ptのO que é istoとほぼ同形"
+        },
+        "it": {
+          "text": "Che cos'è questo?",
+          "kana": "ケ コゼ クエスト",
+          "note": "che cosa è の縮約。ptより一語多い"
+        },
+        "en": {
+          "text": "What is this?"
+        }
+      }
     },
     {
       "id": "shop-18",
       "scene": "compras",
       "week": 4,
       "jp": "お土産のおすすめは何ですか",
-      "pt": "O que recomenda como lembrança?",
-      "kana": "ウ キ ヘコメンダ コム レンブランサ",
-      "it": "Cosa consiglia come souvenir?",
-      "note": "recomendaはレストランでも使った語",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "O que recomenda como lembrança?",
+          "kana": "ウ キ ヘコメンダ コム レンブランサ",
+          "note": "recomendaはレストランでも使った語"
+        },
+        "es": {
+          "text": "¿Qué recomienda como recuerdo?",
+          "kana": "ケ レコミエンダ コモ レクエルド",
+          "note": "esはrecuerdo。ptのlembrançaとは別語だが発想は同じ"
+        },
+        "it": {
+          "text": "Cosa consiglia come souvenir?",
+          "kana": "コーザ コンスィリャ コメ スーヴェニール",
+          "note": "itは仏語由来のsouvenir。ptのlembrançaとは別語"
+        },
+        "en": {
+          "text": "What do you recommend as a souvenir?"
+        }
+      }
     },
     {
       "id": "shop-19",
       "scene": "compras",
       "week": 4,
       "jp": "市場はどこですか",
-      "pt": "Onde é o mercado?",
-      "kana": "オンド エ ウ メルカードゥ",
-      "it": "Dov'è il mercato?",
-      "note": "ナザレ市立市場やポルトのボリャオン市場",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Onde é o mercado?",
+          "kana": "オンド エ ウ メルカードゥ",
+          "note": "ナザレ市立市場やポルトのボリャオン市場"
+        },
+        "es": {
+          "text": "¿Dónde está el mercado?",
+          "kana": "ドンデ エスタ エル メルカド",
+          "note": "ptのOnde é o mercadoと同形。位置はestarを使う"
+        },
+        "it": {
+          "text": "Dov'è il mercato?",
+          "kana": "ドヴェ イル メルカート",
+          "note": "3言語ともmercado系。ほぼそのまま通じる"
+        },
+        "en": {
+          "text": "Where is the market?"
+        }
+      }
     },
     {
       "id": "prob-01",
       "scene": "problema",
       "week": 5,
       "jp": "助けてください",
-      "pt": "Ajude-me, por favor!",
-      "kana": "アジュード ム、プル ファヴォール",
-      "it": "Mi aiuti, per favore!",
-      "note": "緊急時。命令形＋-me",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Ajude-me, por favor!",
+          "kana": "アジュード ム、プル ファヴォール",
+          "note": "緊急時。命令形＋-me"
+        },
+        "es": {
+          "text": "¡Ayúdeme, por favor!",
+          "kana": "アジュデメ、ポル ファボール",
+          "note": "ptのAjude-meと同形。命令形＋me"
+        },
+        "it": {
+          "text": "Mi aiuti, per favore!",
+          "kana": "ミ アイウティ、ペル ファヴォーレ",
+          "note": "miが前に出る。ptは動詞の後ろに付ける"
+        },
+        "en": {
+          "text": "Please help me!"
+        }
+      }
     },
     {
       "id": "prob-02",
       "scene": "problema",
       "week": 5,
       "jp": "気分が悪いです",
-      "pt": "Sinto-me mal.",
-      "kana": "シントゥ ム マル",
-      "it": "Mi sento male",
-      "note": "体調不良の第一声",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Sinto-me mal.",
+          "kana": "シントゥ ム マル",
+          "note": "体調不良の第一声"
+        },
+        "es": {
+          "text": "Me siento mal.",
+          "kana": "メ シエント マル",
+          "note": "ptのSinto-meと同じ再帰動詞。meが前に出る"
+        },
+        "it": {
+          "text": "Mi sento male.",
+          "kana": "ミ セント マーレ",
+          "note": "esと同じ語順。ptだけが動詞の後ろに付ける"
+        },
+        "en": {
+          "text": "I don't feel well."
+        }
+      }
     },
     {
       "id": "prob-03",
       "scene": "problema",
       "week": 5,
       "jp": "お腹が痛いです",
-      "pt": "Dói-me a barriga.",
-      "kana": "ドイ ム ア バヒーガ",
-      "it": "Mi fa male la pancia",
-      "note": "Dói-me + 部位 の型。rrは喉のh音",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Dói-me a barriga.",
+          "kana": "ドイ ム ア バヒーガ",
+          "note": "Dói-me + 部位 の型。rrは喉のh音"
+        },
+        "es": {
+          "text": "Me duele la barriga.",
+          "kana": "メ ドゥエレ ラ バリガ",
+          "note": "ptのDói-me a barrigaと同じ構造。doler が duele に"
+        },
+        "it": {
+          "text": "Mi fa male la pancia.",
+          "kana": "ミ ファ マーレ ラ パンチャ",
+          "note": "itはfa male（悪くする）。ptのdoerとは発想が違う"
+        },
+        "en": {
+          "text": "My stomach hurts."
+        }
+      }
     },
     {
       "id": "prob-04",
       "scene": "problema",
       "week": 5,
       "jp": "頭が痛いです",
-      "pt": "Dói-me a cabeça.",
-      "kana": "ドイ ム ア カベーサ",
-      "it": "Mi fa male la testa",
-      "note": "喉はa garganta、歯はos dentes",
-      "tags": ["core"]
+      "tags": [
+        "core"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Dói-me a cabeça.",
+          "kana": "ドイ ム ア カベーサ",
+          "note": "喉はa garganta、歯はos dentes"
+        },
+        "es": {
+          "text": "Me duele la cabeza.",
+          "kana": "メ ドゥエレ ラ カベサ",
+          "note": "ptのcabeçaと同源。喉はla garganta"
+        },
+        "it": {
+          "text": "Mi fa male la testa.",
+          "kana": "ミ ファ マーレ ラ テスタ",
+          "note": "itはtesta。ptのcabeçaとは別語"
+        },
+        "en": {
+          "text": "I have a headache."
+        }
+      }
     },
     {
       "id": "prob-05",
       "scene": "problema",
       "week": 5,
       "jp": "薬局はどこですか",
-      "pt": "Onde é a farmácia?",
-      "kana": "オンド エ ア ファルマーシア",
-      "it": "Dov'è la farmacia?",
-      "note": "緑十字が目印。夜間営業はfarmácia de serviço",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Onde é a farmácia?",
+          "kana": "オンド エ ア ファルマーシア",
+          "note": "緑十字が目印。夜間営業はfarmácia de serviço"
+        },
+        "es": {
+          "text": "¿Dónde está la farmacia?",
+          "kana": "ドンデ エスタ ラ ファルマシア",
+          "note": "3言語ともfarmacia。緑十字が目印"
+        },
+        "it": {
+          "text": "Dov'è la farmacia?",
+          "kana": "ドヴェ ラ ファルマチーア",
+          "note": "3言語ともfarmacia。ciは「チ」"
+        },
+        "en": {
+          "text": "Where is the pharmacy?"
+        }
+      }
     },
     {
       "id": "prob-06",
       "scene": "problema",
       "week": 5,
       "jp": "何か薬はありますか",
-      "pt": "Tem algum medicamento?",
-      "kana": "テン アルグン メディカメントゥ",
-      "it": "Ha una medicina?",
-      "note": "症状を言ってから聞く。薬剤師が選んでくれる",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Tem algum medicamento?",
+          "kana": "テン アルグン メディカメントゥ",
+          "note": "症状を言ってから聞く。薬剤師が選んでくれる"
+        },
+        "es": {
+          "text": "¿Tienen algún medicamento?",
+          "kana": "ティエネン アルグン メディカメント",
+          "note": "ptのTem algumと同形。ほぼそのまま通じる"
+        },
+        "it": {
+          "text": "Ha una medicina?",
+          "kana": "ア ウナ メディチーナ",
+          "note": "itはmedicina。ptのmedicamentoも通じる"
+        },
+        "en": {
+          "text": "Do you have any medicine?"
+        }
+      }
     },
     {
       "id": "prob-07",
       "scene": "problema",
       "week": 5,
       "jp": "財布をなくしました",
-      "pt": "Perdi a carteira.",
-      "kana": "ペルディ ア カルテイラ",
-      "it": "Ho perso il portafoglio",
-      "note": "Perdi + 物 の型。パスポートはo passaporte",
-      "tags": ["core", "must", "frame"]
+      "tags": [
+        "core",
+        "must",
+        "frame"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Perdi a carteira.",
+          "kana": "ペルディ ア カルテイラ",
+          "note": "Perdi + 物 の型。パスポートはo passaporte"
+        },
+        "es": {
+          "text": "He perdido la cartera.",
+          "kana": "エ ペルディド ラ カルテラ",
+          "note": "esは完了形が自然。ptのPerdiは単純過去"
+        },
+        "it": {
+          "text": "Ho perso il portafoglio.",
+          "kana": "オ ペルソ イル ポルタフォーリョ",
+          "note": "itも完了形。財布はportafoglio"
+        },
+        "en": {
+          "text": "I have lost my wallet."
+        }
+      }
     },
     {
       "id": "prob-08",
       "scene": "problema",
       "week": 5,
       "jp": "パスポートを盗まれました",
-      "pt": "Roubaram-me o passaporte.",
-      "kana": "フォウバーラン ム ウ パサポルト",
-      "it": "Mi hanno rubato il passaporto",
-      "note": "28番市電や観光地でのスリ被害。語頭rは喉のh音",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Roubaram-me o passaporte.",
+          "kana": "フォウバーラン ム ウ パサポルト",
+          "note": "28番市電や観光地でのスリ被害。語頭rは喉のh音"
+        },
+        "es": {
+          "text": "Me han robado el pasaporte.",
+          "kana": "メ アン ロバド エル パサポルテ",
+          "note": "ptのRoubaram-meと同じ受け身的な言い方"
+        },
+        "it": {
+          "text": "Mi hanno rubato il passaporto.",
+          "kana": "ミ アンノ ルバート イル パッサポルト",
+          "note": "esと同じ構造。ptだけが代名詞を後ろに付ける"
+        },
+        "en": {
+          "text": "My passport has been stolen."
+        }
+      }
     },
     {
       "id": "prob-09",
       "scene": "problema",
       "week": 5,
       "jp": "警察を呼んでください",
-      "pt": "Chame a polícia, por favor.",
-      "kana": "シャーム ア ポリーシア、プル ファヴォール",
-      "it": "Chiami la polizia, per favore",
-      "note": "盗難証明は保険請求に必要。緊急番号は112",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Chame a polícia, por favor.",
+          "kana": "シャーム ア ポリーシア、プル ファヴォール",
+          "note": "盗難証明は保険請求に必要。緊急番号は112"
+        },
+        "es": {
+          "text": "Llame a la policía, por favor.",
+          "kana": "リャメ ア ラ ポリシア、ポル ファボール",
+          "note": "ptのChameに当たるのがLlame。緊急番号は112"
+        },
+        "it": {
+          "text": "Chiami la polizia, per favore.",
+          "kana": "キアミ ラ ポリツィア、ペル ファヴォーレ",
+          "note": "ptのchamarと同源のchiamare。緊急番号は112"
+        },
+        "en": {
+          "text": "Please call the police."
+        }
+      }
     },
     {
       "id": "prob-10",
       "scene": "problema",
       "week": 5,
       "jp": "道に迷いました",
-      "pt": "Estou perdido.",
-      "kana": "シュトウ ペルディードゥ",
-      "it": "Mi sono perso",
-      "note": "妻が言う場合はperdida（女性形）",
-      "tags": ["core", "must"]
+      "tags": [
+        "core",
+        "must"
+      ],
+      "langs": {
+        "pt": {
+          "text": "Estou perdido.",
+          "kana": "シュトウ ペルディードゥ",
+          "note": "妻が言う場合はperdida（女性形）"
+        },
+        "es": {
+          "text": "Estoy perdido.",
+          "kana": "エストイ ペルディド",
+          "note": "ptと同形。女性が言う場合はperdida"
+        },
+        "it": {
+          "text": "Mi sono perso.",
+          "kana": "ミ ソノ ペルソ",
+          "note": "itは再帰の完了形。女性が言う場合はpersa"
+        },
+        "en": {
+          "text": "I'm lost."
+        }
+      }
     }
   ]
 }
