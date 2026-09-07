@@ -134,10 +134,116 @@ export function nextState(card, grade, today) {
 
 /** 定着済みとみなす基準。箱4以上（間隔8日以上に到達） */
 export function isRetained(card) {
-  return (card.box || 1) >= 4;
+  return !card.suspended && (card.box || 1) >= 4;
+}
+
+// ---- 「必要なし」（除外）と孤立カード ----
+//
+// 除外は進捗カード側のフラグで表す。キーが無い状態が「有効」を意味するので、
+// 有効に戻すときは delete する。false は書かない。移行前の既存カードに何も足さずに
+// 済み、素朴な if (c.suspended) が古いデータに対しても正しく動く。
+//
+// 「必要なし」は採点ではない。SEVERITY に足さず、nextState() には渡さない。
+
+export function isSuspended(card) {
+  return !!(card && card.suspended);
+}
+
+/** 「必要なし」。主言語のカードだけを止める。箱もlapsesも消さない */
+export function suspend(card, today) {
+  const next = { ...card, suspended: true, suspendedOn: today };
+  delete next.unsuspendedOn;
+  return next;
+}
+
+/**
+ * 未投入のフレーズを、投入と同時に「必要なし」にする。
+ * 投入を経由するので、その日の新規枠を1つ消費する。日次上限はセッション時間を
+ * 抑えるためにあり、利用者は実際にそのカードに時間を使っているので、これが正しい。
+ * 「必要なし」を連打してデッキを掘り進める抜け道も同時に塞がる。
+ */
+export function suspendNew(id, today) {
+  return suspend(introduce(id, today), today);
+}
+
+/**
+ * 除外を解除する。
+ *  - 一度でも採点したカード: 箱・lapses をそのまま復帰させ、当日から復習に出す
+ *  - 一度も採点していないカード: 新規として投入し直す（当日の新規枠を1つ使う）
+ *
+ * 未採点カードを投入し直すのは、firstSeen が復活日になることで当日の昇格を
+ * 禁止できるからである。まとめて復活させるとその日の新規枠が尽きるが、
+ * これは翌日のキューが溢れるのを防ぐ自己抑制として意図している。
+ */
+export function unsuspend(card, today) {
+  const fresh = !card.gradedOn;
+  const base = fresh ? introduce(card.id, today) : { ...card, due: today };
+  const next = { ...base, unsuspendedOn: today };
+  delete next.suspended;
+  delete next.suspendedOn;
+  return next;
+}
+
+/**
+ * 出題対象になるカードだけを返す。次の2種類を落とす。
+ *   - suspended: 「必要なし」で止めたカード
+ *   - orphan:    phrases.json から消えたフレーズのカード（記録は残すが出題しない）
+ *
+ * srs.js が allPhrases から読むのは id だけ。言語という概念は持たない。
+ */
+export function activeCards(cards, allPhrases) {
+  const live = new Set(allPhrases.map((p) => p.id));
+  const out = {};
+  for (const id of Object.keys(cards)) {
+    const c = cards[id];
+    if (!live.has(id)) continue;
+    if (c.suspended) continue;
+    out[id] = c;
+  }
+  return out;
+}
+
+/** phrases.json から消えたフレーズのカードのID。設定画面の掃除用 */
+export function orphanIds(cards, allPhrases) {
+  const live = new Set(allPhrases.map((p) => p.id));
+  return Object.keys(cards).filter((id) => !live.has(id));
+}
+
+/**
+ * ホームの「定着 N / M」。除外は分母からも分子からも外れる。
+ * total が 0 になりうるので、割り算する側でゼロ除算を防ぐこと。
+ */
+export function retentionStats(cards, allPhrases) {
+  let retained = 0;
+  let introduced = 0;
+  let suspended = 0;
+  allPhrases.forEach((p) => {
+    const c = cards[p.id];
+    if (!c) return;
+    if (c.suspended) { suspended += 1; return; }
+    introduced += 1;
+    if (isRetained(c)) retained += 1;
+  });
+  return { retained, total: allPhrases.length - suspended, introduced, suspended };
 }
 
 // ---- 第2段: 最終スイープの均等割り当て ----
+
+/**
+ * スイープ用の並び。凍結済みの並びがあれば既存要素の位置を1つも動かさず、
+ * 未知のIDだけを末尾に足す。消えたIDも位置を保つために残す（カードが無いので出題されない）。
+ *
+ * 1回目の割り当ては配列インデックス（i % n）で決まるため、スイープ期間中に
+ * phrases.json の途中へ挿入・削除すると以降の全カードのスロットがずれ、
+ * スロット n-1 のカードがスロット0へ折り返して二度と出題されなくなる。
+ * 凍結配列を絶対にフィルタせず末尾にだけ足すことで、インデックス安定性を構成上保証する。
+ */
+export function resolveSweepOrder(frozen, allPhrases) {
+  const ids = allPhrases.map((p) => p.id);
+  if (!Array.isArray(frozen) || frozen.length === 0) return ids;
+  const known = new Set(frozen);
+  return frozen.concat(ids.filter((id) => !known.has(id)));
+}
 
 /** スイープ開始日から出発前日までの日付配列。SWEEP_DAYS 日ぶん */
 export function sweepDays(trip) {
@@ -192,7 +298,16 @@ export function sweepPlan(orderedIds, cards, trip) {
     const card = cards[id];
     if (!card) return; // 未投入は対象外
 
-    const base = i % n;
+    let base = i % n;
+
+    // スイープ中に除外を解除したカードは、基準日が過ぎていればその日に引き直す。
+    // 移動は必ず未来方向。「有効なカードは出発までに必ず1回は出る」を壊さないため。
+    const u = card.unsuspendedOn;
+    if (u && raw[u] !== undefined) {
+      const uIdx = days.indexOf(u);
+      if (uIdx > base) base = uIdx;
+    }
+
     raw[days[base]].push({ id, base: true });
 
     const reps = repsFor(card);
@@ -209,7 +324,7 @@ export function sweepPlan(orderedIds, cards, trip) {
     raw[d].sort(
       (a, b) =>
         Number(b.base) - Number(a.base) ||
-        (cards[b.id].lapses || 0) - (cards[a.id].lapses || 0) ||
+        (cards[b.id]?.lapses || 0) - (cards[a.id]?.lapses || 0) ||
         a.id.localeCompare(b.id)
     );
     buckets[d] = raw[d].map((e) => e.id);
@@ -227,17 +342,21 @@ export function sweepPlan(orderedIds, cards, trip) {
  * allPhrases: phrases.json の配列（この順序が投入順）
  * trip: { departure: 'YYYY-MM-DD' }
  */
-export function buildSession(today, cards, allPhrases, trip) {
+export function buildSession(today, cards, allPhrases, trip, opts = {}) {
   const mode = modeFor(today, trip);
 
   if (mode === 'trip') {
     return { mode, reviewIds: [], newIds: [], overflow: 0 };
   }
 
-  const known = Object.values(cards);
+  // 出題対象は active、「投入済みか」の判定は生の cards を使う。
+  // 除外したカードを新規として出し直さないため、また除外も当日の新規枠を使うため。
+  const active = activeCards(cards, allPhrases);
+  const known = Object.values(active);
 
   if (mode === 'sweep') {
-    const plan = sweepPlan(allPhrases.map((p) => p.id), cards, trip);
+    const order = resolveSweepOrder(opts.sweepOrder, allPhrases);
+    const plan = sweepPlan(order, active, trip);
     const all = plan[today] || [];
     return {
       mode,
@@ -259,7 +378,9 @@ export function buildSession(today, cards, allPhrases, trip) {
 
   // 新規は1日 NEW_PER_DAY 枚まで。同じ日にセッションを何度実行しても増えない。
   // firstSeen は投入日で固定なので、途中で中断して再開した場合は残り枚数だけが出る。
-  const introducedToday = known.filter((c) => c.firstSeen === today).length;
+  // 生の cards を数える。active だと除外したカードが枠を返してしまい、
+  // 「必要なし」の連打でデッキを掘り進められる
+  const introducedToday = Object.values(cards).filter((c) => c.firstSeen === today).length;
   const quota = Math.max(0, NEW_PER_DAY - introducedToday);
 
   const newIds = allPhrases
@@ -274,11 +395,12 @@ export function buildSession(today, cards, allPhrases, trip) {
  * その日の分をもう一度やるための出題リスト。新規は追加しない。
  * 今日さわったカード（採点済み + 今日投入した分）を、間違えたものから順に返す。
  */
-export function buildReplay(today, cards) {
+export function buildReplay(today, cards, allPhrases) {
+  const active = activeCards(cards, allPhrases);
   const rankOf = (c) =>
     c.gradedOn === today ? SEVERITY[c.dayWorst] ?? 3 : 3;
 
-  return Object.values(cards)
+  return Object.values(active)
     .filter((c) => c.gradedOn === today || c.firstSeen === today)
     .sort((a, b) => rankOf(a) - rankOf(b) || a.id.localeCompare(b.id))
     .slice(0, REVIEW_CAP)

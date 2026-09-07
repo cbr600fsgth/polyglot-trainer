@@ -25,6 +25,9 @@ const phrases = JSON.parse(
   readFileSync(new URL('../data/phrases.json', import.meta.url))
 ).phrases;
 
+// srs.js がフレーズから読むのは .id だけなので、テスト用のダミーはこれで足りる
+const fakePhrases = (ids) => ids.map((id) => ({ id }));
+
 // 架空の旅程。出発 2030-05-20、スイープ開始はその10日前の 2030-05-10、学習開始 2030-04-05
 const TRIP = { departure: '2030-05-20' };
 const START = '2030-04-05';
@@ -198,13 +201,13 @@ check('今日さわったカードだけを、間違えたものから順に返�
     d: { id: 'd', box: 1, lapses: 0, firstSeen: '2030-04-21' }, // 今日投入・未採点
     e: { id: 'e', box: 2, lapses: 0, gradedOn: '2030-04-20', dayWorst: 'good', firstSeen: '2030-04-02' },
   };
-  const ids = srs.buildReplay('2030-04-21', cards);
+  const ids = srs.buildReplay('2030-04-21', cards, fakePhrases(['a', 'b', 'c', 'd', 'e']));
   assert.deepEqual(ids, ['b', 'c', 'a', 'd'], '順序または対象が違う');
   assert.ok(!ids.includes('e'), '前日のカードが混ざっている');
 });
 
 check('何もしていない日は再挑戦リストが空', () => {
-  assert.deepEqual(srs.buildReplay('2030-04-21', {}), []);
+  assert.deepEqual(srs.buildReplay('2030-04-21', {}, []), []);
 });
 
 check('再挑戦リストは30枚で打ち切る', () => {
@@ -215,7 +218,7 @@ check('再挑戦リストは30枚で打ち切る', () => {
       gradedOn: '2030-04-21', dayWorst: 'good', firstSeen: '2030-04-02',
     };
   }
-  assert.equal(srs.buildReplay('2030-04-21', cards).length, srs.REVIEW_CAP);
+  assert.equal(srs.buildReplay('2030-04-21', cards, fakePhrases(Object.keys(cards))).length, srs.REVIEW_CAP);
 });
 
 console.log('\n第2段: 最終スイープ');
@@ -306,9 +309,9 @@ console.log('\nセッション生成');
 
 check('学習期は復習30枚で打ち切り、超過を報告する', () => {
   const cards = {};
-  for (let i = 0; i < 45; i++) {
-    cards[`c${i}`] = { id: `c${i}`, box: 1, lapses: 0, due: '2030-04-21' };
-  }
+  phrases.slice(0, 45).forEach((p) => {
+    cards[p.id] = { id: p.id, box: 1, lapses: 0, due: '2030-04-21' };
+  });
   const s = srs.buildSession('2030-04-26', cards, phrases, TRIP);
   assert.equal(s.mode, 'study');
   assert.equal(s.reviewIds.length, 30);
@@ -402,6 +405,303 @@ check('旅行モードは出題ゼロ', () => {
   assert.equal(s.reviewIds.length, 0);
   assert.equal(s.newIds.length, 0);
 });
+
+
+// ============================================================
+//  除外（必要なし）・孤立カード・スイープ順の凍結
+//  docs/SPEC-multilingual.md 8.2 の追加テスト
+// ============================================================
+
+console.log('\n除外（必要なし）');
+
+const TODAY = '2030-04-21';
+const ph5 = fakePhrases(['a', 'b', 'c', 'd', 'e']);
+
+check('除外したカードは復習に出ない', () => {
+  const cards = {
+    a: { id: 'a', box: 1, lapses: 0, due: TODAY },
+    b: srs.suspend({ id: 'b', box: 1, lapses: 0, due: TODAY }, TODAY),
+  };
+  const s = srs.buildSession(TODAY, cards, ph5, TRIP);
+  assert.deepEqual(s.reviewIds, ['a']);
+});
+
+check('除外したカードは新規として再投入されない', () => {
+  const cards = { a: srs.suspendNew('a', TODAY) };
+  const s = srs.buildSession(TODAY, cards, ph5, TRIP);
+  assert.equal(s.newIds.includes('a'), false);
+});
+
+check('未投入のフレーズを除外すると当日の新規枠を1つ使う', () => {
+  const cards = { a: srs.suspendNew('a', TODAY) };
+  const s = srs.buildSession(TODAY, cards, ph5, TRIP);
+  assert.equal(s.newIds.length, srs.NEW_PER_DAY - 1);
+});
+
+check('新規枠は5回の除外で尽きる（デッキを掘り進められない）', () => {
+  const cards = {};
+  ['a', 'b', 'c', 'd', 'e'].forEach((id) => { cards[id] = srs.suspendNew(id, TODAY); });
+  const s = srs.buildSession(TODAY, cards, ph5, TRIP);
+  assert.equal(s.newIds.length, 0);
+});
+
+check('除外したカードはスイープの割り当てに入らない', () => {
+  const cards = {
+    a: { id: 'a', box: 3, lapses: 0, due: TODAY },
+    b: srs.suspend({ id: 'b', box: 3, lapses: 0, due: TODAY }, TODAY),
+  };
+  const plan = srs.sweepPlan(['a', 'b'], srs.activeCards(cards, ph5), TRIP);
+  const all = Object.values(plan).flat();
+  assert.equal(all.includes('a'), true);
+  assert.equal(all.includes('b'), false);
+});
+
+check('除外したカードは再挑戦リストに出ない', () => {
+  const cards = {
+    a: { id: 'a', box: 1, lapses: 0, due: TODAY, gradedOn: TODAY, dayWorst: 'again' },
+    b: srs.suspend({ id: 'b', box: 1, lapses: 0, due: TODAY, gradedOn: TODAY, dayWorst: 'again' }, TODAY),
+  };
+  assert.deepEqual(srs.buildReplay(TODAY, cards, ph5), ['a']);
+});
+
+check('当日に投入して除外したカードも再挑戦リストに出ない', () => {
+  const cards = { a: srs.suspendNew('a', TODAY) };
+  assert.deepEqual(srs.buildReplay(TODAY, cards, ph5), []);
+});
+
+check('除外しても箱・lapses・due は保存される', () => {
+  const c = srs.suspend({ id: 'a', box: 4, lapses: 3, due: '2030-05-01' }, TODAY);
+  assert.equal(c.box, 4);
+  assert.equal(c.lapses, 3);
+  assert.equal(c.due, '2030-05-01');
+  assert.equal(c.suspendedOn, TODAY);
+});
+
+check('採点済みカードの除外を解除すると元の箱で当日から復習に戻る', () => {
+  const before = { id: 'a', box: 4, lapses: 2, due: '2030-05-01', gradedOn: '2030-04-15' };
+  const back = srs.unsuspend(srs.suspend(before, TODAY), TODAY);
+  assert.equal(back.box, 4);
+  assert.equal(back.lapses, 2);
+  assert.equal(back.due, TODAY);
+  assert.equal('suspended' in back, false);
+  assert.equal('suspendedOn' in back, false);
+  assert.equal(back.unsuspendedOn, TODAY);
+});
+
+check('未採点カードの除外を解除すると新規として投入し直される', () => {
+  const back = srs.unsuspend(srs.suspendNew('a', '2030-04-10'), TODAY);
+  assert.equal(back.box, 1);
+  assert.equal(back.firstSeen, TODAY);
+  assert.equal(back.due, srs.addDays(TODAY, 1));
+});
+
+check('除外を解除した日は昇格しない（投入日扱い）', () => {
+  const back = srs.unsuspend(srs.suspendNew('a', '2030-04-10'), TODAY);
+  const graded = srs.nextState(back, 'good', TODAY);
+  assert.equal(graded.box, 1);
+});
+
+check('suspend は unsuspendedOn を消す（両方が残らない）', () => {
+  const back = srs.unsuspend(srs.suspend({ id: 'a', box: 2, gradedOn: '2030-04-01' }, '2030-04-02'), '2030-04-03');
+  const again = srs.suspend(back, '2030-04-04');
+  assert.equal('unsuspendedOn' in again, false);
+  assert.equal(again.suspended, true);
+});
+
+check('除外は定着の分母と分子の両方から外れる', () => {
+  const cards = {
+    a: { id: 'a', box: 5 },
+    b: srs.suspend({ id: 'b', box: 5 }, TODAY),
+    c: { id: 'c', box: 1 },
+  };
+  const st = srs.retentionStats(cards, ph5);
+  assert.equal(st.retained, 1);      // a のみ
+  assert.equal(st.total, 4);         // 5件 - 除外1件
+  assert.equal(st.introduced, 2);    // a と c
+  assert.equal(st.suspended, 1);
+});
+
+check('isRetained は除外カードを定着とみなさない', () => {
+  assert.equal(srs.isRetained({ id: 'a', box: 5 }), true);
+  assert.equal(srs.isRetained(srs.suspend({ id: 'a', box: 5 }, TODAY)), false);
+});
+
+check('全件除外しても retentionStats が壊れない（total 0）', () => {
+  const cards = {};
+  ph5.forEach((p) => { cards[p.id] = srs.suspend({ id: p.id, box: 5 }, TODAY); });
+  const st = srs.retentionStats(cards, ph5);
+  assert.equal(st.total, 0);
+  assert.equal(st.retained, 0);
+});
+
+check('スイープ中に解除したカードは解除日以降に必ず出題される', () => {
+  const days = srs.sweepDays(TRIP);
+  const unDay = days[6];
+  const cards = {};
+  // 20枚を投入し、そのうち1枚をスイープ中に解除した状態にする
+  const ids = phrases.slice(0, 20).map((p) => p.id);
+  ids.forEach((id) => { cards[id] = { id, box: 3, lapses: 0, due: unDay }; });
+  cards[ids[0]] = { ...cards[ids[0]], unsuspendedOn: unDay };
+  const plan = srs.sweepPlan(ids, cards, TRIP);
+  const after = days.slice(6).flatMap((d) => plan[d]);
+  assert.equal(after.includes(ids[0]), true);
+});
+
+check('スイープ中の解除は割り当てを未来にしか動かさない', () => {
+  const days = srs.sweepDays(TRIP);
+  const ids = phrases.slice(0, 10).map((p) => p.id);
+  const cards = {};
+  ids.forEach((id) => { cards[id] = { id, box: 3, lapses: 0 }; });
+  // インデックス9（本来は最終日）のカードを2日目に解除しても前に動かない
+  cards[ids[9]] = { ...cards[ids[9]], unsuspendedOn: days[1] };
+  const plan = srs.sweepPlan(ids, cards, TRIP);
+  assert.equal(plan[days[1]].includes(ids[9]), false);
+  assert.equal(plan[days[9]].includes(ids[9]), true);
+});
+
+console.log('\n孤立カード（消えたフレーズの進捗）');
+
+check('phrases.jsonから消えたフレーズのカードは復習に出ない', () => {
+  const cards = {
+    a: { id: 'a', box: 1, lapses: 0, due: TODAY },
+    gone: { id: 'gone', box: 1, lapses: 0, due: TODAY },
+  };
+  const s = srs.buildSession(TODAY, cards, ph5, TRIP);
+  assert.deepEqual(s.reviewIds, ['a']);
+});
+
+check('消えたフレーズのカードは再挑戦リストに出ない', () => {
+  const cards = {
+    gone: { id: 'gone', box: 1, due: TODAY, gradedOn: TODAY, dayWorst: 'again' },
+  };
+  assert.deepEqual(srs.buildReplay(TODAY, cards, ph5), []);
+});
+
+check('消えたフレーズのカードは定着の分母にも分子にも入らない', () => {
+  const cards = { a: { id: 'a', box: 5 }, gone: { id: 'gone', box: 5 } };
+  const st = srs.retentionStats(cards, ph5);
+  assert.equal(st.retained, 1);
+  assert.equal(st.total, 5);
+  assert.equal(st.introduced, 1);
+});
+
+check('orphanIds が消えたフレーズのIDだけを返す', () => {
+  const cards = { a: { id: 'a' }, gone: { id: 'gone' }, x: { id: 'x' } };
+  assert.deepEqual(srs.orphanIds(cards, ph5).sort(), ['gone', 'x']);
+});
+
+check('buildSessionが返すIDは必ずphrases.jsonに存在する（45日通し）', () => {
+  const live = new Set(phrases.map((p) => p.id));
+  const cards = { ghost: { id: 'ghost', box: 1, lapses: 0, due: START } };
+  let day = START;
+  for (let i = 0; i < 45; i++) {
+    const s = srs.buildSession(day, cards, phrases, TRIP);
+    [...s.reviewIds, ...s.newIds].forEach((id) => {
+      assert.equal(live.has(id), true, `未知のIDが出題された: ${id}`);
+    });
+    s.newIds.forEach((id) => { cards[id] = srs.introduce(id, day); });
+    s.reviewIds.forEach((id) => { cards[id] = srs.nextState(cards[id], 'good', day); });
+    day = srs.addDays(day, 1);
+  }
+});
+
+console.log('\nスイープ順の凍結');
+
+check('resolveSweepOrder は凍結配列の要素順を保存する', () => {
+  const frozen = ['c', 'a', 'b'];
+  assert.deepEqual(srs.resolveSweepOrder(frozen, ph5), ['c', 'a', 'b', 'd', 'e']);
+});
+
+check('凍結が無ければ phrases の順をそのまま使う', () => {
+  assert.deepEqual(srs.resolveSweepOrder(null, ph5), ['a', 'b', 'c', 'd', 'e']);
+  assert.deepEqual(srs.resolveSweepOrder([], ph5), ['a', 'b', 'c', 'd', 'e']);
+});
+
+/** 10枚を10日へ配ったときの「idごとの割り当て日」を返す */
+function slotsOf(order, ids) {
+  const cards = {};
+  ids.forEach((id) => { cards[id] = { id, box: 3, lapses: 0 }; });
+  const plan = srs.sweepPlan(order, cards, TRIP);
+  const out = {};
+  for (const [day, list] of Object.entries(plan)) list.forEach((id) => { out[id] = day; });
+  return out;
+}
+
+check('凍結した並びは末尾への追記で既存の割り当てを動かさない', () => {
+  const ids = phrases.slice(0, 10).map((p) => p.id);
+  const before = slotsOf(srs.resolveSweepOrder(ids, fakePhrases(ids)), ids);
+  const grown = fakePhrases([...ids, 'new-1', 'new-2']);
+  const after = slotsOf(srs.resolveSweepOrder(ids, grown), ids);
+  assert.deepEqual(after, before);
+});
+
+check('凍結した並びは途中挿入でも既存の割り当てを動かさない', () => {
+  const ids = phrases.slice(0, 10).map((p) => p.id);
+  const before = slotsOf(srs.resolveSweepOrder(ids, fakePhrases(ids)), ids);
+  const inserted = fakePhrases([ids[0], 'inserted', ...ids.slice(1)]);
+  const after = slotsOf(srs.resolveSweepOrder(ids, inserted), ids);
+  assert.deepEqual(after, before);
+});
+
+check('凍結しない場合は途中挿入で割り当てがずれる（凍結が要る理由の記録）', () => {
+  const ids = phrases.slice(0, 10).map((p) => p.id);
+  const before = slotsOf(ids, ids);
+  const inserted = [ids[0], 'inserted', ...ids.slice(1)];
+  const after = slotsOf(inserted, ids);
+  assert.notDeepEqual(after, before);
+  // スロット9だったカードがスロット0へ折り返し、過去日に移ってしまう
+  assert.notEqual(after[ids[9]], before[ids[9]]);
+});
+
+check('凍結した並びから要素を消しても他カードの割り当ては動かない', () => {
+  const ids = phrases.slice(0, 10).map((p) => p.id);
+  const kept = ids.filter((_, i) => i !== 3);
+  const before = slotsOf(srs.resolveSweepOrder(ids, fakePhrases(ids)), kept);
+  const after = slotsOf(srs.resolveSweepOrder(ids, fakePhrases(kept)), kept);
+  assert.deepEqual(after, before);
+});
+
+check('スイープ中に除外しても他カードの割り当ては動かない', () => {
+  const ids = phrases.slice(0, 10).map((p) => p.id);
+  const all = {};
+  ids.forEach((id) => { all[id] = { id, box: 3, lapses: 0 }; });
+  const planBefore = srs.sweepPlan(ids, all, TRIP);
+
+  all[ids[4]] = srs.suspend(all[ids[4]], TODAY);
+  const planAfter = srs.sweepPlan(ids, srs.activeCards(all, fakePhrases(ids)), TRIP);
+
+  const days = srs.sweepDays(TRIP);
+  days.forEach((d) => {
+    const b = planBefore[d].filter((id) => id !== ids[4]);
+    assert.deepEqual(planAfter[d], b);
+  });
+});
+
+console.log('\nスイープの容量上限');
+
+check('200枚でもスイープの網羅とSWEEP_CAPを両立する', () => {
+  const ids = Array.from({ length: 200 }, (_, i) => `p-${i}`);
+  const cards = {};
+  ids.forEach((id) => { cards[id] = { id, box: 3, lapses: 0 }; });
+  const plan = srs.sweepPlan(ids, cards, TRIP);
+  const seen = new Set(Object.values(plan).flat());
+  assert.equal(seen.size, 200);
+  srs.sweepDays(TRIP).forEach((d) => {
+    assert.ok(plan[d].slice(0, srs.SWEEP_CAP).length <= srs.SWEEP_CAP);
+  });
+});
+
+check('250枚を超えるとスイープの網羅が崩れる（崖の位置を固定する）', () => {
+  const cap = srs.SWEEP_DAYS * srs.SWEEP_CAP;
+  const ids = Array.from({ length: cap + 10 }, (_, i) => `p-${i}`);
+  const cards = {};
+  ids.forEach((id) => { cards[id] = { id, box: 3, lapses: 0 }; });
+  const plan = srs.sweepPlan(ids, cards, TRIP);
+  // 各日は SWEEP_CAP で切り捨てられるので、1回目の割り当てまで落ちる
+  const emitted = new Set(srs.sweepDays(TRIP).flatMap((d) => plan[d].slice(0, srs.SWEEP_CAP)));
+  assert.ok(emitted.size < ids.length, '250枚超で網羅が崩れるはず');
+});
+
 
 console.log('\n45日通し実行（学習開始日から・毎日サボらずに実施した場合）');
 
@@ -523,7 +823,7 @@ for (let d = 0; d < 45; d++) {
   // 同じ日に2回もう一度やる
   let replayTotal = 0;
   for (let r = 0; r < 2; r++) {
-    const ids = srs.buildReplay(today, rcards);
+    const ids = srs.buildReplay(today, rcards, phrases);
     replayTotal += ids.length;
     ids.forEach((id) => gradeIt(id, today));
   }
@@ -570,6 +870,53 @@ check('再挑戦しても最終スイープの1日の出題が25枚以下', () =
   rlog
     .filter((l) => l.mode === 'sweep')
     .forEach((l) => assert.ok(l.required <= srs.SWEEP_CAP, `${l.day} が ${l.required}枚`));
+});
+
+
+console.log('\n45日通し実行（20枚を必要なしにした場合）');
+
+const sCards = {};
+const sSuspended = new Set();
+let sDay = START;
+const sDaily = [];
+for (let i = 0; i < 45; i++) {
+  const s = srs.buildSession(sDay, sCards, phrases, TRIP);
+  sDaily.push(s.reviewIds.length + s.newIds.length);
+
+  // 新規のうち、まだ20枚に達していなければ最初の1枚を「必要なし」にする
+  s.newIds.forEach((id, idx) => {
+    if (idx === 0 && sSuspended.size < 20) {
+      sCards[id] = srs.suspendNew(id, sDay);
+      sSuspended.add(id);
+    } else {
+      sCards[id] = srs.introduce(id, sDay);
+    }
+  });
+  s.reviewIds.forEach((id) => { sCards[id] = srs.nextState(sCards[id], 'good', sDay); });
+  sDay = srs.addDays(sDay, 1);
+}
+
+check(`20枚を必要なしにすると残り130枚がスイープで全部出る（実測 除外${sSuspended.size}枚）`, () => {
+  assert.equal(sSuspended.size, 20);
+  const active = srs.activeCards(sCards, phrases);
+  const plan = srs.sweepPlan(srs.resolveSweepOrder(null, phrases), active, TRIP);
+  const seen = new Set(srs.sweepDays(TRIP).flatMap((d) => plan[d].slice(0, srs.SWEEP_CAP)));
+  // 投入済みかつ除外でないカードは全部出る
+  Object.keys(active).forEach((id) => {
+    assert.equal(seen.has(id), true, `スイープに出ないカード: ${id}`);
+  });
+  // 除外した20枚は1枚も出ない
+  sSuspended.forEach((id) => assert.equal(seen.has(id), false, `除外したのに出た: ${id}`));
+});
+
+check(`必要なしを付けても1日の出題枚数は35枚以下（実測 最大${Math.max(...sDaily)}枚）`, () => {
+  assert.ok(Math.max(...sDaily) <= srs.REVIEW_CAP + srs.NEW_PER_DAY);
+});
+
+check('必要なしにしたカードは定着の分母から外れる（実測）', () => {
+  const st = srs.retentionStats(sCards, phrases);
+  assert.equal(st.suspended, 20);
+  assert.equal(st.total, phrases.length - 20);
 });
 
 console.log('\n日別の出題枚数');
